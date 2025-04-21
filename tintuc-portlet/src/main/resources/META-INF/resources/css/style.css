@@ -1,0 +1,78 @@
+/*
+	 Organic Tabs
+	 by Chris Coyier
+	 http://css-tricks.com
+*/
+
+/* Generic Utility */
+.featured_hide {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+/* Specific to example one */
+#tabs {
+	background: #fff;
+	border:1px solid #ccc;
+}
+
+#tabs .nav {
+	overflow: hidden;
+	margin: 0 0 10px 0;
+	background: #eee;
+}
+
+#tabs .nav li {
+	float: left;
+	margin: 0 0 0 0;
+}
+
+#tabs .nav li.last {
+	margin-right: 0;
+}
+
+#tabs .nav li a {
+	display: block;
+	padding: 5px;
+	background: #eee;
+	color: #000;
+	font-size: 10px;
+	font-weight:bold;
+	text-align: center;
+	border: 0;
+	height:20px;
+	line-height: 20px;
+}
+
+#tabs .nav li a:hover {
+	background-color: #0575f4;
+	text-decoration: none;
+	color: #fff;
+}
+
+#tabs ul {
+	list-style: none;
+}
+
+#tabs ul li a {
+	display: block;
+	border-bottom: 1px dotted #ccc;
+	padding: 4px;
+	color: #000;
+}
+
+#tabs ul li a:hover {
+	background: #fff;
+	color: #000;
+	text-decoration: none;
+}
+
+#tabs ul li:last-child a {
+	border: none;
+}
+
+#tabs ul li a.current,#tabs ul.featured li a:hover {
+	background-color: #0575f4;
+	color: white;
+}

@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="qlanphamdb.model.AnPham_Activity">
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="id" type="long" />
+		<field name="deCuongId" type="long" />
+		<field name="anPhamId" type="long" />
+		<field name="startuserid" type="long" />
+		<field name="enduserid" type="long" />
+		<field name="contentrequest" type="String" />
+		<field name="statusofarticle" type="int" />
+	</model>
+	<model name="qlanphamdb.model.AnPham_CongTacVien">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="hoTen" type="String" />
+		<field name="email" type="String" />
+		<field name="thongTin" type="String" />
+		<field name="status" type="int" />
+		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.AnPham_DeCuong">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="ten" type="String" />
+		<field name="moTa" type="String" />
+		<field name="loaiId" type="long" />
+		<field name="noiDung" type="String" />
+		<field name="phienBan" type="long" />
+		<field name="nguoiTao" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="nguoiSua" type="long" />
+		<field name="ngaySua" type="Date" />
+		<field name="nguoiNhan" type="long" />
+		<field name="nguoiXuLy" type="long" />
+		<field name="ngayXuLy" type="Date" />
+		<field name="language" type="String" />
+		<field name="status" type="int" />
+		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.AnPham_DinhKemFile">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="ten" type="String" />
+		<field name="url" type="String" />
+		<field name="Object" type="long" />
+		<field name="ObjectId" type="long" />
+		<field name="luotTai" type="long" />
+		<field name="ghiChu" type="String" />
+		<field name="delete_status" type="int" />
+		<field name="status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.AnPham_Loai">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="ten" type="String" />
+		<field name="status" type="int" />
+		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.AnPham_Logs">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="activityId" type="long" />
+		<field name="ten" type="String" />
+		<field name="slug" type="String" />
+		<field name="moTa" type="String" />
+		<field name="anhDaiDien" type="String" />
+		<field name="loaiId" type="long" />
+		<field name="deCuongId" type="long" />
+		<field name="noiDung" type="String" />
+		<field name="tuKhoa" type="String" />
+		<field name="phienBan" type="long" />
+		<field name="luotXem" type="long" />
+		<field name="anPhamId" type="long" />
+		<field name="noiDungLog" type="String" />
+		<field name="nguoiTao" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="nguoiSua" type="long" />
+		<field name="ngaySua" type="Date" />
+		<field name="nguoiNhan" type="long" />
+		<field name="nguoiXuLy" type="long" />
+		<field name="ngayXuLy" type="Date" />
+		<field name="language" type="String" />
+		<field name="loaiTin" type="int" />
+		<field name="isFormHienBinhLuan" type="int" />
+		<field name="isFormViewBinhLuan" type="int" />
+		<field name="status" type="int" />
+		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.AnPham_PhanCong">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="loaiId" type="long" />
+		<field name="deCuongId" type="long" />
+		<field name="ctvId" type="long" />
+		<field name="noiDung" type="String" />
+		<field name="ghiChu" type="String" />
+		<field name="ngaybatdau" type="Date" />
+		<field name="ngayketthuc" type="Date" />
+		<field name="status" type="int" />
+		<field name="is_gui" type="int" />
+	</model>
+	<model name="qlanphamdb.model.AnPham_TapChi">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="ten" type="String" />
+		<field name="slug" type="String" />
+		<field name="moTa" type="String" />
+		<field name="anhDaiDien" type="String" />
+		<field name="loaiId" type="long" />
+		<field name="deCuongId" type="long" />
+		<field name="noiDung" type="String" />
+		<field name="tuKhoa" type="String" />
+		<field name="phienBan" type="long" />
+		<field name="luotXem" type="long" />
+		<field name="nguoiTao" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="nguoiSua" type="long" />
+		<field name="ngaySua" type="Date" />
+		<field name="nguoiNhan" type="long" />
+		<field name="nguoiXuLy" type="long" />
+		<field name="ngayXuLy" type="Date" />
+		<field name="language" type="String" />
+		<field name="loaiTin" type="int" />
+		<field name="isFormHienBinhLuan" type="int" />
+		<field name="isFormViewBinhLuan" type="int" />
+		<field name="status" type="int" />
+		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.eMagazine">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="ten" type="String" />
+		<field name="slug" type="String" />
+		<field name="moTa" type="String" />
+		<field name="anhDaiDien" type="String" />
+		<field name="mauChuDao" type="String" />
+		<field name="hinhNen" type="String" />
+		<field name="templateId" type="long" />
+		<field name="noiDung" type="String" />
+		<field name="tuKhoa" type="String" />
+		<field name="phienBan" type="long" />
+		<field name="luotXem" type="long" />
+		<field name="nguoiTao" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="nguoiSua" type="long" />
+		<field name="ngaySua" type="Date" />
+		<field name="nguoiNhan" type="long" />
+		<field name="nguoiXuLy" type="long" />
+		<field name="ngayXuLy" type="Date" />
+		<field name="language" type="String" />
+		<field name="isFormHienBinhLuan" type="int" />
+		<field name="isFormViewBinhLuan" type="int" />
+		<field name="status" type="int" />
+		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.eMagazine_Logs">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="ten" type="String" />
+		<field name="slug" type="String" />
+		<field name="moTa" type="String" />
+		<field name="anhDaiDien" type="String" />
+		<field name="mauChuDao" type="String" />
+		<field name="hinhNen" type="String" />
+		<field name="templateId" type="long" />
+		<field name="noiDung" type="String" />
+		<field name="tuKhoa" type="String" />
+		<field name="phienBan" type="long" />
+		<field name="luotXem" type="long" />
+		<field name="nguoiTao" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="nguoiSua" type="long" />
+		<field name="ngaySua" type="Date" />
+		<field name="nguoiNhan" type="long" />
+		<field name="nguoiXuLy" type="long" />
+		<field name="ngayXuLy" type="Date" />
+		<field name="language" type="String" />
+		<field name="isFormHienBinhLuan" type="int" />
+		<field name="isFormViewBinhLuan" type="int" />
+		<field name="status" type="int" />
+		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.eMagazine_template">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="ten" type="String" />
+		<field name="noidung" type="String" />
+		<field name="status" type="int" />
+	</model>
+</model-hints>

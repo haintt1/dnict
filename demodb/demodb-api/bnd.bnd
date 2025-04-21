@@ -1,0 +1,12 @@
+Bundle-Name: demodb-api
+Bundle-SymbolicName: com.demo.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.demo.exception,\
+	com.demo.model,\
+	com.demo.service,\
+	com.demo.service.persistence
+-check: EXPORTS
+-consumer-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
+-includeresource: META-INF/service.xml=../demodb-service/service.xml
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}

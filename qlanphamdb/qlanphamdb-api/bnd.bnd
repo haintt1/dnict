@@ -1,0 +1,10 @@
+Bundle-Name: qlanphamdb-api
+Bundle-SymbolicName: qlanphamdb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	qlanphamdb.exception,\
+	qlanphamdb.model,\
+	qlanphamdb.service,\
+	qlanphamdb.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../qlanphamdb-service/service.xml

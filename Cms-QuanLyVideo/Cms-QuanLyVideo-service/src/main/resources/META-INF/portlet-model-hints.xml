@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="cms.quanlyvideo.model.ChuDe">
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="ten" type="String" />
+		<field name="moTa" type="String" />
+		<field name="trangThai" type="long" />
+		<field name="daXoa" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="ngaySua" type="Date" />
+	</model>
+	<model name="cms.quanlyvideo.model.ChuDeVideo">
+		<field name="id" type="long" />
+		<field name="chude_id" type="long" />
+		<field name="video_id" type="long" />
+	</model>
+	<model name="cms.quanlyvideo.model.Video">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="ten" type="String" />
+		<field name="moTa" type="String" />
+		<field name="noiDung" type="String" />
+		<field name="duongDan" type="String" />
+		<field name="luotXem" type="long" />
+		<field name="luotThich" type="long" />
+		<field name="tuKhoa" type="String" />
+		<field name="choBinhLuan" type="long" />
+		<field name="trangThai" type="long" />
+		<field name="daXoa" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="ngaySua" type="Date" />
+	</model>
+</model-hints>

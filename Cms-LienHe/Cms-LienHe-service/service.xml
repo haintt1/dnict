@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.contact">
+	<namespace>CmsLienHe</namespace>
+	<entity name="ToChuc" local-service="true" remote-service="true" table="cms_lienhe_tochuc">
+		<!-- PK fields -->
+		<column type="long" name="tochucId" primary="true"/>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long"/>
+
+		<column type="String" name="ten"/>
+		<column type="String" name="moTa"/>
+		<column type="long" name="tinhTrang"/>
+		<column type="int" name="sapXep"/>
+		<column type="long" name="daXoa"/>
+		<column type="Date" name="ngayTao"/>
+		<column type="Date" name="ngaySua"/>
+
+		<!-- Order -->
+
+		<order by="desc">
+			<order-column name="tochucId" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="ten" return-type="Collection">
+			<finder-column name="ten" />
+		</finder>
+
+		<!-- References -->
+
+		<reference package-path="com.contact" entity="PhongBan" />
+
+	</entity>
+	<entity name="PhongBan" local-service="true" remote-service="true" table="cms_lienhe_phongban">
+		<!-- PK fields -->
+		<column type="long" name="phongbanId" primary="true"/>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long"/>
+
+		<column type="String" name="ten"/>
+		<column type="String" name="moTa"/>
+		<column type="long" name="tochuc_id"/> <!-- foreign key -->
+		<column type="long" name="tinhTrang"/>
+		<column type="int" name="sapXep"/>
+		<column type="long" name="daXoa"/>
+		<column type="Date" name="ngayTao"/>
+		<column type="Date" name="ngaySua"/>
+
+		<!-- Order -->
+
+		<order by="desc">
+			<order-column name="phongbanId" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="ten" return-type="Collection">
+			<finder-column name="ten" />
+		</finder>
+
+		<!-- References -->
+
+		<reference package-path="com.contact" entity="CanBo" />
+
+	</entity>
+
+	<entity name="CanBo" local-service="true" remote-service="true" table="cms_lienhe_canbo">
+		<!-- PK fields -->
+		<column type="long" name="canboId" primary="true"/>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+
+		<column type="String" name="ten"/>
+		<column type="String" name="chucVu"/>
+		<column type="long" name="phongban_id"/> <!-- foreign key -->
+		<column type="String" name="sdt"/>
+		<column type="String" name="email"/>
+		<column type="long" name="tinhTrang"/>
+		<column type="int" name="sapXep"/>
+		<column type="long" name="daXoa"/>
+		<column type="Date" name="ngayTao"/>
+		<column type="Date" name="ngaySua"/>
+
+		<!-- Order -->
+
+		<order by="desc">
+			<order-column name="canboId" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="ten" return-type="Collection">
+			<finder-column name="ten" />
+		</finder>
+
+		<reference package-path="com.contact" entity="PhongBan" />
+	</entity>
+</service-builder>

@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="qlanphamdb">
+	<author>dnict</author>
+	<namespace>cw</namespace>
+	<entity local-service="true" name="AnPham_Loai" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="ten" type="String" />
+		<column name="status" type="int" />
+		<column name="orders" type="long" />
+		<column name="delete_status" type="int"/>
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="id" order-by="desc" />
+		</order>
+	</entity>
+	<entity local-service="true" name="AnPham_CongTacVien" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="hoTen" type="String" />
+		<column name="email" type="String" />
+		<column name="thongTin" type="String" />
+		<column name="status" type="int" />
+		<column name="orders" type="long" />
+		<column name="delete_status" type="int"/>
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="id" order-by="desc" />
+		</order>
+	</entity>
+	<entity local-service="true" name="AnPham_DeCuong" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="ten" type="String" />
+		<column name="moTa" type="String" />
+		<column name="loaiId" type="long" />
+		<column name="noiDung" type="String" />	
+		<column name="phienBan" type="long" />	
+		<column name="nguoiTao" type="long" />
+		<column name="ngayTao" type="Date" />
+		<column name="nguoiSua" type="long" />
+		<column name="ngaySua" type="Date" />
+		<column name="nguoiNhan" type="long" />
+		<column name="nguoiXuLy" type="long" />
+		<column name="ngayXuLy" type="Date" />
+		<column name="language" type="String" />		
+		<column name="status" type="int" />
+		<column name="orders" type="long" />
+		<column name="delete_status" type="int"/>
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="id" order-by="desc" />
+		</order>
+	</entity>
+	<entity local-service="true" name="AnPham_TapChi" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="ten" type="String" />
+		<column name="slug" type="String" />
+		<column name="moTa" type="String" />
+		<column name="anhDaiDien" type="String" />
+		<column name="loaiId" type="long" />
+		<column name="deCuongId" type="long" />
+		<column name="noiDung" type="String" />	
+		<column name="tuKhoa" type="String" />	
+		<column name="phienBan" type="long" />	
+		<column name="luotXem" type="long" />
+		<column name="nguoiTao" type="long" />
+		<column name="ngayTao" type="Date" />
+		<column name="nguoiSua" type="long" />
+		<column name="ngaySua" type="Date" />
+		<column name="nguoiNhan" type="long" />
+		<column name="nguoiXuLy" type="long" />
+		<column name="ngayXuLy" type="Date" />
+		<column name="language" type="String" />
+		<column name="loaiTin" type="int" />
+		<column name="isFormHienBinhLuan" type="int" />
+		<column name="isFormViewBinhLuan" type="int" />		
+		<column name="status" type="int" />
+		<column name="orders" type="long" />
+		<column name="delete_status" type="int"/>
+		
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="id" order-by="desc" />
+		</order>
+	</entity>
+	<entity name="AnPham_DinhKemFile" local-service="true" remote-service="false">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="userId" type="long" />
+		<column name="ten" type="String" />
+		<column name="url" type="String" />
+		<column name="Object" type="long" />
+		<column name="ObjectId" type="long" />
+		<column name="luotTai" type="long" />
+		<column name="ghiChu" type="String" />
+		<column name="delete_status" type="int" />
+		<column name="status" type="int"/>
+	</entity>
+	<entity local-service="true" name="AnPham_Logs" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="activityId" type="long" />
+		<column name="ten" type="String" />
+		<column name="slug" type="String" />
+		<column name="moTa" type="String" />
+		<column name="anhDaiDien" type="String" />
+		<column name="loaiId" type="long" />
+		<column name="deCuongId" type="long" />
+		<column name="noiDung" type="String" />	
+		<column name="tuKhoa" type="String" />	
+		<column name="phienBan" type="long" />	
+		<column name="luotXem" type="long" />
+		<column name="anPhamId" type="long" />
+		<column name="noiDungLog" type="String" />
+		<column name="nguoiTao" type="long" />
+		<column name="ngayTao" type="Date" />
+		<column name="nguoiSua" type="long" />
+		<column name="ngaySua" type="Date" />
+		<column name="nguoiNhan" type="long" />
+		<column name="nguoiXuLy" type="long" />
+		<column name="ngayXuLy" type="Date" />
+		<column name="language" type="String" />
+		<column name="loaiTin" type="int" />
+		<column name="isFormHienBinhLuan" type="int" />
+		<column name="isFormViewBinhLuan" type="int" />		
+		<column name="status" type="int" />
+		<column name="orders" type="long" />
+		<column name="delete_status" type="int"/>
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="id" order-by="desc" />
+		</order>
+	</entity>
+	<entity name="AnPham_Activity" local-service="true" remote-service="false">
+		<column name="companyId" type="long" />
+  		<column name="groupId" type="long" />
+		<column name="id" type="long" primary="true"/>
+		<column name="deCuongId" type="long"/>
+		<column name="anPhamId" type="long"/>
+		<column name="startuserid" type="long"/>
+		<column name="enduserid" type="long"/>
+		<column name="contentrequest" type="String"/>
+		<column name="statusofarticle" type="int"/>
+	</entity>
+	<entity name="AnPham_PhanCong" local-service="true" remote-service="false">
+		<column name="id" type="long" primary="true"/>
+		<column name="companyId" type="long" />
+  		<column name="groupId" type="long" />
+  		<column name="loaiId" type="long"/>
+		<column name="deCuongId" type="long"/>
+		<column name="ctvId" type="long"/>
+		<column name="noiDung" type="String"/>
+		<column name="ghiChu" type="String"/>
+		<column name="ngaybatdau" type="Date"/>
+		<column name="ngayketthuc" type="Date"/>
+		<column name="status" type="int"/>
+		<column name="is_gui" type="int"/>
+	</entity>
+	<entity local-service="true" name="eMagazine" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="ten" type="String" />
+		<column name="slug" type="String" />
+		<column name="moTa" type="String" />
+		<column name="anhDaiDien" type="String" />
+		<column name="mauChuDao" type="String" />
+		<column name="hinhNen" type="String" />
+		<column name="templateId" type="long" />
+		<column name="noiDung" type="String" />	
+		<column name="tuKhoa" type="String" />	
+		<column name="phienBan" type="long" />	
+		<column name="luotXem" type="long" />
+		<column name="nguoiTao" type="long" />
+		<column name="ngayTao" type="Date" />
+		<column name="nguoiSua" type="long" />
+		<column name="ngaySua" type="Date" />
+		<column name="nguoiNhan" type="long" />
+		<column name="nguoiXuLy" type="long" />
+		<column name="ngayXuLy" type="Date" />
+		<column name="language" type="String" />
+		<column name="isFormHienBinhLuan" type="int" />
+		<column name="isFormViewBinhLuan" type="int" />		
+		<column name="status" type="int" />
+		<column name="orders" type="long" />
+		<column name="delete_status" type="int"/>
+		
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="id" order-by="desc" />
+		</order>
+	</entity>
+	<entity local-service="true" name="eMagazine_Logs" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="ten" type="String" />
+		<column name="slug" type="String" />
+		<column name="moTa" type="String" />
+		<column name="anhDaiDien" type="String" />
+		<column name="mauChuDao" type="String" />
+		<column name="hinhNen" type="String" />
+		<column name="templateId" type="long" />
+		<column name="noiDung" type="String" />	
+		<column name="tuKhoa" type="String" />	
+		<column name="phienBan" type="long" />	
+		<column name="luotXem" type="long" />
+		<column name="nguoiTao" type="long" />
+		<column name="ngayTao" type="Date" />
+		<column name="nguoiSua" type="long" />
+		<column name="ngaySua" type="Date" />
+		<column name="nguoiNhan" type="long" />
+		<column name="nguoiXuLy" type="long" />
+		<column name="ngayXuLy" type="Date" />
+		<column name="language" type="String" />
+		<column name="isFormHienBinhLuan" type="int" />
+		<column name="isFormViewBinhLuan" type="int" />		
+		<column name="status" type="int" />
+		<column name="orders" type="long" />
+		<column name="delete_status" type="int"/>
+		
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="id" order-by="desc" />
+		</order>
+	</entity>
+	<entity local-service="true" name="eMagazine_template" remote-service="false">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="ten" type="String" />
+		<column name="noidung" type="String" />
+		<column name="status" type="int" />
+	</entity>
+</service-builder>

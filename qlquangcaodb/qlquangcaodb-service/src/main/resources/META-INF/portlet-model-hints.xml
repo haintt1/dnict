@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="vn.dnict.qlquangcao.model.BangQuangCao">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="nguoitao" type="long" />
+		<field name="ten" type="String" />
+		<field name="duongdan" type="String" />
+		<field name="lienket" type="String" />
+		<field name="nhomKH" type="long" />
+		<field name="vitriQC" type="long" />
+		<field name="ngaytao" type="Date" />
+		<field name="ngayketthuc" type="Date" />
+		<field name="daxoa" type="int" />
+		<field name="trangthai" type="int" />
+		<field name="trangthaisudung" type="int" />
+		<field name="ngaysua" type="Date" />
+	</model>
+	<model name="vn.dnict.qlquangcao.model.NhomKH">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="nguoitao" type="long" />
+		<field name="ten" type="String" />
+		<field name="nguoidaidien" type="String" />
+		<field name="logo" type="String" />
+		<field name="mota" type="String" />
+		<field name="diachi" type="String" />
+		<field name="sdt" type="String" />
+		<field name="email" type="String" />
+		<field name="ngaytao" type="Date" />
+		<field name="daxoa" type="int" />
+		<field name="trangthai" type="int" />
+		<field name="ngaysua" type="Date" />
+	</model>
+	<model name="vn.dnict.qlquangcao.model.ViTriDanhMuc">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="nguoitao" type="long" />
+		<field name="ten" type="String" />
+		<field name="cssClass" type="String" />
+		<field name="kichthuoc" type="String" />
+		<field name="ngaytao" type="Date" />
+		<field name="daxoa" type="int" />
+		<field name="trangthai" type="int" />
+		<field name="ngaysua" type="Date" />
+	</model>
+</model-hints>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="vn.dnict.qlgopy">
+	<author>dnict</author>
+	<namespace>cw</namespace>
+	<entity local-service="true" name="HoiDapGopY" remote-service="true" table="cw_gopy">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="name" type="String" />
+		<column name="tencoquan" type="String" />
+		<column name="phone" type="String" />
+		<column name="email" type="String" />
+		<column name="title" type="String" />
+		<column name="content" type="String" />
+		<column name="answer" type="String" />
+		<column name="ngay_guigopy" type="Date" />
+		<column name="ngay_traloigopy" type="Date" />
+		<column name="typeForm" type="int" />
+		<column name="is_traloi" type="int" />
+		<column name="is_pheduyet" type="int" />
+		<order by="desc">
+			<order-column name="id" />
+		</order>
+	</entity>
+	<entity local-service="true" name="GopY_DinhKem" remote-service="true" table="cw_gopy_dinhkemfile">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="userId" type="long" />
+		<column name="ten" type="String" />
+		<column name="url" type="String" />
+		<column name="Object" type="long" />
+		<column name="ObjectId" type="long" />
+		<column name="ghichu" type="String" />
+		<column name="daxoa" type="int" />
+		<column name="status" type="int"/>
+	</entity>
+	<entity local-service="true" name="emailTemplate" remote-service="true" table="cw_gopy_emailTemplate">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="ten" type="String" />
+		<column name="noidung" type="String" />
+		<column name="loai" type="int" />
+		
+		<finder name="loai" return-type="Collection">
+			<finder-column name="loai" />
+		</finder>
+	</entity>
+</service-builder>

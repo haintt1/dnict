@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.demo.model.DemoDB">
+		<field name="id" type="long" />
+		<field name="ten" type="String" />
+		<field name="moTa" type="String" />
+		<field name="noiDung" type="String" />
+		<field name="ngayxuatban" type="Date" />
+		<field name="ngayhethan" type="Date" />
+		<field name="tinhtrang" type="int" />
+	</model>
+</model-hints>

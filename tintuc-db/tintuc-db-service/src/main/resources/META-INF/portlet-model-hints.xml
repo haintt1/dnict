@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<hint-collection name="CLOB">
+		<hint name="max-length">2000000</hint>
+	</hint-collection>
+	<hint-collection name="HOSTNAME">
+		<hint name="max-length">4000</hint>
+	</hint-collection>
+	<hint-collection name="URL">
+		<hint name="max-length">5000</hint>
+	</hint-collection>
+	<model name="vn.dnict.tintuc.model.News_Activity">
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="id" type="long" />
+		<field name="articleid" type="long" />
+		<field name="startuserid" type="long" />
+		<field name="enduserid" type="long" />
+		<field name="contentrequest" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="statusofarticle" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_Article">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="typeid" type="long" />
+		<field name="title" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="info" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="content" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="createdby" type="long" />
+		<field name="createdtime" type="Date" />
+		<field name="modifiedby" type="long" />
+		<field name="modifiedtime" type="Date" />
+		<field name="nguoinhanid" type="long" />
+		<field name="nguoixulyid" type="long" />
+		<field name="ngayxuly" type="Date" />
+		<field name="status" type="int" />
+		<field name="language" type="String" />
+		<field name="version" type="long" />
+		<field name="delete_status" type="int" />
+		<field name="urlimagesmall" type="String">
+			<hint-collection name="URL" />
+		</field>
+		<field name="luotxem" type="long" />
+		<field name="isnoibat" type="long" />
+		<field name="ngayxuatban" type="Date" />
+		<field name="ngayketthuc" type="Date" />
+		<field name="ishethang" type="long" />
+		<field name="nguontin" type="long" />
+		<field name="congtacvien" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="loaitintuc" type="int" />
+		<field name="tukhoa" type="String" />
+		<field name="sotinanh" type="int" />
+		<field name="isformbinhluan" type="int" />
+		<field name="isviewbinhluan" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_Article2Category">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="newcategoryId" type="long" />
+		<field name="newarticleId" type="long" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_AttachFile">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="ten" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="url" type="String">
+			<hint-collection name="URL" />
+		</field>
+		<field name="Object" type="long" />
+		<field name="ObjectId" type="long" />
+		<field name="ghichu" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="daxoa" type="int" />
+		<field name="trangthai" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_BinhLuan">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="newarticleId" type="long" />
+		<field name="hoTen" type="String" />
+		<field name="noiDung" type="String" />
+		<field name="ngayBinhLuan" type="Date" />
+		<field name="status" type="int" />
+		<field name="orders" type="int" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_Categories">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="name" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="language" type="String" />
+		<field name="status" type="int" />
+		<field name="orders" type="int" />
+		<field name="idlibcat" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_Log">
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="id" type="long" />
+		<field name="typeid" type="long" />
+		<field name="idnewactivity" type="long" />
+		<field name="title" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="info" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="content" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="createdby" type="long" />
+		<field name="createdtime" type="Date" />
+		<field name="modifiedby" type="long" />
+		<field name="modifiedtime" type="Date" />
+		<field name="nguoinhanid" type="long" />
+		<field name="nguoixulyid" type="long" />
+		<field name="ngayxuly" type="Date" />
+		<field name="status" type="int" />
+		<field name="language" type="String" />
+		<field name="version" type="long" />
+		<field name="urlimagesmall" type="String">
+			<hint-collection name="URL" />
+		</field>
+		<field name="luotxem" type="long" />
+		<field name="isnoibat" type="long" />
+		<field name="articleid" type="long" />
+		<field name="noidungxuly" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+		<field name="ngayxuatban" type="Date" />
+		<field name="ngayketthuc" type="Date" />
+		<field name="ishethang" type="long" />
+		<field name="nguontin" type="long" />
+		<field name="congtacvien" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="loaitintuc" type="int" />
+		<field name="tukhoa" type="String" />
+		<field name="sotinanh" type="int" />
+		<field name="isformbinhluan" type="int" />
+		<field name="isviewbinhluan" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_NguonTin">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="name" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="status" type="int" />
+		<field name="orders" type="int" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_role">
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="id" type="long" />
+		<field name="userid" type="long" />
+		<field name="role_add" type="int" />
+		<field name="role_edit" type="int" />
+		<field name="role_public" type="int" />
+		<field name="category_active_role" type="String">
+			<hint-collection name="CLOB" />
+		</field>
+	</model>
+	<model name="vn.dnict.tintuc.model.News_Subcategories">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="name" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="language" type="String" />
+		<field name="status" type="int" />
+		<field name="orders" type="int" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="vn.dnict.tintuc.model.News_Type">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="name" type="String">
+			<hint-collection name="HOSTNAME" />
+		</field>
+		<field name="language" type="String" />
+		<field name="status" type="int" />
+		<field name="orders" type="int" />
+		<field name="delete_status" type="int" />
+	</model>
+</model-hints>

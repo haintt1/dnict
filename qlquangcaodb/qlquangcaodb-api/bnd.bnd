@@ -1,0 +1,12 @@
+Bundle-Name: qlquangcaodb-api
+Bundle-SymbolicName: vn.dnict.qlquangcao.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	vn.dnict.qlquangcao.exception,\
+	vn.dnict.qlquangcao.model,\
+	vn.dnict.qlquangcao.service,\
+	vn.dnict.qlquangcao.service.persistence
+-check: EXPORTS
+-consumer-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
+-includeresource: META-INF/service.xml=../qlquangcaodb-service/service.xml
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}

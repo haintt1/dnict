@@ -1,0 +1,112 @@
+.ct_icon {
+	text-align: center;
+}
+
+.header-bar {
+      background-color: #1E88E5;
+      color: white;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+.header-bar .star-icon {
+	  color: #FFD700;
+	  font-size: 1.5em;
+	  margin-right: 10px;
+	}
+	
+.header-bar .title {
+  font-weight: bold;
+  font-size: 1.1em;
+  flex-grow: 1;
+}
+
+.header-bar .settings-icon {
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.header-box {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Đảm bảo nó chiếm toàn bộ chiều ngang */
+  box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng tổng */
+}
+
+.header-text {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: #009ae5;
+}
+
+.header-text img {
+  width: 20px; /* Điều chỉnh kích thước logo */
+  height: 20px;
+  margin-right: 8px;
+}
+
+.header-text a {
+  text-decoration: none;
+  color: #009ae5;
+  text-transform: uppercase;
+}
+
+.dotted-line {
+  flex-grow: 1; /* Mở rộng dòng chấm chấm */
+  border-bottom: 1px dotted #cccccc;
+  margin-left: 10px; /* Khoảng cách giữa chữ và đường chấm chấm */
+}
+
+.Cus_EmBoxContainer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 130px;
+}
+
+.Cus_EmBoxItem {
+  border: 1px solid #f2f2f2;
+  float: left;
+  margin: 6px 3px 0 0;
+  overflow: hidden;
+  padding: 0 0 10px;
+  width: 24%;
+  height: 128px;
+}
+
+.Cus_EmBoxItem .IName {
+  background: none repeat scroll 0 0 #f2f2f2;
+  margin-bottom: 5px;
+  padding: 5px 0 3px 10px;
+  color: #585757;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.Cus_EmBoxItem .IPosion {
+  background: url(../images/user.png) no-repeat scroll 5px center rgba(0, 0, 0, 0);
+  padding: 0 0 5px 30px;
+}
+
+.Cus_EmBoxItem .IPhone {
+  background: url(../images/fone.png) no-repeat scroll 5px center rgba(0, 0, 0, 0);
+  padding: 0 0 5px 30px;
+}
+
+.Cus_EmBoxItem .IEmail {
+  background: url(../images/email.png) no-repeat scroll 5px center rgba(0, 0, 0, 0);
+  padding: 0 0 5px 30px;
+}
+
+.Cus_EmBoxItem .IEmail a {
+  color: #862211;
+  text-decoration: none;
+}
+
+.Cus_EmBoxItem .IEmail a:hover {
+  color: #009ae5;
+}

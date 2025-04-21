@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="vn.dnict.qlgopy.model.emailTemplate">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="ten" type="String" />
+		<field name="noidung" type="String" />
+		<field name="loai" type="int" />
+	</model>
+	<model name="vn.dnict.qlgopy.model.GopY_DinhKem">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="ten" type="String" />
+		<field name="url" type="String" />
+		<field name="Object" type="long" />
+		<field name="ObjectId" type="long" />
+		<field name="ghichu" type="String" />
+		<field name="daxoa" type="int" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.dnict.qlgopy.model.HoiDapGopY">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="name" type="String" />
+		<field name="tencoquan" type="String" />
+		<field name="phone" type="String" />
+		<field name="email" type="String" />
+		<field name="title" type="String" />
+		<field name="content" type="String" />
+		<field name="answer" type="String" />
+		<field name="ngay_guigopy" type="Date" />
+		<field name="ngay_traloigopy" type="Date" />
+		<field name="typeForm" type="int" />
+		<field name="is_traloi" type="int" />
+		<field name="is_pheduyet" type="int" />
+	</model>
+</model-hints>

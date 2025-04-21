@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.demo">
+	<namespace>cw</namespace>
+	<entity local-service="true" name="DemoDB" remote-service="false">
+		<column name="id" primary="true" type="long" />
+		<column name="ten" type="String" />
+		<column name="moTa" type="String" />
+		<column name="noiDung" type="String" />
+		<column name="ngayxuatban" type="Date" />
+		<column name="ngayhethan" type="Date" />
+		<column name="tinhtrang" type="int" />
+	</entity>
+</service-builder>

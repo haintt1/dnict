@@ -1,0 +1,28 @@
+.searchBar {
+    background-color: #6b4423;
+    padding: 10px 0;
+}
+.searchBar .form-control,
+.searchBar .form-select {
+    height: 35px;
+    font-size: 14px;
+}
+.search-text {
+    color: white;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+.search-btn {
+    background-color: #b45309;
+    border: none;
+    color: white;
+    padding: 6px 20px;
+}
+.search-btn:hover {
+    background-color: #92400e;
+}
+.date-display {
+    color: white;
+    white-space: nowrap;
+    margin-left: 10px;
+}

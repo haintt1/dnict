@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="vn.dnict.qlquangcao">
+	<author>dnict</author>
+	<namespace>cw</namespace>
+	<entity local-service="true" name="NhomKH" remote-service="true" table="cw_quangcao_nhomkhachhang">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="nguoitao" type="long" />
+		<column name="ten" type="String" />
+		<column name="nguoidaidien" type="String" />
+		<column name="logo" type="String" />
+		<column name="mota" type="String" />
+		<column name="diachi" type="String" />
+		<column name="sdt" type="String" />
+		<column name="email" type="String" />
+		<column name="ngaytao" type="Date" />
+		<column name="daxoa" type="int" />
+		<column name="trangthai" type="int" />
+		<column name="ngaysua" type="Date" />
+		<order by="desc">
+			<order-column name="id" />
+		</order>
+	</entity>
+	<entity local-service="true" name="ViTriDanhMuc" remote-service="true" table="cw_quangcao_vitridanhmuc">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="nguoitao" type="long" />
+		<column name="ten" type="String" />
+		<column name="cssClass" type="String" />
+		<column name="kichthuoc" type="String" />
+		<column name="ngaytao" type="Date" />
+		<column name="daxoa" type="int" />
+		<column name="trangthai" type="int"/>
+		<column name="ngaysua" type="Date" />
+	</entity>
+	<entity local-service="true" name="BangQuangCao" remote-service="true" table="cw_quangcao_banner">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="nguoitao" type="long" />
+		<column name="ten" type="String" />
+		<column name="duongdan" type="String" />
+		<column name="lienket" type="String" />
+		<column name="nhomKH" type="long" />
+		<column name="vitriQC" type="long" />
+		<column name="ngaytao" type="Date" />
+		<column name="ngayketthuc" type="Date" />
+		<column name="daxoa" type="int" />
+		<column name="trangthai" type="int"/>
+		<column name="trangthaisudung" type="int"/>
+		<column name="ngaysua" type="Date" />
+		<order by="desc">
+			<order-column name="id" />
+		</order>
+	</entity>
+</service-builder>

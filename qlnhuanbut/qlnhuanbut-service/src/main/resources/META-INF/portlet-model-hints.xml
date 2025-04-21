@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="vn.dnict.qlnhuanbut.model.DinhMuc">
+		<field name="id" type="long" />
+		<field name="loaidinhmuc" type="int" />
+		<field name="gia" type="String" />
+	</model>
+	<model name="vn.dnict.qlnhuanbut.model.HeSoLoaiAP">
+		<field name="id" type="long" />
+		<field name="loaiId" type="long" />
+		<field name="minheso" type="String" />
+		<field name="maxheso" type="String" />
+	</model>
+	<model name="vn.dnict.qlnhuanbut.model.HeSoTheLoai">
+		<field name="id" type="long" />
+		<field name="typeId" type="long" />
+		<field name="minheso" type="String" />
+		<field name="maxheso" type="String" />
+	</model>
+	<model name="vn.dnict.qlnhuanbut.model.ThongKeNB">
+		<field name="id" type="long" />
+		<field name="nguoixuly" type="long" />
+		<field name="newarticleId" type="long" />
+		<field name="anphamId" type="long" />
+		<field name="heso" type="String" />
+		<field name="tongtien" type="double" />
+		<field name="status" type="int" />
+		<field name="ngaytao" type="Date" />
+		<field name="ngaysua" type="Date" />
+	</model>
+</model-hints>

@@ -1,0 +1,1 @@
+create index IX_7F5AAD78 on cw_gopy_emailTemplate (loai);

@@ -1,0 +1,1 @@
+Liferay.Service.register("Liferay.Service.dnict", "vn.dnict.phapluatdautu.service", "PhapLuatDauTu-portlet");

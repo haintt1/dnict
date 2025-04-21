@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.contact.model.CanBo">
+		<field name="canboId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="ten" type="String" />
+		<field name="chucVu" type="String" />
+		<field name="phongban_id" type="long" />
+		<field name="sdt" type="String" />
+		<field name="email" type="String" />
+		<field name="tinhTrang" type="long" />
+		<field name="sapXep" type="int" />
+		<field name="daXoa" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="ngaySua" type="Date" />
+	</model>
+	<model name="com.contact.model.PhongBan">
+		<field name="phongbanId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="ten" type="String" />
+		<field name="moTa" type="String" />
+		<field name="tochuc_id" type="long" />
+		<field name="tinhTrang" type="long" />
+		<field name="sapXep" type="int" />
+		<field name="daXoa" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="ngaySua" type="Date" />
+	</model>
+	<model name="com.contact.model.ToChuc">
+		<field name="tochucId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="ten" type="String" />
+		<field name="moTa" type="String" />
+		<field name="tinhTrang" type="long" />
+		<field name="sapXep" type="int" />
+		<field name="daXoa" type="long" />
+		<field name="ngayTao" type="Date" />
+		<field name="ngaySua" type="Date" />
+	</model>
+</model-hints>

@@ -1,0 +1,12 @@
+Bundle-Name: qlnhuanbut-api
+Bundle-SymbolicName: vn.dnict.qlnhuanbut.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	vn.dnict.qlnhuanbut.exception,\
+	vn.dnict.qlnhuanbut.model,\
+	vn.dnict.qlnhuanbut.service,\
+	vn.dnict.qlnhuanbut.service.persistence
+-check: EXPORTS
+-consumer-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
+-includeresource: META-INF/service.xml=../qlnhuanbut-service/service.xml
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}

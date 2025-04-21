@@ -1,0 +1,12 @@
+Bundle-Name: qlgopydb-api
+Bundle-SymbolicName: vn.dnict.qlgopy.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	vn.dnict.qlgopy.exception,\
+	vn.dnict.qlgopy.model,\
+	vn.dnict.qlgopy.service,\
+	vn.dnict.qlgopy.service.persistence
+-check: EXPORTS
+-consumer-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
+-includeresource: META-INF/service.xml=../qlgopydb-service/service.xml
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="vn.dnict.qlnhuanbut">
+	<author>dnict</author>
+	<namespace>cw</namespace>
+	<entity local-service="true" name="HeSoTheLoai" remote-service="true" table="cw_nhuanbut_hesotheloai">
+		<column name="id" type="long" primary="true" />
+		<column name="typeId" type="long" />
+		<column name="minheso" type="String" />
+		<column name="maxheso" type="String" />
+	</entity>
+	<entity local-service="true" name="HeSoLoaiAP" remote-service="true" table="cw_nhuanbut_hesoloaiAP">
+		<column name="id" type="long" primary="true" />
+		<column name="loaiId" type="long" />
+		<column name="minheso" type="String" />
+		<column name="maxheso" type="String" />
+	</entity>
+	<entity local-service="true" name="DinhMuc" remote-service="true" table="cw_nhuanbut_dinhmuc">
+		<column name="id" type="long" primary="true" />
+		<column name="loaidinhmuc" type="int" />
+		<column name="gia" type="String" />
+	</entity>
+	<entity local-service="true" name="ThongKeNB" remote-service="true" table="cw_nhuanbut_thongke">
+		<column name="id" type="long" primary="true" />
+		<column name="nguoixuly" type="long" />
+		<column name="newarticleId" type="long" />
+		<column name="anphamId" type="long" />
+		<column name="heso" type="String" />
+		<column name="tongtien" type="double" />
+		<column name="status" type="int" />
+		<column name="ngaytao" type="Date" />
+		<column name="ngaysua" type="Date" />
+	</entity>
+</service-builder>

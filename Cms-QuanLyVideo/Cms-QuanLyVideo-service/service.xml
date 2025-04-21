@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="cms.quanlyvideo">
+	<namespace>Cms</namespace>
+	<entity name="ChuDe" local-service="true" remote-service="true" table="Cms_quanlyvideo_chude">
+
+		<!-- PK fields -->
+
+		<column name="id" primary="true" type="long" />
+
+		<!-- Audit fields -->
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+
+		<!-- Other fields -->
+		<column type="String" name="ten"/>
+		<column type="String" name="moTa"/>
+		<column type="long" name="trangThai"/>
+		<column type="long" name="daXoa"/>
+		<column type="Date" name="ngayTao"/>
+		<column type="Date" name="ngaySua"/>
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="ten" return-type="Collection">
+			<finder-column name="ten" />
+		</finder>
+
+		<!-- References -->
+		<reference package-path="cms.quanlyvideo" entity="Video" />
+	</entity>
+	<entity name="Video" local-service="true" remote-service="true" table="cms_quanlyvideo_video">
+		<!-- PK fields -->
+		<column type="long" name="id" primary="true"/>
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="userId" type="long" />
+
+		<!-- Other fields -->
+		<column type="String" name="ten"/>
+		<column type="String" name="moTa"/>
+		<column type="String" name="noiDung"/>
+		<column type="String" name="duongDan"/>
+		<column type="long" name="luotXem"/>
+		<column type="long" name="luotThich"/>
+		<column type="String" name="tuKhoa"/>
+		<column type="long" name="choBinhLuan"/>
+		<column type="long" name="trangThai"/>
+		<column type="long" name="daXoa"/>
+		<column type="Date" name="ngayTao"/>
+		<column type="Date" name="ngaySua"/>
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="ten" return-type="Collection">
+			<finder-column name="ten"/>
+		</finder>
+	</entity>
+	<entity name="ChuDeVideo" local-service="true" remote-service="true" table="cms_quanlyvideo_chudevideo">
+		<!-- PK fields -->
+		<column type="long" name="id" primary="true"/>
+
+		<!-- Other fields -->
+		<column type="long" name="chude_id"/> <!-- foreign key -->
+		<column type="long" name="video_id"/>
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="id" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="videoId" return-type="Collection">
+			<finder-column name="video_id"/>
+		</finder>
+		
+		<finder name="chudeId" return-type="Collection">
+			<finder-column name="chude_id"/>
+		</finder>
+
+		<reference package-path="cms.quanlyvideo" entity="ChuDe" />
+		<reference package-path="cms.quanlyvideo" entity="Video" />
+	</entity>
+</service-builder>
