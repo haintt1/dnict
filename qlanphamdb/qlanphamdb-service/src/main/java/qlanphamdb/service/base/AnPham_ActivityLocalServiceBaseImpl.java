@@ -54,6 +54,7 @@ import qlanphamdb.model.AnPham_Activity;
 import qlanphamdb.service.AnPham_ActivityLocalService;
 import qlanphamdb.service.AnPham_ActivityLocalServiceUtil;
 import qlanphamdb.service.persistence.AnPham_ActivityPersistence;
+import qlanphamdb.service.persistence.AnPham_BinhLuanPersistence;
 import qlanphamdb.service.persistence.AnPham_CongTacVienPersistence;
 import qlanphamdb.service.persistence.AnPham_DeCuongPersistence;
 import qlanphamdb.service.persistence.AnPham_DinhKemFilePersistence;
@@ -62,6 +63,7 @@ import qlanphamdb.service.persistence.AnPham_LogsPersistence;
 import qlanphamdb.service.persistence.AnPham_PhanCongPersistence;
 import qlanphamdb.service.persistence.AnPham_TapChiPersistence;
 import qlanphamdb.service.persistence.eMagazinePersistence;
+import qlanphamdb.service.persistence.eMagazine_BinhLuanPersistence;
 import qlanphamdb.service.persistence.eMagazine_LogsPersistence;
 import qlanphamdb.service.persistence.eMagazine_templatePersistence;
 
@@ -463,6 +465,9 @@ public abstract class AnPham_ActivityLocalServiceBaseImpl
 	protected AnPham_ActivityPersistence anPham_ActivityPersistence;
 
 	@Reference
+	protected AnPham_BinhLuanPersistence anPham_BinhLuanPersistence;
+
+	@Reference
 	protected AnPham_CongTacVienPersistence anPham_CongTacVienPersistence;
 
 	@Reference
@@ -485,6 +490,9 @@ public abstract class AnPham_ActivityLocalServiceBaseImpl
 
 	@Reference
 	protected eMagazinePersistence eMagazinePersistence;
+
+	@Reference
+	protected eMagazine_BinhLuanPersistence eMagazine_BinhLuanPersistence;
 
 	@Reference
 	protected eMagazine_LogsPersistence eMagazine_LogsPersistence;

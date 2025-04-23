@@ -1,3 +1,4 @@
+<%@page import="qlanphamdb.model.AnPham_BinhLuan"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="qlanpham.portlet.utils.AnPhamGuestUtil"%>
 <%@page import="com.liferay.portal.kernel.util.WebKeys"%>
@@ -284,6 +285,58 @@
 		            data-size="small"  
 		            data-share="true">
 		        </div>
+		        <%
+		        	if(binhluan.equals("1")) {
+		        %>
+		        <!-- Bình luận -->
+				<portlet:actionURL name="addComment" var="addCommentURL"/>
+				<portlet:resourceURL id="captcha" var="captchaResourceURL"/>
+				<div class="row formbinhluan" style="margin-bottom: 1rem">
+					<div class="col-12 col-lg-6">
+						<%
+							if (anPham_TapChi.getIsFormHienBinhLuan() == 1) {
+						%>
+						<h3 class="titleform">BÌNH LUẬN</h3>			
+						<liferay-ui:success key="save-successfully" message="Gửi bình luận thành công!"/>
+						<liferay-ui:error key="save-unsuccessfully" message="Đã có lỗi xảy ra!"/>
+						<aui:form action="<%= addCommentURL.toString()%>" method="post" name="basicForm" id="basicForm">
+							<aui:input type="hidden" name="anPhamId" value="<%=anPham_TapChi.getId() %>"/>
+							<aui:input type="text" name="hoTen" label="Nhập họ tên">
+								<aui:validator name="required"></aui:validator>
+								<aui:validator name="String" errorMessage="Vui lòng nhập họ tên!"></aui:validator>
+							</aui:input>
+				    		<aui:input type="textarea" name="noiDung" label="Nhập bình luận">
+				    			<aui:validator name="required"></aui:validator>    			
+				    			<aui:validator name="maxLength">500</aui:validator>
+				    			<aui:validator name="String" errorMessage="Vui lòng nhập nội dung!"></aui:validator>
+				    		</aui:input>
+				    		<liferay-captcha:captcha url="<%= captchaResourceURL %>"/>
+				    		<aui:input type="hidden" name="<portlet:namespace/>captchaText" value=""/>
+				    		<aui:input type="hidden" name="currenturl" value="<%=currentCompleteUrl %>"/>
+				    		<aui:button type="submit" id="btnGui" value="Gửi bình luận" />
+						</aui:form>
+						<%
+							}
+						if(anPham_TapChi.getIsFormViewBinhLuan() == 1) {
+						// check visible list binh luan	
+						List<AnPham_BinhLuan> objBinhLuan = AnPhamGuestUtil.getObjBinhLuan(anPham_TapChi.getId());
+						if(objBinhLuan.size() > 0) {
+						%>
+						<h3 class="titledanhsach" style="margin-top: 1rem">DANH SÁCH BÌNH LUẬN</h3>
+						<ul>
+							<%
+								for (int bl = 0; bl < objBinhLuan.size(); bl++) {
+							%>
+							<li>
+								<span><%= objBinhLuan.get(bl).getHoTen() %></span>
+								<p><%= objBinhLuan.get(bl).getNoiDung() %></p>
+							</li>
+							<% } %>
+						</ul>
+						<% }} %>
+					</div>
+				</div>
+				<% } %>
 		        <%
 			    	if (tukhoa.equals("1")) {
 			    %>

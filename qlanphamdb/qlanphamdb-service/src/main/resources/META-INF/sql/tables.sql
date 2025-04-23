@@ -10,6 +10,19 @@ create table cw_AnPham_Activity (
 	statusofarticle INTEGER
 );
 
+create table cw_AnPham_BinhLuan (
+	id_ LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	anPhamId LONG,
+	hoTen VARCHAR(75) null,
+	noiDung VARCHAR(75) null,
+	ngayBinhLuan DATE null,
+	status INTEGER,
+	orders INTEGER,
+	delete_status INTEGER
+);
+
 create table cw_AnPham_CongTacVien (
 	id_ LONG not null primary key,
 	groupId LONG,
@@ -174,6 +187,19 @@ create table cw_eMagazine (
 	isFormViewBinhLuan INTEGER,
 	status INTEGER,
 	orders LONG,
+	delete_status INTEGER
+);
+
+create table cw_eMagazine_BinhLuan (
+	id_ LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	magazineId LONG,
+	hoTen VARCHAR(75) null,
+	noiDung VARCHAR(75) null,
+	ngayBinhLuan DATE null,
+	status INTEGER,
+	orders INTEGER,
 	delete_status INTEGER
 );
 

@@ -49,7 +49,12 @@ public class TapChiGuestConfiguration extends DefaultConfigurationAction {
 	    String trangsocu = ParamUtil.getString(actionRequest, "trangsocu");
 	    String trangdanhmuc = ParamUtil.getString(actionRequest, "trangdanhmuc");
 	    String kieuhienthipdf = ParamUtil.getString(actionRequest, "kieuhienthipdf");
-		String binhluan = ParamUtil.getString(actionRequest, "binhluan");
+		String binhluan = "0";
+		if(Validator.isNotNull(ParamUtil.getString(actionRequest, "binhluan"))) {
+			binhluan = "1";
+		}else {
+			binhluan = "0";
+		}
 		String textToSpeech = "0";
 		if(Validator.isNotNull(ParamUtil.getString(actionRequest, "textToSpeech"))) {
 			textToSpeech = "1";

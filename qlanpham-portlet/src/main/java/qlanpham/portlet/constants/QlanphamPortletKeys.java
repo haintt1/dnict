@@ -14,6 +14,9 @@ public class QlanphamPortletKeys {
 	public static final String EMAGAZINE = "qlanpham_portlet_eMagazineAdminPortlet";
 	public static final String THONGKEANPHAM = "qlanpham_portlet_ThongKeAdminPortlet";
 	
+	public static final String BINHLUANANPHAM = "qlanpham_portlet_BinhLuanAnPhamAdminPortlet";
+	public static final String BINHLUANEMAGAZINE = "qlanpham_portlet_BinhLuanMagazineAdminPortlet";
+	
 	public static final String TAPCHIGUEST = "qlanpham_portlet_TapChiGuestPortlet";
 
 }

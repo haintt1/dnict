@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
 
 import qlanphamdb.model.AnPham_Activity;
+import qlanphamdb.model.AnPham_BinhLuan;
 import qlanphamdb.model.AnPham_CongTacVien;
 import qlanphamdb.model.AnPham_DeCuong;
 import qlanphamdb.model.AnPham_DinhKemFile;
@@ -31,8 +32,10 @@ import qlanphamdb.model.AnPham_Logs;
 import qlanphamdb.model.AnPham_PhanCong;
 import qlanphamdb.model.AnPham_TapChi;
 import qlanphamdb.model.eMagazine;
+import qlanphamdb.model.eMagazine_BinhLuan;
 import qlanphamdb.model.eMagazine_template;
 import qlanphamdb.service.AnPham_ActivityLocalServiceUtil;
+import qlanphamdb.service.AnPham_BinhLuanLocalServiceUtil;
 import qlanphamdb.service.AnPham_CongTacVienLocalServiceUtil;
 import qlanphamdb.service.AnPham_DeCuongLocalServiceUtil;
 import qlanphamdb.service.AnPham_DinhKemFileLocalServiceUtil;
@@ -41,6 +44,7 @@ import qlanphamdb.service.AnPham_LogsLocalServiceUtil;
 import qlanphamdb.service.AnPham_PhanCongLocalServiceUtil;
 import qlanphamdb.service.AnPham_TapChiLocalServiceUtil;
 import qlanphamdb.service.eMagazineLocalServiceUtil;
+import qlanphamdb.service.eMagazine_BinhLuanLocalServiceUtil;
 import qlanphamdb.service.eMagazine_templateLocalServiceUtil;
 import vn.dnict.tintuc.model.News_Activity;
 import vn.dnict.tintuc.model.News_Log;
@@ -383,6 +387,64 @@ public class QlanphamAdminUtil {
 		query.addOrder(OrderFactoryUtil.desc("id"));
 		List<AnPham_PhanCong> results = AnPham_PhanCongLocalServiceUtil.dynamicQuery(query);
 		return results;
+	}
+	
+	public static List<AnPham_BinhLuan> listBinhLuanAnPham(String noidung, String ngaybatdau, String ngayketthuc, String status, int start, int end) throws Exception{
+		DynamicQuery query = AnPham_BinhLuanLocalServiceUtil.dynamicQuery();
+		if(noidung != null) {
+			Criterion name = RestrictionsFactoryUtil.ilike("noiDung", "%" + noidung + "%");
+			query.add(name);
+		}
+		
+		SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		if(Validator.isNotNull(ngaybatdau) && !ngaybatdau.equals("")){
+			ngaybatdau += " 00:00:00";
+	    	query.add(PropertyFactoryUtil.forName("ngayBinhLuan").ge(sf.parse(ngaybatdau)));
+		}
+		if(Validator.isNotNull(ngayketthuc) && !ngayketthuc.equals("")){
+			ngayketthuc += " 23:59:59";
+			query.add(PropertyFactoryUtil.forName("ngayBinhLuan").le(sf.parse(ngayketthuc)));
+		}
+		
+		if(Validator.isNotNull(status) && !status.equals("")){
+			query.add(PropertyFactoryUtil.forName("status").eq(Integer.valueOf(status)));
+		}
+		
+		if(end != 0){
+			query.setLimit(start, end);
+		}
+		query.addOrder(OrderFactoryUtil.desc("id"));
+		List<AnPham_BinhLuan> results = AnPham_BinhLuanLocalServiceUtil.dynamicQuery(query);
+		return results.isEmpty() ? Collections.emptyList() : results;
+	}
+	
+	public static List<eMagazine_BinhLuan> listBinhLuanMagazine(String noidung, String ngaybatdau, String ngayketthuc, String status, int start, int end) throws Exception{
+		DynamicQuery query = eMagazine_BinhLuanLocalServiceUtil.dynamicQuery();
+		if(noidung != null) {
+			Criterion name = RestrictionsFactoryUtil.ilike("noiDung", "%" + noidung + "%");
+			query.add(name);
+		}
+		
+		SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		if(Validator.isNotNull(ngaybatdau) && !ngaybatdau.equals("")){
+			ngaybatdau += " 00:00:00";
+	    	query.add(PropertyFactoryUtil.forName("ngayBinhLuan").ge(sf.parse(ngaybatdau)));
+		}
+		if(Validator.isNotNull(ngayketthuc) && !ngayketthuc.equals("")){
+			ngayketthuc += " 23:59:59";
+			query.add(PropertyFactoryUtil.forName("ngayBinhLuan").le(sf.parse(ngayketthuc)));
+		}
+		
+		if(Validator.isNotNull(status) && !status.equals("")){
+			query.add(PropertyFactoryUtil.forName("status").eq(Integer.valueOf(status)));
+		}
+		
+		if(end != 0){
+			query.setLimit(start, end);
+		}
+		query.addOrder(OrderFactoryUtil.desc("id"));
+		List<eMagazine_BinhLuan> results = eMagazine_BinhLuanLocalServiceUtil.dynamicQuery(query);
+		return results.isEmpty() ? Collections.emptyList() : results;
 	}
 	
 	// E-Magazine

@@ -4,7 +4,11 @@
 package qlanpham.portlet.portlet;
 
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -16,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
 
+import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
@@ -23,18 +28,27 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.servlet.SessionMessages;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.upload.UploadPortletRequest;
+import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.util.WebKeys;
 
 import qlanpham.portlet.constants.QlanphamPortletKeys;
 import qlanpham.portlet.utils.AnPhamGuestUtil;
+import qlanphamdb.model.AnPham_BinhLuan;
 import qlanphamdb.model.AnPham_DinhKemFile;
 import qlanphamdb.model.AnPham_TapChi;
 import qlanphamdb.model.eMagazine;
+import qlanphamdb.model.eMagazine_BinhLuan;
+import qlanphamdb.service.AnPham_BinhLuanLocalServiceUtil;
 import qlanphamdb.service.AnPham_DinhKemFileLocalServiceUtil;
 import qlanphamdb.service.AnPham_TapChiLocalServiceUtil;
 import qlanphamdb.service.eMagazineLocalServiceUtil;
+import qlanphamdb.service.eMagazine_BinhLuanLocalServiceUtil;
+import vn.dnict.tintuc.service.News_BinhLuanLocalServiceUtil;
 
 /**
  * @author HueNN
@@ -131,6 +145,50 @@ public class TapChiGuestPortlet extends MVCPortlet {
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}
+	}
+	
+	public void addComment(ActionRequest actionRequest, ActionResponse actionResponse) throws NumberFormatException, Exception {
+		String currentURL = ParamUtil.getString(actionRequest, "currenturl");
+		long id = CounterLocalServiceUtil.increment(AnPham_BinhLuanLocalServiceUtil.class.getName());
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+		ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
+		try {
+			AnPham_BinhLuan objBinhLuan = AnPham_BinhLuanLocalServiceUtil.createAnPham_BinhLuan(id);
+			objBinhLuan.setGroupId(themeDisplay.getScopeGroupId());
+			objBinhLuan.setCompanyId(themeDisplay.getCompanyId());
+			objBinhLuan.setAnPhamId(ParamUtil.getLong(actionRequest, "anPhamId"));
+			objBinhLuan.setHoTen(ParamUtil.getString(actionRequest, "hoTen"));
+			objBinhLuan.setNoiDung(ParamUtil.getString(actionRequest, "noiDung"));
+			objBinhLuan.setNgayBinhLuan(date);
+			
+			AnPham_BinhLuanLocalServiceUtil.addAnPham_BinhLuan(objBinhLuan);
+			actionResponse.sendRedirect(currentURL);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}  
+	}
+	
+	public void addCommentMagazine(ActionRequest actionRequest, ActionResponse actionResponse) throws NumberFormatException, Exception {
+		String currentURL = ParamUtil.getString(actionRequest, "currenturl");
+		long id = CounterLocalServiceUtil.increment(eMagazine_BinhLuanLocalServiceUtil.class.getName());
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+		ThemeDisplay themeDisplay = (ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
+		try {
+			eMagazine_BinhLuan objBinhLuan = eMagazine_BinhLuanLocalServiceUtil.createeMagazine_BinhLuan(id);
+			objBinhLuan.setGroupId(themeDisplay.getScopeGroupId());
+			objBinhLuan.setCompanyId(themeDisplay.getCompanyId());
+			objBinhLuan.setMagazineId(ParamUtil.getLong(actionRequest, "magazineId"));
+			objBinhLuan.setHoTen(ParamUtil.getString(actionRequest, "hoTen"));
+			objBinhLuan.setNoiDung(ParamUtil.getString(actionRequest, "noiDung"));
+			objBinhLuan.setNgayBinhLuan(date);
+			
+			eMagazine_BinhLuanLocalServiceUtil.addeMagazine_BinhLuan(objBinhLuan);
+			actionResponse.sendRedirect(currentURL);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}  
 	}
 	
 //	@Override

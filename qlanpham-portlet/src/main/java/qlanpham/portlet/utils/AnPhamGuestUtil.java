@@ -18,20 +18,26 @@ import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
 
+import qlanphamdb.model.AnPham_BinhLuan;
 import qlanphamdb.model.AnPham_DinhKemFile;
 import qlanphamdb.model.AnPham_Loai;
 import qlanphamdb.model.AnPham_TapChi;
 import qlanphamdb.model.eMagazine;
+import qlanphamdb.model.eMagazine_BinhLuan;
+import qlanphamdb.service.AnPham_BinhLuanLocalServiceUtil;
 import qlanphamdb.service.AnPham_DinhKemFileLocalServiceUtil;
 import qlanphamdb.service.AnPham_LoaiLocalServiceUtil;
 import qlanphamdb.service.AnPham_TapChiLocalServiceUtil;
 import qlanphamdb.service.eMagazineLocalServiceUtil;
+import qlanphamdb.service.eMagazine_BinhLuanLocalServiceUtil;
 import vn.dnict.tintuc.model.News_Article;
 import vn.dnict.tintuc.model.News_Article2Category;
+import vn.dnict.tintuc.model.News_BinhLuan;
 import vn.dnict.tintuc.model.News_Categories;
 import vn.dnict.tintuc.model.News_NguonTin;
 import vn.dnict.tintuc.service.News_Article2CategoryLocalServiceUtil;
 import vn.dnict.tintuc.service.News_ArticleLocalServiceUtil;
+import vn.dnict.tintuc.service.News_BinhLuanLocalServiceUtil;
 import vn.dnict.tintuc.service.News_CategoriesLocalServiceUtil;
 import vn.dnict.tintuc.service.News_NguonTinLocalServiceUtil;
 
@@ -314,6 +320,36 @@ public class AnPhamGuestUtil {
 		query.add(RestrictionsFactoryUtil.eq("slug", slug));
 		List<eMagazine> result = eMagazineLocalServiceUtil.dynamicQuery(query, 0, 1);
 	    return result.isEmpty() ? null : result.get(0);
+		
+	}
+	
+	public static List<AnPham_BinhLuan> getObjBinhLuan(long anPhamId) throws Exception {
+		DynamicQuery query = AnPham_BinhLuanLocalServiceUtil.dynamicQuery();
+		query.add(PropertyFactoryUtil.forName("anPhamId").eq(anPhamId));
+		query.add(PropertyFactoryUtil.forName("status").eq(1));
+		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
+		query.addOrder(OrderFactoryUtil.desc("id"));
+		query.setLimit(0, 5);
+		List<AnPham_BinhLuan> objBinhLuan = AnPham_BinhLuanLocalServiceUtil.dynamicQuery(query);
+		if(Validator.isNull(objBinhLuan) || objBinhLuan.size() <= 0){
+			objBinhLuan = new ArrayList<AnPham_BinhLuan>();
+		}
+		return objBinhLuan;
+		
+	}
+	
+	public static List<eMagazine_BinhLuan> getObjBinhLuanMagazine(long magazineId) throws Exception {
+		DynamicQuery query = eMagazine_BinhLuanLocalServiceUtil.dynamicQuery();
+		query.add(PropertyFactoryUtil.forName("magazineId").eq(magazineId));
+		query.add(PropertyFactoryUtil.forName("status").eq(1));
+		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
+		query.addOrder(OrderFactoryUtil.desc("id"));
+		query.setLimit(0, 5);
+		List<eMagazine_BinhLuan> objBinhLuan = eMagazine_BinhLuanLocalServiceUtil.dynamicQuery(query);
+		if(Validator.isNull(objBinhLuan) || objBinhLuan.size() <= 0){
+			objBinhLuan = new ArrayList<eMagazine_BinhLuan>();
+		}
+		return objBinhLuan;
 		
 	}
 }

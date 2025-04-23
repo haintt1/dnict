@@ -12,6 +12,18 @@
 		<field name="contentrequest" type="String" />
 		<field name="statusofarticle" type="int" />
 	</model>
+	<model name="qlanphamdb.model.AnPham_BinhLuan">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="anPhamId" type="long" />
+		<field name="hoTen" type="String" />
+		<field name="noiDung" type="String" />
+		<field name="ngayBinhLuan" type="Date" />
+		<field name="status" type="int" />
+		<field name="orders" type="int" />
+		<field name="delete_status" type="int" />
+	</model>
 	<model name="qlanphamdb.model.AnPham_CongTacVien">
 		<field name="id" type="long" />
 		<field name="groupId" type="long" />
@@ -169,6 +181,18 @@
 		<field name="isFormViewBinhLuan" type="int" />
 		<field name="status" type="int" />
 		<field name="orders" type="long" />
+		<field name="delete_status" type="int" />
+	</model>
+	<model name="qlanphamdb.model.eMagazine_BinhLuan">
+		<field name="id" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="magazineId" type="long" />
+		<field name="hoTen" type="String" />
+		<field name="noiDung" type="String" />
+		<field name="ngayBinhLuan" type="Date" />
+		<field name="status" type="int" />
+		<field name="orders" type="int" />
 		<field name="delete_status" type="int" />
 	</model>
 	<model name="qlanphamdb.model.eMagazine_Logs">

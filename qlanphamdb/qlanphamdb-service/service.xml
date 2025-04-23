@@ -166,6 +166,18 @@
 		<column name="status" type="int"/>
 		<column name="is_gui" type="int"/>
 	</entity>
+	<entity name="AnPham_BinhLuan" local-service="true" remote-service="false">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+  		<column name="groupId" type="long" />
+  		<column name="anPhamId" type="long" />
+		<column name="hoTen" type="String"/>
+		<column name="noiDung" type="String"/>
+		<column name="ngayBinhLuan" type="Date" />
+		<column name="status" type="int" />
+		<column name="orders" type="int" />
+		<column name="delete_status" type="int"/>
+	</entity>
 	<entity local-service="true" name="eMagazine" remote-service="false">
 		<column name="id" primary="true" type="long" />
 		<column name="groupId" type="long" />
@@ -241,5 +253,17 @@
 		<column name="ten" type="String" />
 		<column name="noidung" type="String" />
 		<column name="status" type="int" />
+	</entity>
+	<entity name="eMagazine_BinhLuan" local-service="true" remote-service="false">
+		<column name="id" type="long" primary="true" />
+		<column name="companyId" type="long" />
+  		<column name="groupId" type="long" />
+  		<column name="magazineId" type="long" />
+		<column name="hoTen" type="String"/>
+		<column name="noiDung" type="String"/>
+		<column name="ngayBinhLuan" type="Date" />
+		<column name="status" type="int" />
+		<column name="orders" type="int" />
+		<column name="delete_status" type="int"/>
 	</entity>
 </service-builder>
