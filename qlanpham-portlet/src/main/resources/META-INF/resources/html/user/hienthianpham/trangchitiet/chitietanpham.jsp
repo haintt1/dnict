@@ -1,3 +1,6 @@
+<%@page import="com.liferay.portal.kernel.servlet.SessionErrors"%>
+<%@page import="com.liferay.portal.kernel.servlet.SessionMessages"%>
+<%@page import="com.liferay.portal.kernel.captcha.CaptchaTextException"%>
 <%@page import="qlanphamdb.model.AnPham_BinhLuan"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="qlanpham.portlet.utils.AnPhamGuestUtil"%>
@@ -28,7 +31,7 @@
 	String title = "";
 %>
 <portlet:actionURL var="updateviewerURL" name="updateViewer"></portlet:actionURL>
-<portlet:resourceURL var="resourceURL"></portlet:resourceURL>
+<portlet:resourceURL id="taive" var="resourceURL"></portlet:resourceURL>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -287,31 +290,27 @@
 		        </div>
 		        <%
 		        	if(binhluan.equals("1")) {
+		        		boolean hasSuccessMessage = SessionMessages.contains(renderRequest, "binhluananphamthanhcong");
+		        		boolean hasCaptchaError = SessionErrors.contains(renderRequest, CaptchaTextException.class.getName());
 		        %>
 		        <!-- Bình luận -->
 				<portlet:actionURL name="addComment" var="addCommentURL"/>
-				<portlet:resourceURL id="captcha" var="captchaResourceURL"/>
 				<div class="row formbinhluan" style="margin-bottom: 1rem">
 					<div class="col-12 col-lg-6">
 						<%
 							if (anPham_TapChi.getIsFormHienBinhLuan() == 1) {
 						%>
-						<h3 class="titleform">BÌNH LUẬN</h3>			
-						<liferay-ui:success key="save-successfully" message="Gửi bình luận thành công!"/>
-						<liferay-ui:error key="save-unsuccessfully" message="Đã có lỗi xảy ra!"/>
+						<h3 class="titleform">BÌNH LUẬN</h3>		
 						<aui:form action="<%= addCommentURL.toString()%>" method="post" name="basicForm" id="basicForm">
 							<aui:input type="hidden" name="anPhamId" value="<%=anPham_TapChi.getId() %>"/>
 							<aui:input type="text" name="hoTen" label="Nhập họ tên">
-								<aui:validator name="required"></aui:validator>
-								<aui:validator name="String" errorMessage="Vui lòng nhập họ tên!"></aui:validator>
+								<aui:validator name="required" errorMessage="Vui lòng nhập họ tên!"></aui:validator>
 							</aui:input>
 				    		<aui:input type="textarea" name="noiDung" label="Nhập bình luận">
-				    			<aui:validator name="required"></aui:validator>    			
+				    			<aui:validator name="required" errorMessage="Vui lòng nhập nội dung!"></aui:validator>		
 				    			<aui:validator name="maxLength">500</aui:validator>
-				    			<aui:validator name="String" errorMessage="Vui lòng nhập nội dung!"></aui:validator>
 				    		</aui:input>
-				    		<liferay-captcha:captcha url="<%= captchaResourceURL %>"/>
-				    		<aui:input type="hidden" name="<portlet:namespace/>captchaText" value=""/>
+				    		<liferay-captcha:captcha />
 				    		<aui:input type="hidden" name="currenturl" value="<%=currentCompleteUrl %>"/>
 				    		<aui:button type="submit" id="btnGui" value="Gửi bình luận" />
 						</aui:form>
@@ -336,6 +335,28 @@
 						<% }} %>
 					</div>
 				</div>
+				<% if(hasCaptchaError) { %>
+				<script>
+				        Swal.fire({
+				            icon: 'error',
+				            title: 'Oops...',
+				            text: 'Mã xác thực không đúng. Vui lòng thử lại!',
+				            confirmButtonText: 'OK'
+				        });
+				    </script>
+				<% } %>
+				
+				<% if (hasSuccessMessage) { %>
+				    <script>
+				        Swal.fire({
+				            icon: 'success',
+				            title: 'Thành công!',
+				            text: 'Bình luận bài viết của bạn thành công, bình luận đang được phê duyệt!',
+				            timer: 3000,
+				            showConfirmButton: false
+				        });
+				    </script>
+				<% } %>
 				<% } %>
 		        <%
 			    	if (tukhoa.equals("1")) {

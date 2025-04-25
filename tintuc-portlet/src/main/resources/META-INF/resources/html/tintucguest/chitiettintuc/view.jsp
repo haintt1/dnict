@@ -378,7 +378,7 @@
 		if(binhluan.equals("1")){
 			if (new_article.getIsformbinhluan() == 1) {
 		%>
-		<portlet:actionURL name='addComment' var="addCommentURL"></portlet:actionURL>
+		<portlet:actionURL name='addComment' var="addCommentURL"/>
 		<portlet:resourceURL id="captcha" var="captchaResourceURL"/>
 		<div class="row formbinhluan">
 		<div class="col-12 col-lg-6">
@@ -395,7 +395,7 @@
 	    			<aui:validator name="maxLength">500</aui:validator>
 	    		</aui:input>
 	    		<liferay-captcha:captcha url="<%= captchaResourceURL %>"/>
-	    		<aui:input type="hidden" name="<portlet:namespace/>captchaText" value=""/>
+	    		<aui:input type="hidden" name="<portlet:namespace/>captchaText"/>
 	    		<aui:input type="hidden" name="currenturl" value="<%=currentCompleteUrl %>"/>
 	    		<aui:button type="submit" id="btnGui" value="Gửi bình luận" />
 			</aui:form>
