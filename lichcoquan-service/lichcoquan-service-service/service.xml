@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="lichcoquan.service">
+	<author>BinhNT</author>
+	<namespace>BinhNT</namespace>
+	<entity local-service="true" name="Lichcoquan" remote-service="true" table="lcq_lichcoquan">
+		<column name="lichCongtacId" type="long" primary="true" />
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="content" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="tungay" type="Date" />
+		<column name="denngay" type="Date" />
+		<column name="trangthai" type="int" />
+		<column name="banhanh" type="int" />
+		<column name="tuan" type="int"></column>
+		<column name="nam" type="int"></column>
+		<order by="desc">
+			<order-column name="lichCongtacId" />
+		</order>
+	</entity>
+</service-builder>

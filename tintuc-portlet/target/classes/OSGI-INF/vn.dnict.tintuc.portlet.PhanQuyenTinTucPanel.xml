@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="vn.dnict.tintuc.portlet.PhanQuyenTinTucPanel" immediate="true">
+  <property name="panel.app.order" type="Integer" value="1"/>
+  <property name="panel.category.key" type="String" value="site_administration.content"/>
+  <service>
+    <provide interface="com.liferay.application.list.PanelApp"/>
+  </service>
+  <reference name="Portlet" interface="com.liferay.portal.kernel.model.Portlet" target="(javax.portlet.name=vn_dnict_tintuc_PhanQuyenAdminPortlet)" bind="setPortlet"/>
+  <implementation class="vn.dnict.tintuc.portlet.PhanQuyenTinTucPanel"/>
+</scr:component>

@@ -1,0 +1,33 @@
+.hlslider {
+	list-style: none;	
+	margin: 0px !important;
+	height: 100%;
+	width: 100%;
+	
+}
+.hlslider > li {
+	width: 100%;
+	height:75px;
+	text-align: center;
+	padding-left: 2%;
+}
+.hlslider > li > .img-container1 {
+	float: left;
+	width: 30%;
+	height: 90%;
+	text-align: center;
+	margin: 0 1% 0 1%;
+}
+.hlslider > li > .img-container1 > a{
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+}
+img.img-style1 {
+	width:100% !important;
+	height:100% !important;
+	border: 0.7px solid #c2bbbb !important;
+}
+.clearfix {
+	clear: both;
+}

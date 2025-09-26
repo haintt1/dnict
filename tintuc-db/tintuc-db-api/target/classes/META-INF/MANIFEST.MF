@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 16
+Created-By: 16.0.2 (Oracle Corporation)
+Bnd-LastModified: 1747036590610
+Bundle-ManifestVersion: 2
+Bundle-Name: tintuc-db-api
+Bundle-SymbolicName: vn.dnict.tintuc.api
+Bundle-Version: 1.0.0
+Export-Package: vn.dnict.tintuc.exception;version="1.0.0";uses:="com.lif
+ eray.portal.kernel.exception",vn.dnict.tintuc.model;version="1.0.0";use
+ s:="com.liferay.portal.kernel.annotation,com.liferay.portal.kernel.bean
+ ,com.liferay.portal.kernel.model,com.liferay.portal.kernel.model.wrappe
+ r,com.liferay.portal.kernel.util",vn.dnict.tintuc.service;version="1.0.
+ 0";uses:="com.liferay.portal.kernel.dao.orm,com.liferay.portal.kernel.e
+ xception,com.liferay.portal.kernel.model,com.liferay.portal.kernel.sear
+ ch,com.liferay.portal.kernel.service,com.liferay.portal.kernel.transact
+ ion,com.liferay.portal.kernel.util,vn.dnict.tintuc.model",vn.dnict.tint
+ uc.service.persistence;version="1.0.0";uses:="com.liferay.portal.kernel
+ .dao.orm,com.liferay.portal.kernel.service,com.liferay.portal.kernel.se
+ rvice.persistence,com.liferay.portal.kernel.util,vn.dnict.tintuc.except
+ ion,vn.dnict.tintuc.model"
+Import-Package: com.liferay.portal.kernel.annotation,com.liferay.portal.
+ kernel.bean,com.liferay.portal.kernel.dao.orm,com.liferay.portal.kernel
+ .exception,com.liferay.portal.kernel.model,com.liferay.portal.kernel.mo
+ del.wrapper,com.liferay.portal.kernel.search,com.liferay.portal.kernel.
+ service,com.liferay.portal.kernel.service.persistence,com.liferay.porta
+ l.kernel.transaction,com.liferay.portal.kernel.util,vn.dnict.tintuc.exc
+ eption;version="[1.0,2)",vn.dnict.tintuc.model;version="[1.0,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-5.2.0.202010142003
+

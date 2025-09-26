@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="vn.dnict.tintuc.portlet.RssAdminPortlet" immediate="true">
+  <property name="com.liferay.portlet.display-category" type="String" value="category.hidden"/>
+  <property name="com.liferay.portlet.header-portlet-javascript" type="String" value="/js/jquery.js"/>
+  <property name="com.liferay.portlet.header-portlet-css" type="String" value="/css/main.css"/>
+  <property name="com.liferay.portlet.icon" type="String" value="/images/"/>
+  <property name="com.liferay.portlet.add-default-resource" type="String" value="true"/>
+  <property name="com.liferay.portlet.instanceable" type="String" value="true"/>
+  <property name="javax.portlet.display-name" type="String" value="RSS"/>
+  <property name="javax.portlet.init-param.template-path" type="String" value="/"/>
+  <property name="javax.portlet.init-param.view-template" type="String" value="/html/tintucadmin/rss/view.jsp"/>
+  <property name="javax.portlet.name" type="String" value="vn_dnict_tintuc_RssAdminPortlet"/>
+  <property name="javax.portlet.resource-bundle" type="String" value="content.Language"/>
+  <property name="javax.portlet.security-role-ref" type="String" value="power-user,user"/>
+  <service>
+    <provide interface="javax.portlet.Portlet"/>
+  </service>
+  <implementation class="vn.dnict.tintuc.portlet.RssAdminPortlet"/>
+</scr:component>

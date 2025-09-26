@@ -1,0 +1,10 @@
+Bundle-Name: tintuc-db-api
+Bundle-SymbolicName: vn.dnict.tintuc.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	vn.dnict.tintuc.exception,\
+	vn.dnict.tintuc.model,\
+	vn.dnict.tintuc.service,\
+	vn.dnict.tintuc.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../tintuc-db-service/service.xml

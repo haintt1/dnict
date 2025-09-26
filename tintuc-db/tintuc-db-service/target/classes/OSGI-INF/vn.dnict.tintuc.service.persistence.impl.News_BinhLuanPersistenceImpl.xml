@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="vn.dnict.tintuc.service.persistence.impl.News_BinhLuanPersistenceImpl" activate="activate" deactivate="deactivate">
+  <service>
+    <provide interface="vn.dnict.tintuc.service.persistence.News_BinhLuanPersistence"/>
+  </service>
+  <reference name="Configuration" interface="com.liferay.portal.kernel.configuration.Configuration" target="(&amp;(origin.bundle.symbolic.name=vn.dnict.tintuc.service)(name=service))" bind="setConfiguration"/>
+  <reference name="DataSource" interface="javax.sql.DataSource" target="(origin.bundle.symbolic.name=vn.dnict.tintuc.service)" bind="setDataSource"/>
+  <reference name="SessionFactory" interface="com.liferay.portal.kernel.dao.orm.SessionFactory" target="(origin.bundle.symbolic.name=vn.dnict.tintuc.service)" bind="setSessionFactory"/>
+  <reference name="entityCache" interface="com.liferay.portal.kernel.dao.orm.EntityCache" field="entityCache"/>
+  <reference name="finderCache" interface="com.liferay.portal.kernel.dao.orm.FinderCache" field="finderCache"/>
+  <implementation class="vn.dnict.tintuc.service.persistence.impl.News_BinhLuanPersistenceImpl"/>
+</scr:component>

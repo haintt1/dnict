@@ -1,0 +1,147 @@
+@charset "utf-8"; 
+
+.modern-ticker {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	color: #fafafa;
+	background-color: #fafafa;
+	position: relative
+}
+
+.modern-ticker a {
+	text-decoration: none
+}
+
+.modern-ticker ul {
+	margin: 0;
+	padding: 0;
+	list-style: none
+}
+
+.mticker-round {
+	border-radius: 7px
+}
+
+.mticker-label {
+	margin-right: 2px;
+	padding: 0 8px 0 12px;
+	background-color: #09f;
+	float: left
+}
+
+.mticker-round .mticker-label {
+	border-radius: 5px 0 0 5px
+}
+
+.mticker-news {
+	background-color: #dedede;
+	overflow: hidden;
+	float: left
+}
+
+.mticker-scroll .mticker-news {
+	background-color: transparent
+}
+
+.mticker-round .mticker-news:first-child,.mticker-round .mticker-news:first-child a
+	{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px
+}
+
+.mticker-round .mticker-news:last-child,.mticker-round .mticker-news:last-child a
+	{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px
+}
+
+.mticker-scroll.mticker-round .mticker-news a {
+	border-radius: 0
+}
+
+.mticker-news ul {
+	width: 50000px;
+	background-image: url("images/mticker-bullet-over.png");
+	background-repeat: no-repeat;
+	background-position: -1000px
+}
+
+.mticker-news li {
+	float: left
+}
+
+.mticker-news a {
+	font-size: 15px;
+	padding: 0 10px 0 20px;
+	margin-right: 2px;
+	color: #505050;
+	background-color: #dedede;
+	background-image: url("images/mticker-bullet.png");
+	background-repeat: no-repeat;
+	background-position: 7px center;
+	display: block
+}
+
+.mticker-news a:hover {
+	color: #fafafa;
+	background-color: #09f;
+	border-color: #f20;
+	background-image: url("images/mticker-bullet-over.png")
+}
+
+.mticker-news a:active {
+	background-color: #07f
+}
+
+.mticker-controls {
+	margin-left: 2px;
+	height: 100%;
+	float: right;
+	background-image: url("images/mticker-pause.png");
+	background-repeat: no-repeat;
+	background-position: -1000px
+}
+
+.mticker-play,.mticker-prev,.mticker-next {
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+	float: left
+}
+
+.mticker-prev,.mticker-next {
+	background-color: #09f
+}
+
+.mticker-prev {
+	background-image: url("images/mticker-arrow-prev.png")
+}
+
+.mticker-next {
+	background-image: url("images/mticker-arrow-next.png")
+}
+
+.mticker-round .mticker-next {
+	border-radius: 0 5px 5px 0
+}
+
+.mticker-play {
+	background-color: #0bf;
+	background-image: url("images/mticker-play.png")
+}
+
+.mticker-pause {
+	background-image: url("images/mticker-pause.png")
+}
+
+.mticker-play:hover,.mticker-prev:hover,.mticker-next:hover {
+	background-color: #f20
+}
+
+.mticker-play:active,.mticker-prev:active,.mticker-next:active {
+	background-color: #f40
+}

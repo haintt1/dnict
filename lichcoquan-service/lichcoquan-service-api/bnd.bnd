@@ -1,0 +1,10 @@
+Bundle-Name: lichcoquan-service-api
+Bundle-SymbolicName: lichcoquan.service.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	lichcoquan.service.exception,\
+	lichcoquan.service.model,\
+	lichcoquan.service.service,\
+	lichcoquan.service.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../lichcoquan-service-service/service.xml

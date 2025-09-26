@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="vn.dnict.tintuc.service.impl.News_AttachFileLocalServiceImpl" deactivate="deactivate">
+  <property name="model.class.name" type="String" value="vn.dnict.tintuc.model.News_AttachFile"/>
+  <service>
+    <provide interface="com.liferay.portal.aop.AopService"/>
+  </service>
+  <reference name="classNameLocalService" interface="com.liferay.portal.kernel.service.ClassNameLocalService" field="classNameLocalService"/>
+  <reference name="counterLocalService" interface="com.liferay.counter.kernel.service.CounterLocalService" field="counterLocalService"/>
+  <reference name="news_ActivityPersistence" interface="vn.dnict.tintuc.service.persistence.News_ActivityPersistence" field="news_ActivityPersistence"/>
+  <reference name="news_Article2CategoryPersistence" interface="vn.dnict.tintuc.service.persistence.News_Article2CategoryPersistence" field="news_Article2CategoryPersistence"/>
+  <reference name="news_ArticlePersistence" interface="vn.dnict.tintuc.service.persistence.News_ArticlePersistence" field="news_ArticlePersistence"/>
+  <reference name="news_AttachFilePersistence" interface="vn.dnict.tintuc.service.persistence.News_AttachFilePersistence" field="news_AttachFilePersistence"/>
+  <reference name="news_BinhLuanPersistence" interface="vn.dnict.tintuc.service.persistence.News_BinhLuanPersistence" field="news_BinhLuanPersistence"/>
+  <reference name="news_CategoriesPersistence" interface="vn.dnict.tintuc.service.persistence.News_CategoriesPersistence" field="news_CategoriesPersistence"/>
+  <reference name="news_LogPersistence" interface="vn.dnict.tintuc.service.persistence.News_LogPersistence" field="news_LogPersistence"/>
+  <reference name="news_NguonTinPersistence" interface="vn.dnict.tintuc.service.persistence.News_NguonTinPersistence" field="news_NguonTinPersistence"/>
+  <reference name="news_SubcategoriesPersistence" interface="vn.dnict.tintuc.service.persistence.News_SubcategoriesPersistence" field="news_SubcategoriesPersistence"/>
+  <reference name="news_TypePersistence" interface="vn.dnict.tintuc.service.persistence.News_TypePersistence" field="news_TypePersistence"/>
+  <reference name="news_rolePersistence" interface="vn.dnict.tintuc.service.persistence.News_rolePersistence" field="news_rolePersistence"/>
+  <reference name="resourceLocalService" interface="com.liferay.portal.kernel.service.ResourceLocalService" field="resourceLocalService"/>
+  <reference name="userLocalService" interface="com.liferay.portal.kernel.service.UserLocalService" field="userLocalService"/>
+  <implementation class="vn.dnict.tintuc.service.impl.News_AttachFileLocalServiceImpl"/>
+</scr:component>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="lichcoquan.service.model.Lichcoquan">
+		<field name="lichCongtacId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="content" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="tungay" type="Date" />
+		<field name="denngay" type="Date" />
+		<field name="trangthai" type="int" />
+		<field name="banhanh" type="int" />
+		<field name="tuan" type="int" />
+		<field name="nam" type="int" />
+	</model>
+</model-hints>

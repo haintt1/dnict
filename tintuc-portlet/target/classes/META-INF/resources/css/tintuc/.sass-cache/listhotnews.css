@@ -1,0 +1,193 @@
+#featured {
+  width: auto;
+  padding-right: 40%;
+  position: relative;
+  border: 1px solid #ccc;
+  height: 270px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 10px #ccc; }
+
+#featured img.image-title {
+  width: 330px;
+  height: 270px; }
+
+#featured div.div-title {
+  position: absolute;
+  top: 0;
+  left: 60%;
+  padding: 0 0 0 5px;
+  margin: 0;
+  width: 40%;
+  height: 20px; }
+
+#featured ul.ui-tabs-nav {
+  position: absolute;
+  top: 20px;
+  left: 60%;
+  list-style: none;
+  padding: 3px 0;
+  margin: 0;
+  width: 40%;
+  height: 250px;
+  overflow: none; }
+
+#featured ul.ui-tabs-nav li {
+  padding: 1px 0;
+  padding-left: 0px;
+  font-size: 12px;
+  color: #666; }
+
+#featured ul.ui-tabs-nav li img {
+  float: left;
+  margin: 2px 5px;
+  background: #fff;
+  padding: 2px;
+  border: 1px solid #eee; }
+
+#featured ul.ui-tabs-nav li span {
+  font-size: 11px;
+  line-height: 18px; }
+
+#featured li.ui-tabs-nav-item a {
+  display: block;
+  height: 60px;
+  max-height: 60px;
+  text-decoration: none;
+  color: #00397A;
+  background: #fff;
+  line-height: 10px;
+  outline: none;
+  border-bottom: 1px dotted #ccc;
+  padding: 1px 3px 0px 5px; }
+
+#featured .ui-tabs .ui-tabs-nav li a {
+  padding-bottom: 0px  !important; }
+
+#featured li.ui-tabs-nav-item a:hover {
+  background: #d8efff; }
+
+#featured li.ui-tabs-selected, #featured li.ui-tabs-active {
+  background: url("images/selected-item.gif") top left no-repeat; }
+
+#featured ul.ui-tabs-nav li.ui-tabs-selected a, #featured ul.ui-tabs-nav li.ui-tabs-active a {
+  background: #f2f2f2;
+  background: #d8efff;
+  background: -moz-linear-gradient(top, #d8efff 0%, #addfff 47%, #a1dbff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d8efff), color-stop(47%, #addfff), color-stop(100%, #a1dbff));
+  background: -webkit-linear-gradient(top, #d8efff 0%, #addfff 47%, #a1dbff 100%);
+  background: -o-linear-gradient(top, #d8efff 0%, #addfff 47%, #a1dbff 100%);
+  background: -ms-linear-gradient(top, #d8efff 0%, #addfff 47%, #a1dbff 100%);
+  background: linear-gradient(to bottom, #d8efff 0%, #addfff 47%, #a1dbff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d8efff', endColorstr='#a1dbff',GradientType=0 ); }
+
+#featured .ui-tabs-panel {
+  width: auto;
+  height: 267px;
+  background: #999;
+  position: relative;
+  padding: 2px; }
+
+#featured .ui-tabs-panel .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 35%;
+  background: url("../images/transparent-bg.png"); }
+
+#featured .ui-tabs-panel .info a.hideshow {
+  position: absolute;
+  font-size: 11px;
+  color: #f0f0f0;
+  right: 10px;
+  top: -20px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  background: #333; }
+
+#featured .info h2 {
+  font-size: 1.2em;
+  color: #fff;
+  padding: 5px;
+  margin: 0;
+  font-weight: normal;
+  overflow: hidden; }
+
+#featured .info p {
+  margin: 0 5px;
+  font-size: 11px;
+  line-height: 15px;
+  color: #f0f0f0; }
+
+#featured .info a {
+  text-decoration: none;
+  color: #FFFF00;
+  font-size: 90%; }
+
+#featured .info a:hover {
+  text-decoration: underline; }
+
+#featured .ui-tabs-hide {
+  display: none; }
+
+.ui-tabs .ui-tabs-nav li {
+  white-space: normal !important;
+  margin: 0px 0px 0 0 !important; }
+
+.ui-widget-header {
+  border: none !important;
+  background: none !important; }
+
+.ui-state-default, .ui-tabs-nav-item, .ui-corner-top {
+  background: none !important;
+  border: none !important; }
+
+.featured-block {
+  width: 100%;
+  overflow: hidden;
+  position: relative; }
+
+.main-block {
+  float: left;
+  width: 50%;
+  position: relative; }
+
+.main-content {
+  float: left;
+  width: 100%;
+  padding: 3px; }
+
+.main-image img {
+  width: 100%;
+  height: 250px; }
+
+.featured-list {
+  float: left;
+  position: relative; }
+
+.list-accordion {
+  float: right;
+  right: auto; }
+
+.list-item {
+  list-style: none; }
+
+.item-content {
+  position: relative;
+  display: block; }
+
+.normal-image {
+  float: right;
+  margin-left: 3px;
+  margin-top: 5px;
+  padding: 0; }
+
+.link-image img {
+  width: 100px;
+  height: 80px; }
+
+.des-content {
+  position: relative;
+  overflow: hidden; }
+

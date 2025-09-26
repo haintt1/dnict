@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sách</title>
+    <link rel="stylesheet" href="css/dflip.min.css" />
+	<link rel="stylesheet" href="css/themify-icons.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="_df_book" id="flipbookContainer"></div>
+
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/libs/three.min.js"></script>
+	<script type="text/javascript" src="js/libs/compatibility.js"></script>
+	<script type="text/javascript" src="js/libs/mockup.min.js"></script>
+	<script type="text/javascript" src="js/libs/pdf.min.js"></script>
+	<script type="text/javascript" src="js/libs/pdf.worker.min.js"></script>
+	<script type="text/javascript" src="js/dflip.min.js"></script>
+    <script>
+        // Hàm để lấy giá trị tham số URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams.get(param));
+            return urlParams.get(param);
+        }
+        var pdfSource = getQueryParam('pdf');
+        if(pdfSource) {
+            var option_flipbookContainer = {
+            source: pdfSource,
+            webgl: true
+            }
+        } else {
+            alert('Không tìm thấy file PDF để hiển thị.');
+        }
+    </script>
+</body>
+</html>

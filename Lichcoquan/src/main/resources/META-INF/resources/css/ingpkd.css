@@ -1,0 +1,248 @@
+html, body, div, span, applet, object, iframe,
+/*Css reset*/
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*End css reset*/
+body {
+	margin: 0;
+	padding: 0;
+	background-color: none !important;
+	overflow-x: hidden;
+}
+.center {
+ 	text-align: center;
+ }
+ .float-left{
+ 	float: left;
+ }
+ .display-block {
+ 	display: block;
+ }
+ .print-container {
+	  background-color: #fff;
+ }
+ .italic {
+ 	font-style: italic;
+ }
+ .lv2 {
+/*  	padding: 5px; */
+ 	width: 100%;
+ 	margin: 0 auto;
+ }
+ label.font16 {
+	  font-family: Times New Roman;
+	  font-size: 16px;
+	  line-height: 1.6em;
+	  border: 0;
+	  margin: 0;
+	  outline: 0;
+	  padding: 0;
+	}
+label.font18 {
+	  font-family: Times New Roman;
+	  font-size: 28px;
+	  line-height: 1.6em;
+	  border: 0;
+	  margin: 0;
+	  outline: 0;
+	  padding: 0;
+	}
+ .item {
+  display: block;
+/*  height: 100%;*/
+  float: left;
+  width: 100%;
+/*   margin: 5px 0 0 0; */
+}
+.fi45 {
+  width: 50%;
+}
+.fi100 {
+  width: 100%;
+}
+.fi30 {
+  width: 30%;
+}
+.fi40 {
+  width: 40%;
+}
+.fi60 {
+  width: 60%;
+}
+.fi30 {
+  width: 30%;
+}
+.fi55 {
+  width: 50%;
+}
+.clear{
+	clear: both;
+}
+label.font {
+  font-family: Times New Roman;
+  font-size: 15px;
+  line-height: 1.4em;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+label.font14 {
+  font-family: Times New Roman;
+  font-size: 14px;
+  line-height: 1.4em;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+label.font15 {
+  font-family: Times New Roman;
+  font-size: 15px;
+  line-height: 1.4em;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+.line:HOVER{
+	background-color: #efe788;
+}
+.line {
+	text-align: justify;
+}
+.ubnd {
+	font-weight: 400;
+}
+.upper {
+	text-transform: uppercase;
+}
+.strong {
+	font-weight: bold !important;
+}
+.normal {
+	font-weight: normal !important;
+}
+.line-tn {
+	text-align: center;
+	display: block;
+	
+}
+.gach1px >.item {
+	margin: 1px 0 0 0 !important;
+
+}
+.line-tx{
+	border-top: 1px solid black;
+	width: 100px;
+	display: block;
+	margin: 0 auto;
+}
+.line-giaychungnhan{
+	border-top: 1px solid black;
+	width: 180px;
+	display: block;
+	margin: 0 auto;
+}
+.line-dt{
+	border-top: 1px solid black;
+	width: 180px;
+	margin: 0 auto;
+	display: block;
+}
+.line-qd{
+	border-top: 1px solid black;
+	width: 280px;
+	margin: 0 auto;
+	display: block;
+}
+.duongke{
+	width: 100%;
+	margin: 0 auto;
+}
+.indent70px {
+	text-indent: 55px;
+}
+.indent85px {
+	/*text-indent: 85px;*/
+	width: 85%;
+	margin-left: 85px;
+}
+.indent15px {
+	text-indent: 35px;
+}
+.marginleft15px {
+	margin-left: 15px !important;
+}
+ .width24cm {
+/*     width: 24.7cm !important; */
+    margin: 0 auto;
+}
+.icon-hv{
+	background-color: #fff;
+	border: 1px solid black;
+	width: 6px;
+	height: 6px;
+	display: inline-block;
+	margin-right: 10px;
+}
+label.font24 {
+	  font-family: Times New Roman;
+	  font-size: 24px;
+	  line-height: 1.6em;
+	  border: 0;
+	  margin: 0;
+	  outline: 0;
+	  padding: 0;
+	}
+.print-control{
+    background: #FFF !important;
+    text-align: center !important;
+}	
+.empty-content{
+	height: 23px !important;
+}
+.table-print-list {
+    font-family: Times New Roman;
+    font-size: 13px;
+}
