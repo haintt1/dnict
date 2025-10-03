@@ -50,6 +50,7 @@ String kieulich = prefs.getValue("kieulich",StringPool.BLANK);
 String macoquan = prefs.getValue("macoquan",StringPool.BLANK);
 String tudongdongboUser = prefs.getValue("tudongdongboUser",StringPool.BLANK);
 String macoquanadmin = prefs.getValue("macoquanadmin", StringPool.BLANK);
+String organKey = prefs.getValue("organKey", StringPool.BLANK);
 String dongbo = prefs.getValue("dongbo","");
 String tudongdongbo = prefs.getValue("tudongdongbo", "");
 String soluonghienthi = prefs.getValue("soluonghienthi","18");

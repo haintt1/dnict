@@ -5,15 +5,16 @@
 <%@page import="com.liferay.portal.kernel.util.Validator"%>
 <%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@page import="javax.portlet.PortletPreferences"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-<%@ taglib uri="http://liferay.com/tld/captcha" prefix="liferay-captcha" %>
-<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %>
-<%@ taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %>
-<%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %>
-<%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
-<%@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
+
+<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %><%@
+taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %><%@
+taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
+taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
+<%@taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <liferay-theme:defineObjects />
@@ -63,7 +64,7 @@ String linkbanquyen      = prefs.getValue("linkbanquyen", "");
 String tukhoa		 = prefs.getValue("tukhoa", "0");
 String tieudetintuc		 = prefs.getValue("tieudetintuc", StringPool.BLANK);//code 2/1/2017
 String chieucaokhungnoibat = prefs.getValue("chieucaokhungnoibat", "350");
-String kieuhienthipdf	   = prefs.getValue("kieuhienthipdf", "0");
+String kieuhienthipdf	   = prefs.getValue("kieuhienthipdf", "");
 String order_category	   = prefs.getValue("order_category", "");
 kieuhienthipdf	   = prefs.getValue("kieuhienthipdf", "default");
 String checkChuKy	   = prefs.getValue("checkChuKy", StringPool.BLANK);

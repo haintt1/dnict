@@ -104,110 +104,122 @@
 			</liferay-util:html-top>
 </head>		
 	
-			<style type="text/css">
-				
-				.the-article-footer {
-				    clear: both;
-				}
-				.the-article:after {
-				    clear: both;
-				    content: "";
-				    display: block;
-				}
-				span.the-article-changeFont {
-				    display: block;
-				    float: left;
-				    margin-right: 10px;
-				}
-				.the-article-share {
-				    float: left;
-				    margin-right: 10px;
-				}
-				header.title-article {
-				    font-size: 2rem;
-				    line-height: 1.2em;
-				}
-				p.the-article-summary {
-				    font-weight: bold;
-				}
-				.the-article-more-info {
-				    padding-top: 20px;
-				}
-				.the-article-more-info ul {
-					list-style: none !important;
-				}
-				ul.root {
-				    margin: 0 !important;
-				}
-				.chuyenmuc-lienquan a {
-					font-size: 11px;
-				    display: inline-block;
-				    margin-right: 5px;
-				    padding: 0px 10px;
-				    background: rgba(204, 204, 204, 0.3);
-				    border-radius: 3px;
-				    margin-top: 5px;
-				    color: #1b71ad;
-				    text-decoration: none
-				}
-				
-				.chuyenmuc-lienquan a:hover {
-					color: rgba(213, 3, 3, 0.6);
-				}
-				
-				.cat-lienquan {
-				    margin: 0 !important;
-				}
-				.cat-lienquan li {
-				    font-size: 11px;
-				    display: inline-block;
-				    margin-right: 5px;
-				    padding: 0px 10px;
-				    background: rgba(204, 204, 204, 0.3);
-				    border-radius: 3px;
-				    margin-top: 5px;
-				}
-				.chuyenmuc-lienquan {
-					margin-top: 10px;
-				    font-size: 13px;
-				    font-weight: bold;
-				    margin-bottom: 5px !important;
-				    display: block;
-				}
-				.cat-lienquan li a {
-				    color: #1b71ad;
-				    text-decoration: none;
-				}
-				.cat-lienquan li a:hover {
-				    color: rgba(213, 3, 3, 0.6);
-				}
-				span.share-facebook {
-				    display: block;
-				    float: left;
-				    margin-right: 5px;
-				}
-				.share-content:after {
-				    clear: both;
-				    display: block;
-				    content: "";
-				}
-				.video-ytb {
-				    width: 100%;
-				    height: 100%;
-				    border: none;
-				    border-radius: 5px;
-				    margin-bottom: 10px;
-				    aspect-ratio: 16 / 9;
-				}
-				
-				.video-upload {
-				    width: 100%;
-				    height: 100%;
-				    border: none;
-				    border-radius: 5px;
-				    margin-bottom: 10px;
-				}
-			</style>
+<style type="text/css">
+	
+	.the-article-footer {
+	    clear: both;
+	}
+	.the-article:after {
+	    clear: both;
+	    content: "";
+	    display: block;
+	}
+	span.the-article-changeFont {
+	    display: block;
+	    float: left;
+	    margin-right: 10px;
+	}
+	.the-article-share {
+	    float: left;
+	    margin-right: 10px;
+	}
+	header.title-article {
+	    font-size: 2rem;
+	    line-height: 1.2em;
+	}
+	p.the-article-summary {
+	    font-weight: bold;
+	}
+	.the-article-more-info {
+	    padding-top: 20px;
+	}
+	.the-article-more-info ul {
+		list-style: none !important;
+	}
+	ul.root {
+	    margin: 0 !important;
+	}
+	.chuyenmuc-lienquan a {
+		font-size: 11px;
+	    display: inline-block;
+	    margin-right: 5px;
+	    padding: 0px 10px;
+	    background: rgba(204, 204, 204, 0.3);
+	    border-radius: 3px;
+	    margin-top: 5px;
+	    color: #1b71ad;
+	    text-decoration: none
+	}
+	
+	.chuyenmuc-lienquan a:hover {
+		color: rgba(213, 3, 3, 0.6);
+	}
+	
+	.cat-lienquan {
+	    margin: 0 !important;
+	}
+	.cat-lienquan li {
+	    font-size: 11px;
+	    display: inline-block;
+	    margin-right: 5px;
+	    padding: 0px 10px;
+	    background: rgba(204, 204, 204, 0.3);
+	    border-radius: 3px;
+	    margin-top: 5px;
+	}
+	.chuyenmuc-lienquan {
+		margin-top: 10px;
+	    font-size: 13px;
+	    font-weight: bold;
+	    margin-bottom: 5px !important;
+	    display: block;
+	}
+	.cat-lienquan li a {
+	    color: #1b71ad;
+	    text-decoration: none;
+	}
+	.cat-lienquan li a:hover {
+	    color: rgba(213, 3, 3, 0.6);
+	}
+	span.share-facebook {
+	    display: block;
+	    float: left;
+	    margin-right: 5px;
+	}
+	.share-content:after {
+	    clear: both;
+	    display: block;
+	    content: "";
+	}
+	.video-ytb {
+	    width: 100%;
+	    height: 100%;
+	    border: none;
+	    border-radius: 5px;
+	    margin-bottom: 10px;
+	    aspect-ratio: 16 / 9;
+	}
+	
+	.video-upload {
+	    width: 100%;
+	    height: 100%;
+	    border: none;
+	    border-radius: 5px;
+	    margin-bottom: 10px;
+	}
+	.video-container {
+	    position: relative;
+	    padding-top: 56.25%; /* 16:9 ratio (9/16 = 56.25%) */
+	}
+
+	.video-container iframe {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	}
+</style>
 <body>
 
 	<%if(Validator.isNotNull(new_article)&&new_article.getDelete_status()==0&&new_article.getStatus()==4){ %>
@@ -243,7 +255,7 @@
 						}
 					%>
 					</span>
-					<span class="the-article-timecreate"><b><%=ngaydang%>: </b><%=df.format(new_article.getNgayxuatban())%></span>
+					<span class="the-article-timecreate"><b><%=ngaydang%>: </b><%=df.format(new_article.getCreatedtime())%></span>
 					<span class="viewcount"><b><%=view%>: </b>
 						<%
 							long dem = 1;
@@ -308,7 +320,6 @@
 								String urlVideo = "";
 								String noidungchitietFlipBook = "" ;
 								
-								
 								Document doc = Jsoup.parse(new_article.getContent());
 								Element contentDiv 	  = doc.select("div[class=contentfirst]").first();
 								Element contentDivtwo = doc.select("div[class=contentlast]").first();
@@ -319,160 +330,41 @@
 									noidunglast  = contentDivtwo.html();								
 								}
 								// rút gọn
-								if(new_article.getLoaitintuc() == 0) {
-									System.out.print("tin binh thuong");
-									noidungchitiet = new_article.getContent();
-								} else if(new_article.getLoaitintuc() == 1) {
+								if(new_article.getLoaitintuc() == 1) {
 									System.out.print("tin pdf");
 									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9, themeDisplay);
 									if(listDinhkem.size() > 0){
 										urlPdf = listDinhkem.get(0).getUrl();
+										tenPdf = listDinhkem.get(0).getTen();
 										
+										String urlFlipbooktest = "/flipbook?pdf="+tenPdf;
+										if(kieuhienthipdf.equals("0")) {
+											noidungchitiet = "<embed id=\"check_pdf_watermark\" class=\"pdf_watermark no-print\" src='"+urlPdf+"' style=\"width:100%; height:1000px;\"></embed>";
+						            	} else if (kieuhienthipdf.equals("1")) {
+						            		noidungchitiet = noidungchitiet + "<a style=\"display: block;text-decoration:none;margin-bottom: 10px\" class=\"xemfull-pdf\" target=\"_BLANK\" href='"+urlFlipbooktest+"'>Xem dạng lật sách ở chế độ toàn màn hình</a>";
+						            	}
 									}
-									
-									noidungchitiet = "<a style=\"display: block;\" class=\"xemfull-pdf\" target=\"_BLANK\" href=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\">Xem file ở chế độ toàn màn hình</a>";
-									noidungchitiet = "<embed id=\"check_pdf_watermark\" class=\"pdf_watermark no-print\" src='"+urlPdf+"' style=\"width:100%; height:1000px;\"></embed>";
-									
-					/*				noidungchitiet = noidungfirst;
-									noidungchitiet = noidungchitiet + "<p class=\"pdfview\" style=\"text-align:center\"><embed id=\"check_pdf_watermark\" class=\"pdf_watermark\" src='"+urlPdf+"' style=\"width:100%; height:1000px;\"></embed></p>";
-									noidungchitiet = noidungchitiet + noidunglast;
-									
-									
-									
-					/*				if(listDinhkem.size() > 0){
-		 								for(News_AttachFile file: listDinhkem){
-		 									
-		 									noidungchitiet =  "<a id=\"pdf_watermark\" href= '"+file.getUrl()+"'>"+file.getTen()+"</a>";
-		 									noidungchitiet =  "<div>"+new_article.getContent()+"</div>";
-										}
-									} */
-					/*				if(listDinhkem.size() > 0){
-										urlPdf = listDinhkem.get(0).getUrl();
-									}
-									noidungchitiet = noidungfirst;
-									noidungchitiet = noidungchitiet + "<a style=\"display: block;\" class=\"xemfull-pdf\" target=\"_BLANK\" href=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\">Xem file ở chế độ toàn màn hình</a>";
-									noidungchitiet = noidungchitiet + "<p class=\"pdfview\" style=\"text-align:center\"><embed src=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\" style=\"width:80%; height:700px;\"></embed></p>";
-									noidungchitiet = noidungchitiet + noidunglast; */
 								} else if(new_article.getLoaitintuc() == 2) {
-									//System.out.print("tin video");
+									System.out.print("tin video");
 									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9, themeDisplay);
 									if(listDinhkem.size() > 0){
 										urlVideo = listDinhkem.get(0).getUrl();
-									}
-									boolean isFileEntryVideo = urlVideo != null && urlVideo.contains("iframe");
-									if(isFileEntryVideo) {
-										noidungchitiet = "<div class=\"video-container\">" +urlVideo+ "</div>";
-										//noidungchitiet = "<video class=\"video-upload no-print\" src='"+urlVideo+"' controls></video>";
-									}else if(urlVideo !=null && urlVideo.contains("/documents/")){
-										noidungchitiet = "<video class=\"video-upload no-print\" src='"+urlVideo+"' controls></video>";
-									} else {
-										noidungchitiet = "<video class=\"video-upload no-print\" src='"+urlVideo+"' controls></video>";
-									}
-								} else {
-									System.out.print("lat sach");
-									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9, themeDisplay);
-									if(listDinhkem.size() > 0){
-										urlPdf = listDinhkem.get(0).getUrl();
-									}
-										noidungchitiet = "<a style=\"display: block;\" class=\"xemfull-pdf\" target=\"_BLANK\" href=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\">Xem file ở chế độ toàn màn hình</a>";
-										noidungchitiet = "<p class=\"pdfview\" style=\"text-align:center\"><embed class=\"pdf_watermark\" src=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\" style=\"width:80%; height:700px;\"></embed></p>";
-									}
-/*								if(new_article.getLoaitintuc() == 2 && kieuhienthipdf.equals("lattrang")){
-									Element contentDiv 	  = doc.select("div[class=contentfirst]").first();
-									Element contentDivtwo = doc.select("div[class=contentlast]").first();
-									if(Validator.isNotNull(contentDiv)){
-										noidungfirst = contentDiv.html();								
-									}
-									if(Validator.isNotNull(contentDivtwo)){
-										noidunglast  = contentDivtwo.html();								
-									}
-									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9);
-									if(listDinhkem.size() > 0){
-										urlPdf = listDinhkem.get(0).getUrl();
-									}
-									noidungchitiet = noidungfirst;
-									noidungchitiet = noidungchitiet + "<a style=\"display: block;\" class=\"xemfull-pdf\" target=\"_BLANK\" href=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\">Xem file ở chế độ toàn màn hình</a>";
-									noidungchitiet = noidungchitiet + "<p class=\"pdfview\" style=\"text-align:center\"><embed src=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\" style=\"width:80%; height:1000px;\"></embed></p>";
-									noidungchitiet = noidungchitiet + noidunglast;
-								}
-								
-								if(new_article.getLoaitintuc() == 1 ){
-									System.out.print("tin pdf");
-									Document docfirst = Jsoup.parse(new_article.getContent());
-										Element contentDiv 	  = doc.select("div[class=contentfirst]").first();
-										Element contentDivtwo = doc.select("div[class=contentlast]").first();
-										if(Validator.isNotNull(contentDiv)){
-											noidungfirst = contentDiv.html();								
-										}
-										if(Validator.isNotNull(contentDivtwo)){
-											noidunglast  = contentDivtwo.html();								
-										}
-									
-									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9, themeDisplay);
-									if(listDinhkem.size() > 0){
-		 								for(News_AttachFile file: listDinhkem){
-		 									noidungchitiet =  "<a href= '"+file.getUrl()+"'>"+file.getTen()+"</a>";
-		 									noidungchitiet =  "<div>"+new_article.getContent()+"</div>";
+							//			boolean isFileEntryVideo = urlVideo != null && urlVideo.contains("/documents/");
+										boolean isFileEntryVideo = urlVideo != null && urlVideo.contains("iframe");
+										if(isFileEntryVideo) {
+											/*noidungchitiet = noidungchitiet + "<iframe class=\"video-ytb no-print\" src='"+urlVideo+"'></iframe>";*/
+											noidungchitiet = "<div class=\"video-container\">"+urlVideo+"</div>";
+										} else if(urlVideo != null && urlVideo.contains("/documents/")) {
+											noidungchitiet = "<video class=\"video-upload no-print\" src='"+urlVideo+"' controls></video>";
+										} else {
+											noidungchitiet = "<video class=\"video-upload no-print\" src='"+urlVideo+"' controls></video>";
 										}
 									}
-								}
-								if(new_article.getLoaitintuc() == 3 || new_article.getLoaitintuc() == 7 ){
-									Document docfirst = Jsoup.parse(new_article.getContent());
-										Element contentDiv 	  = doc.select("div[class=contentfirst]").first();
-										Element contentDivtwo = doc.select("div[class=contentlast]").first();
-										if(Validator.isNotNull(contentDiv)){
-											noidungfirst = contentDiv.html();								
-										}
-										if(Validator.isNotNull(contentDivtwo)){
-											noidunglast  = contentDivtwo.html();								
-										}
-									
-									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9, themeDisplay);
-									if(listDinhkem.size() > 0){
-										urlPdf = listDinhkem.get(0).getUrl();										
-		 								for(News_AttachFile file: listDinhkem){
-		 									noidungchitietFlipBook = noidungchitietFlipBook + "<a style=\"display: block;\" class=\"xemfull-pdf\" target=\"_BLANK\" href=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\">Xem file ở chế độ toàn màn hình</a>";
-		 									noidungchitietFlipBook = noidungchitietFlipBook + "<p class=\"pdfview\" style=\"text-align:center\"><embed src=\"/o/vn.dnict.tintuc/js/pdf-flipbook-master/index.html?file="+urlPdf+"\" style=\"width:100%; height:600px;\"></embed></p>";
-										}
-									}
-								} 
-								Document docNoiDung 	= Jsoup.parse(noidungchitiet);
-								Elements newsTable = docNoiDung.getElementsByTag("table");
-								int check=0;
-								for (Element headline : newsTable) {
-									Document docTable 	= Jsoup.parse(headline.toString());
-									Elements newsB = docTable.getElementsByTag("b");
-									for(Element  item : newsB){
-										if(item.toString().equals("<b> 1022 </b>")){
-											check++;
-										}
-										if(item.toString().equals("<b> 3 881 888 </b>")){
-											check++;
-										}
-									}
-									if(check==2){
-										headline.remove();
-										noidungchitiet=docNoiDung.toString();
-										break;
-									}
-									
-								}
-							
-								if(checkChuKy.equals("1")){
-									noidungchitiet +=noiDungChKy;
-								}*/
-							
+								}						
 							%>
-							<%=noidungfirst %><br>
-							<%=noidungchitiet %><br>
+							<%=noidungfirst %>
+							<%=noidungchitiet %>
 							<%=noidunglast %>
-<!--  							<%if(new_article.getLoaitintuc() ==3 || new_article.getLoaitintuc() ==7){%>
-								<%=noidungchitietFlipBook%><br>	
-							<%}else{%>
-								<%=noidungchitiet%><br>
-							<%} %>
-							<%=noidunglast %>
--->	
 							<%if(ctv.equals("1")){ %>
 							<p class="the-article-author" style="text-align:right"><b>Tác giả: <%=new_article.getCongtacvien()%></b></p>	
 							<%} %>					
@@ -486,7 +378,7 @@
 		if(binhluan.equals("1")){
 			if (new_article.getIsformbinhluan() == 1) {
 		%>
-		<portlet:actionURL name='addComment' var="addCommentURL"></portlet:actionURL>
+		<portlet:actionURL name='addComment' var="addCommentURL"/>
 		<portlet:resourceURL id="captcha" var="captchaResourceURL"/>
 		<div class="row formbinhluan">
 		<div class="col-12 col-lg-6">
@@ -502,9 +394,8 @@
 	    			<aui:validator name="required"></aui:validator>    			
 	    			<aui:validator name="maxLength">500</aui:validator>
 	    		</aui:input>
-	    		<label for="<portlet:namespace />captchaText">Nhập mã xác thực:</label>
 	    		<liferay-captcha:captcha url="<%= captchaResourceURL %>"/>
-	    		<aui:input type="hidden" name="<portlet:namespace/>captchaText" value=""/>
+	    		<aui:input type="hidden" name="<portlet:namespace/>captchaText"/>
 	    		<aui:input type="hidden" name="currenturl" value="<%=currentCompleteUrl %>"/>
 	    		<aui:button type="submit" id="btnGui" value="Gửi bình luận" />
 			</aui:form>

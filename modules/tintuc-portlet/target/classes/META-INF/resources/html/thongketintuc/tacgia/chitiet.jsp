@@ -169,9 +169,9 @@ News_NguonTin newNguonTin = News_NguonTinLocalServiceUtil.fetchNews_NguonTin(ngu
 			<th class="key" style="width:5%;text-align: center;">#</th>
 			<th class="key" style="text-align: center; width: 55%">Bài viết</th>
 			<th class="key" style="text-align: center; width: 10%;">Thể loại</th>
-			<th class="key" style="width:10%; text-align: center;">Kiểu tin</th>
 			<th class="key" style="text-align: center;">Ngày đăng tin</th>
-			<th class="key" style="text-align: center; width: 10%;">Trạng thái</th>			
+			<th class="key" style="text-align: center; width: 10%;">Trạng thái</th>
+			<th class="key" style="width:10%;">Ghi chú</th>
 		</tr>
 		<%if(listArticle.size() > 0){%>
 		<tr>
@@ -195,17 +195,6 @@ News_NguonTin newNguonTin = News_NguonTinLocalServiceUtil.fetchNews_NguonTin(ngu
 			}
 			%>		
 			<td style="text-align: center;"><%=theloaitin%></td>
-			<%
-				String kieutin ="";
-				if(listArticle.get(j).getLoaitintuc() == 0){
-					kieutin = "Tin ảnh";
-				}else if(listArticle.get(j).getLoaitintuc() == 1){
-					kieutin = "Tin văn bản";
-				}else if(listArticle.get(j).getLoaitintuc() == 2){
-					kieutin = "Tin video";
-				}
-			%>
-			<td style="text-align: center;"><%=kieutin%></td>
 			<td style="text-align: center;">
 			<% 
 			String ngaytao = "";
@@ -213,7 +202,7 @@ News_NguonTin newNguonTin = News_NguonTinLocalServiceUtil.fetchNews_NguonTin(ngu
 				ngaytao = df2.format(listArticle.get(j).getCreatedtime());
 			}%>
 			<%=ngaytao%></td>
-			<td style="text-align: center;">
+			<td>
 				<%
 					String trangthai ="";
 					if(listArticle.get(j).getStatus() == 0){

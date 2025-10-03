@@ -31,6 +31,14 @@
 											</td>
 										</tr>
 										<tr>
+											<th  class="key label2">Key đơn vị</th>
+											<td>
+												<input name="<portlet:namespace/>organKey" size="40" label="" value="<%=organKey%>">
+													<validator name="required"></validator>
+												</input>
+											</td>
+										</tr>
+										<tr>
 											<td class="key label2">Cấu hình hiển thị đồng bộ dữ liệu</td>
 											<td><input type="checkbox" name="<portlet:namespace/>dongbo" <%=dongbo%>></td>
 										</tr>
@@ -94,7 +102,12 @@
 										</tr>
 										<tr>
 											<td class="key label2">
-												<aui:button type="submit" value="Đồng bộ tất cả"/>
+												<%-- <aui:button type="submit" value="Đồng bộ tất cả"/> --%>
+												<input type="hidden" name="<portlet:namespace/>typeaction" id="<portlet:namespace/>typeaction" value=""/>
+												<aui:button-row>
+													<aui:button type="submit" name="dongBoSo" value="Đồng bộ cấp Sở"/>
+    												<aui:button type="submit" name="dongBoPhuong" value="Đồng bộ cấp Phường"/>
+												</aui:button-row>
 											</td>
 										</tr>
 									</table>
@@ -108,10 +121,24 @@
 	</div>
 </div>
 <script type="text/javascript">
-$(document).ready(function($){
-	$(".datepicker").datepicker({
-		yearRange: '-80:+10'
+	$(document).ready(function($){
+		$(".datepicker").datepicker({
+			yearRange: '-80:+10'
+		});
+		$(".datepicker").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
 	});
-	$(".datepicker").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
-});
+	function setTypeAction(value){
+		var obj = $("#<portlet:namespace/>typeaction");
+		obj.val(value);
+	}
+	var btnDongBoSo = $("#<portlet:namespace/>dongBoSo");
+	btnDongBoSo.on('click',function(event){
+		setTypeAction("dongBoSo");
+	
+	});
+	var btnDongBoPhuong = $("#<portlet:namespace/>dongBoPhuong");
+	btnDongBoPhuong.on('click',function(event){
+		setTypeAction("dongBoPhuong");
+	
+	});
 </script>

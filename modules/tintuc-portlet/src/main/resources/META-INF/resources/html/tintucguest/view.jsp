@@ -29,6 +29,8 @@
 <liferay-util:include page="/html/tintucguest/danhsachviews/slicktintuc.jsp" servletContext="<%=this.getServletContext()%>"/>
 <%}else if(ungdung.equals("slidetintuc")){ %>
 <liferay-util:include page="/html/tintucguest/danhsachviews/slidetintuc.jsp" servletContext="<%=this.getServletContext()%>"/>
+<%}else if(ungdung.equals("hienthilatsach")){ %>
+<liferay-util:include page="/html/pdfbook/view.jsp" servletContext="<%=this.getServletContext()%>"/>
 <%}%>
 
 

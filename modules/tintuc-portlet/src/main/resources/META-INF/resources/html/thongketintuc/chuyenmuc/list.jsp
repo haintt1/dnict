@@ -74,7 +74,7 @@
 	}
 	int start = searchContainer.getStart();
 	int end = searchContainer.getEnd();
-	List<News_Categories> objCat = TinTucAdminUtil.getAllCate(); //System.out.println(objCat);
+	List<News_Categories> objCat = TinTucAdminUtil.getAllCate(); 
 	List<HashMap<String, String>> listArticle = ThongKeTinTucUtil.thongKeTheoChuyenMuc(dateBegin, dateEnd, status, start, end);
 	
 %>

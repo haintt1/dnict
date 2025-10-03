@@ -109,7 +109,6 @@ public class TinTucAdminPortlet extends MVCPortlet {
 		SessionMessages.add(actionRequest, "");
 	}
 	
-	
 	@SuppressWarnings("deprecation")
 	@ProcessAction(name = "saveSubCategory")
 	public void saveSubCategory(ActionRequest actionRequest, ActionResponse actionResponse) throws Exception {
@@ -136,8 +135,6 @@ public class TinTucAdminPortlet extends MVCPortlet {
 		actionResponse.sendRedirect(redirectURL.toString());
 	}
 	
-	
-
 	@SuppressWarnings("deprecation")
 	@ProcessAction(name = "saveCategory")
 	public void saveCategory(ActionRequest actionRequest, ActionResponse actionResponse) throws Exception {
@@ -208,7 +205,6 @@ public class TinTucAdminPortlet extends MVCPortlet {
 		redirectURL.setParameter("tabs", tabDangTin);
 		actionResponse.sendRedirect(redirectURL.toString());
 	}
-	
 	
 	@SuppressWarnings("deprecation")
 	@ProcessAction(name = "saveNewsArticle")
@@ -1983,7 +1979,17 @@ public class TinTucAdminPortlet extends MVCPortlet {
 	@SuppressWarnings("deprecation")
 	public static void deleteTintuc(ActionRequest request,ActionResponse response) throws Exception{
 		long id = ParamUtil.getLong(request, "id");
-		News_ArticleLocalServiceUtil.deleteNews_Article(id);
+		if(Validator.isNotNull(id)){
+			List<News_Activity> objActivity = TinTucAdminUtil.listNewAtivityByArticleId(id);
+			for(News_Activity ac : objActivity) {
+				News_ActivityLocalServiceUtil.deleteNews_Activity(ac);
+			}
+			List<News_Log> objLog = TinTucAdminUtil.getNewLogByArticleId(id);
+			for(News_Log log : objLog) {
+				News_LogLocalServiceUtil.deleteNews_Log(log);
+			}
+			News_ArticleLocalServiceUtil.deleteNews_Article(id);
+		}
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -2091,7 +2097,7 @@ public class TinTucAdminPortlet extends MVCPortlet {
 			if(role.getRole_edit()==1){
 				objLog.setNguoinhanid(objNews.getCreatedby());
 			}else if(role.getRole_public()==1){
-				objLog.setNguoinhanid(objNews.getModifiedby());
+				objLog.setNguoinhanid(objNews.getCreatedby());
 			}
 			News_LogLocalServiceUtil.addNews_Log(objLog);
 			SessionMessages.add(actionRequest,"");

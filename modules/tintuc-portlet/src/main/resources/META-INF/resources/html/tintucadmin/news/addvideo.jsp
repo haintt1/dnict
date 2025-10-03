@@ -30,15 +30,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.datetimepicker.css"/>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-tagsinput/bootstrap-tagsinput.css"/>
-<script src="<%=request.getContextPath() %>/js/jquery1.10.2.js"></script>
-<script src="<%=request.getContextPath() %>/js/jquery.datetimepicker.full.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
-
 <meta charset="ISO-8859-1">
 <title>Thêm tin video</title>
 </head>
+<style>
+	.dropbtn{margin: 0; padding: 0}
+	.dropdown-content{margin: 0; padding: 0;}
+	
+	#languages {
+	    background-repeat: no-repeat;
+	    background-image: url("/o/vn.dnict.tintuc/images/flag/vi_VN.png");
+	    padding-right: 20px;
+	}
+	#languages option:nth-child(1) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/vi_VN.png) no-repeat right center;  
+	}
+	#languages option:nth-child(2) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/en_US.png) no-repeat right center;  
+	}
+	#languages option:nth-child(3) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/ja_JP.png) no-repeat right center;  
+	}
+	#languages option:nth-child(4) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/ko_KR.png) no-repeat right center;  
+	}
+	a.cke_combo_button{
+	margin: 0px !important;
+	padding: 0px !important;
+	padding-top: 8px !important;
+	    margin-left: 10px !important;
+	}
+	.twocolumn1{
+		width: 50%;
+		display: block;
+		float: left;
+		padding-right: 5px;
+	}
+	.twocolumn2{
+		width: 50%;
+		display: block;
+		float: left;
+		padding-left: 5px;
+	}
+	#manhung {
+    	width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        resize: none; /* Ngăn người dùng thay đổi kích thước thủ công */
+        height: 38px;
+    }
+</style>
 <body>
 <%
 String tabDangtin = TinTucAdminField.value_tabdangtin;
@@ -181,7 +222,7 @@ if(Validator.isNotNull(request.getAttribute("tintucobject"))){
 											</div>
 											<div class="twocolumn2">
 												<input name="option" type="radio" value="linkNhung" onchange="toggleInput('link')"> 
-												<label class="control-label">Nhập link nhúng</label>										
+												<label class="control-label">Nhập đường dẫn hoặc mã nhúng</label>										
 											</div>
 										</td>	
 									</tr>
@@ -342,53 +383,6 @@ if(Validator.isNotNull(request.getAttribute("tintucobject"))){
 </div>
 </nav>	
 </body>
-<style>
-	.dropbtn{margin: 0; padding: 0}
-	.dropdown-content{margin: 0; padding: 0;}
-	
-#languages {
-    background-repeat: no-repeat;
-    background-image: url("/o/vn.dnict.tintuc/images/flag/vi_VN.png");
-    padding-right: 20px;
-}
-#languages option:nth-child(1) {
-    background: url(/o/vn.dnict.tintuc/images/flag/vi_VN.png) no-repeat right center;  
-}
-#languages option:nth-child(2) {
-    background: url(/o/vn.dnict.tintuc/images/flag/en_US.png) no-repeat right center;  
-}
-#languages option:nth-child(3) {
-    background: url(/o/vn.dnict.tintuc/images/flag/ja_JP.png) no-repeat right center;  
-}
-#languages option:nth-child(4) {
-    background: url(/o/vn.dnict.tintuc/images/flag/ko_KR.png) no-repeat right center;  
-}
-a.cke_combo_button{
-margin: 0px !important;
-padding: 0px !important;
-padding-top: 8px !important;
-    margin-left: 10px !important;
-}
-.twocolumn1{
-	width: 50%;
-	display: block;
-	float: left;
-	padding-right: 5px;
-}
-.twocolumn2{
-	width: 50%;
-	display: block;
-	float: left;
-	padding-left: 5px;
-}
-#manhung{
-	width:100%; 
-	box-sizing: border-box;
-	overflow: hidden;
-	resize: none;
-	height:38px;
-}
-</style>
 <script type="text/javascript">
 
 function setTypeAction(value){
@@ -492,7 +486,7 @@ AUI().ready('aui-form-validator', 'aui-overlay-context-panel','aui-node', functi
 });
 
 </aui:script>
-<aui:script>
+<script>
     var btnluu = $("#<portlet:namespace/>luu");
 	btnluu.on('click',function(event){
     		setTypeAction("luu");
@@ -520,26 +514,28 @@ AUI().ready('aui-form-validator', 'aui-overlay-context-panel','aui-node', functi
     		setTypeAction("luuvatrinhpheduyet");
   
     });
-    function autoResizeTextarea(id){
+	
+	// Tự động auto size textarea
+	function autoResizeTextarea(id) {
 		var $textarea = $('#' + id);
 		if ($textarea.length) {
-			$textarea.on('input', function(){
+			$textarea.on('input', function () {
 				$(this).css('height', 'auto');
 				$(this).css('height', this.scrollHeight + 'px');
 			});
 		}
 	}
+	
     function toggleInput(option) {
-	    
 		const formInput = document.getElementById('formInput');
 		formInput.innerHTML = '';
 	    // Thay đổi nội dung dựa trên lựa chọn
         if (option === 'link') {
             formInput.innerHTML = `
             	<label>Nhập mã nhúng hoặc đường dẫn</label>
-                <textarea rows="2" name="<portlet:namespace/>linkVideo" id="manhung" class="form-control"></textarea>
+            	<textarea name="<portlet:namespace/>linkVideo" rows="1" id="manhung" class="form-control"></textarea>
             `;
-            setTimeout(function(){
+            setTimeout(function() {
             	autoResizeTextarea('manhung');
             }, 0);
         } else if (option === 'upload') {
@@ -549,7 +545,7 @@ AUI().ready('aui-form-validator', 'aui-overlay-context-panel','aui-node', functi
             `;
         }
 	}
-</aui:script>
+</script>
 <script>
 	function addAndPreview(event) {
 	    event.preventDefault(); // Ngăn form submit ngay lập tức

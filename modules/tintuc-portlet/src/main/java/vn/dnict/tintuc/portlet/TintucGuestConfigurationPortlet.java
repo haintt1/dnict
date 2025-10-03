@@ -73,6 +73,7 @@ public class TintucGuestConfigurationPortlet extends DefaultConfigurationAction{
 		prefs.setValue("hienthitintuc", ParamUtil.getString(actionRequest, "hienthitintuc"));
 		prefs.setValue("tocdoslide", ParamUtil.getString(actionRequest, "tocdoslide"));
 		prefs.setValue("linkbanquyen", ParamUtil.getString(actionRequest, "linkbanquyen"));
+		prefs.setValue("kieuhienthipdf", ParamUtil.getString(actionRequest, "kieuhienthipdf"));
 		//System.out.println(ParamUtil.getString(actionRequest, "sotinlienquan"));
 		
 		List<News_Categories> listcategory = TinTucAdminUtil.searchNewCategory("", 0, null, 0, 0);

@@ -3,7 +3,7 @@
 
 <hibernate-mapping auto-import="false" default-lazy="false">
 	<import class="lichcoquan.service.model.Lichcoquan" />
-	<class name="lichcoquan.service.model.impl.LichcoquanImpl" table="lcq_lichcoquan">
+	<class name="lichcoquan.service.model.impl.LichcoquanImpl" table="cms_lichcoquan">
 		<id access="com.liferay.portal.dao.orm.hibernate.LiferayPropertyAccessor" name="lichCongtacId" type="long">
 			<generator class="assigned" />
 		</id>

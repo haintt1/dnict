@@ -287,26 +287,5 @@ public class ThongKeTinTucUtil {
 				List<News_Article> listArticle = News_ArticleLocalServiceUtil.dynamicQuery(query);
 				return listArticle;
 			}
-			
-			//list thống kê bài viêt by Kiểu tin
-			public static List<News_Article> thongKeSoLuongByKieuTin(int loaitintuc, int status, String dateBegin,String dateEnd, int start, int end ) throws Exception{
-				SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-				DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery();
-				query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
-				query.add(PropertyFactoryUtil.forName("loaitintuc").eq(loaitintuc));
-				if(!dateBegin.equals("")){
-					dateBegin += " 00:00:00";
-					query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(dateBegin)));
-				}
-				if(!dateEnd.equals("")){
-					dateEnd += " 23:59:59";
-					query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(dateEnd)));
-				}
-				if(Long.valueOf(status) >= 0){
-					query.add(PropertyFactoryUtil.forName("status").eq(Integer.valueOf(status)));
-				}
-				List<News_Article> listArticle = News_ArticleLocalServiceUtil.dynamicQuery(query);
-				return listArticle;
-			}
 	
 }

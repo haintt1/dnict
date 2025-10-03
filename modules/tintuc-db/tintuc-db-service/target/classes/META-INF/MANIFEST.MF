@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 16
-Created-By: 16.0.2 (Oracle Corporation)
-Bnd-LastModified: 1747036593672
+Build-Jdk-Spec: 21
+Created-By: 21.0.6 (Eclipse Adoptium)
+Bnd-LastModified: 1759455798942
 Bundle-ManifestVersion: 2
 Bundle-Name: tintuc-db-service
 Bundle-SymbolicName: vn.dnict.tintuc.service

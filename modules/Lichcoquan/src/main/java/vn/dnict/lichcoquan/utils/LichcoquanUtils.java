@@ -2,10 +2,17 @@ package vn.dnict.lichcoquan.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.portlet.ActionRequest;
 
@@ -101,7 +108,7 @@ public class LichcoquanUtils {
 		}
 	}
 	
-	public static List<String> getlisttuesday(Date date) throws Exception {
+	public static List<String> getDates(Date date) throws Exception {
 		List<String> result = new ArrayList<String>();
 		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date date_now = new Date();
@@ -130,6 +137,8 @@ public class LichcoquanUtils {
 	}
 	
 	public static void saveLichCoQuan(String Content, int tuan, int nam, Date tungay) throws Exception {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		long lichcoquanId = CounterLocalServiceUtil.increment(Lichcoquan.class.getName());
 		Lichcoquan lcq = LichcoquanLocalServiceUtil.createLichcoquan(lichcoquanId);
 		lcq.setLichCongtacId(lichcoquanId);
@@ -146,6 +155,15 @@ public class LichcoquanUtils {
 		if(Validator.isNotNull(tungay)){
 			lcq.setTungay(tungay);
 		}
+		// Lấy ngày đến từ cột từ ngày
+		String startDate = sdf.format(tungay);
+		LocalDate ngayDongBo = LocalDate.parse(startDate, dtf);
+		WeekFields weekFields = WeekFields.of(Locale.FRANCE);
+		DayOfWeek firstDayOfWeek = weekFields.getFirstDayOfWeek();
+		LocalDate ngayDauTuan = ngayDongBo.with(TemporalAdjusters.previousOrSame(firstDayOfWeek));
+		LocalDate ngayCuoiTuan = ngayDauTuan.plusDays(6);
+		Date denNgay = Date.from(ngayCuoiTuan.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		lcq.setDenngay(denNgay);
 		LichcoquanLocalServiceUtil.addLichcoquan(lcq);
 	}
 	
@@ -221,9 +239,9 @@ public class LichcoquanUtils {
 				Lichcoquan lcqmax = LichcoquanUtils.getLichCoquanNew();
 				List<String> arrDate = new ArrayList<String>(); 
 				if(Validator.isNotNull(lcqmax) && Validator.isNotNull(lcqmax.getTungay())){
-					arrDate = LichcoquanUtils.getlisttuesday(lcqmax.getTungay());
+					arrDate = LichcoquanUtils.getDates(lcqmax.getTungay());
 				}else {
-					arrDate = LichcoquanUtils.getlisttuesday(dateNow);
+					arrDate = LichcoquanUtils.getDates(dateNow);
 				}
 				String url = "https://egov.danang.gov.vn/widget/web/guest/ttqlvbdh/-/thongtinlichcoquanmanagement_WAR_qlvbdhappportlet";
 				

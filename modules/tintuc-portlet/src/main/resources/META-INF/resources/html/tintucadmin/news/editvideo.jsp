@@ -32,21 +32,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="<%=request.getContextPath()%>/css/jquery-ui.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/jquery-confirm.css" />
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-confirm.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.datetimepicker.css"/>
-<script src="<%=request.getContextPath() %>/js/jquery1.10.2.js"></script>
-<script src="<%=request.getContextPath() %>/js/jquery.datetimepicker.full.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap-tagsinput/bootstrap-tagsinput.css"/>
-<script src="<%=request.getContextPath() %>/js/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
 <meta charset="ISO-8859-1">
 <title>Chỉnh sửa tin video</title>
 </head>
+<style>
+	.dropbtn{margin: 0; padding: 0}
+	.dropdown-content{margin: 0; padding: 0;}
+	#languages {
+	    background-repeat: no-repeat;
+	    background-image: url("/o/vn.dnict.tintuc/images/flag/vi_VN.png");
+	    padding-right: 20px;
+	}
+	#languages option:nth-child(1) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/vi_VN.png) no-repeat right center;  
+	}
+	#languages option:nth-child(2) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/en_US.png) no-repeat right center;  
+	}
+	#languages option:nth-child(3) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/ja_JP.png) no-repeat right center;  
+	}
+	#languages option:nth-child(4) {
+	    background: url(/o/vn.dnict.tintuc/images/flag/ko_KR.png) no-repeat right center;  
+	}
+	a.cke_combo_button{
+	margin: 0px !important;
+	padding: 0px !important;
+	padding-top: 8px !important;
+	    margin-left: 10px !important;
+	}
+	.twocolumn1{
+		width: 50%;
+		display: block;
+		float: left;
+		padding-right: 5px;
+	}
+	.twocolumn2{
+		width: 50%;
+		display: block;
+		float: left;
+		padding-left: 5px;
+	}
+	#manhung {
+    	width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        resize: none; /* Ngăn người dùng thay đổi kích thước thủ công */
+        height: 38px;
+    }
+</style>
 <body>
 <%
 String tabDangtin = TinTucAdminField.value_tabdangtin;
@@ -256,9 +290,11 @@ if(objNewsVideo.getContent() != null){
 									 		//////////
 									 		String[] arStr = listDinhkem.get(i).getUrl().split("documents");
 									 		if(arStr[0].toString().length()<3){
-										 		urlDomain=themeDisplay.getPortalURL() + themeDisplay.getPathContext();
-									 		}else{
-									 			urlDomain="";
+										 		urlDomain=themeDisplay.getPortalURL() + themeDisplay.getPathContext() + listDinhkem.get(i).getUrl();
+									 		}else if (listDinhkem.get(i).getUrl().contains("https://")){
+									 			urlDomain = listDinhkem.get(i).getUrl();
+									 		} else {
+									 			urlDomain = request.getContextPath() + "/html/tintucadmin/news/xemvideo.html?id="+listDinhkem.get(i).getId();
 									 		}
 									 		
 									 		
@@ -275,8 +311,12 @@ if(objNewsVideo.getContent() != null){
 													<aui:input name="idfile" type="hidden" value="<%=listDinhkem.get(i).getId()%>"></aui:input>
 													<aui:input name="idnews" type="hidden" value="<%=objNewsVideo.getId()%>"></aui:input>
 													<aui:input name="flag" type="hidden" value="<%=request.getAttribute("flag")%>"></aui:input>
-													<span class="filedinhkem" style="color: blue"><%=listDinhkem.get(i).getTen() %></span> - <a id="btndelete" href="javascript:void(0)" att-url="<%=deleteFileVideoURL %>" class="fa fa-delete"><img style="width: 14px;" alt="" src="<%= request.getContextPath()%>/images/delete.ico"/></a>
+													<span class="filedinhkem" style="color: blue"><%=listDinhkem.get(i).getTen()%></span>
+													- <a id="btndelete" href="javascript:void(0)" att-url="<%=deleteFileVideoURL %>" class="fa fa-delete"><img style="width: 14px;" alt="" src="<%= request.getContextPath()%>/images/delete.ico"/></a>
 													<aui-spinner size="small"></aui-spinner>
+													<!-- <a class="filedinhkem" href="<%= urlDomain%> " target="_blank"><%=listDinhkem.get(i).getTen()%></a>
+													- <a id="btndelete" href="javascript:void(0)" att-url="<%=deleteFileVideoURL %>" class="fa fa-delete"><img style="width: 14px;" alt="" src="<%= request.getContextPath()%>/images/delete.ico"/></a>
+													<aui-spinner size="small"></aui-spinner> -->
 													</div>							
 												</td>
 											</tr>
@@ -511,52 +551,6 @@ if(objNewsVideo.getContent() != null){
 </div>
 </nav>	
 </body>
-<style>
-	.dropbtn{margin: 0; padding: 0}
-	.dropdown-content{margin: 0; padding: 0;}
-#languages {
-    background-repeat: no-repeat;
-    background-image: url("/o/vn.dnict.tintuc/images/flag/vi_VN.png");
-    padding-right: 20px;
-}
-#languages option:nth-child(1) {
-    background: url(/o/vn.dnict.tintuc/images/flag/vi_VN.png) no-repeat right center;  
-}
-#languages option:nth-child(2) {
-    background: url(/o/vn.dnict.tintuc/images/flag/en_US.png) no-repeat right center;  
-}
-#languages option:nth-child(3) {
-    background: url(/o/vn.dnict.tintuc/images/flag/ja_JP.png) no-repeat right center;  
-}
-#languages option:nth-child(4) {
-    background: url(/o/vn.dnict.tintuc/images/flag/ko_KR.png) no-repeat right center;  
-}
-a.cke_combo_button{
-margin: 0px !important;
-padding: 0px !important;
-padding-top: 8px !important;
-    margin-left: 10px !important;
-}
-.twocolumn1{
-	width: 50%;
-	display: block;
-	float: left;
-	padding-right: 5px;
-}
-.twocolumn2{
-	width: 50%;
-	display: block;
-	float: left;
-	padding-left: 5px;
-}
-#manhung{
-	width:100%; 
-	box-sizing: border-box;
-	overflow: hidden;
-	resize: none;
-	height:38px;
-}
-</style>
 <script>
 $(document).ready(function(){
 	 $('.delete-buton').on('click', function () {
@@ -780,26 +774,27 @@ $('#btndelete').click(function(){
 	});
 });
 </aui:script>
-<aui:script>
-	function autoResizeTextarea(id){
+<script>
+	//Tự động auto size textarea
+	function autoResizeTextarea(id) {
 		var $textarea = $('#' + id);
 		if ($textarea.length) {
-			$textarea.on('input', function(){
+			$textarea.on('input', function () {
 				$(this).css('height', 'auto');
 				$(this).css('height', this.scrollHeight + 'px');
 			});
 		}
 	}
-	function toggleInput(option) {	    
+	function toggleInput(option) {
 		var formInput = document.getElementById('formInput');
 		formInput.innerHTML = '';
 	    // Thay đổi nội dung dựa trên lựa chọn
         if (option === 'link') {
             formInput.innerHTML = `
-                <label>Nhập mã nhúng hoặc đường dẫn</label>
-                <textarea rows="1" name="<portlet:namespace/>linkVideo" id="manhung" class="form-control"></textarea>
+            	<label>Nhập mã nhúng hoặc đường dẫn</label>
+            	<textarea name="<portlet:namespace/>linkVideo" rows="1" id="manhung" class="form-control"></textarea>
             `;
-            setTimeout(function(){
+            setTimeout(function() {
             	autoResizeTextarea('manhung');
             }, 0);
         } else if (option === 'upload') {
@@ -809,7 +804,7 @@ $('#btndelete').click(function(){
             `;
         }
 	}
-</aui:script>
+</script>
 <script>
 	function updateAndPreview(event) {
 	    event.preventDefault(); // Ngăn form submit ngay lập tức

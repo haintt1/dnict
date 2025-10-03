@@ -44,6 +44,7 @@
 		     		<option value="danhsachchuyendong_psc" <%=ungdung.equals("danhsachchuyendong_psc")?"selected":""%>>Danh sách tin tức chuyển động (ngày tháng)</option>
 		     		<option value="danhsachtintucchuyendong_psc" <%=ungdung.equals("danhsachtintucchuyendong_psc")?"selected":""%>>Danh sách tin tức hình ảnh chuyển động</option>
 		     		<option value="viewsachmoi" <%=ungdung.equals("viewsachmoi")?"selected":""%>>Danh sách sách mới</option>
+		     		<option value="hienthilatsach" <%=ungdung.equals("hienthilatsach")?"selected":""%>>Hiển thị lật sách</option>
 		     		<option value="khungtimkiem" <%=ungdung.equals("khungtimkiem")?"selected":""%>>Khung tìm kiếm</option>
 		     		<option value="ketquatimkiem" <%=ungdung.equals("ketquatimkiem")?"selected":""%>>Kết quả tìm kiếm</option>
 		     	</select>
@@ -175,9 +176,9 @@
 			<th class="keycolor">Kiểu hiển thị định dạng PDF trong chi tiết tin tức</th>
 			<td> 
 		     	<select id="kieuhienthipdf" name='<portlet:namespace/>kieuhienthipdf'>
- 	     			<option value="" <%=kieuhienthipdf.equals("")?"selected":""%>>--Kiểu hiển thị PDF--</option>
- 	     			<option value="default" <%=kieuhienthipdf.equals("default")?"selected":""%>>Kiểu mặc định</option>
- 	     			<option value="lattrang" <%=kieuhienthipdf.equals("lattrang")?"selected":""%>>Kiểu lật trang</option>
+ 	     			<option value="">--Kiểu hiển thị--</option>
+ 	     			<option value="0" <%=kieuhienthipdf.equals("0")?"selected":""%>>Kiểu mặc định</option>
+ 	     			<option value="1" <%=kieuhienthipdf.equals("1")?"selected":""%>>Kiểu lật trang</option>
 	 	     	</select>
 			</td>
 			<th class="keycolor">Hiển thị chức năng Bình luận</th>

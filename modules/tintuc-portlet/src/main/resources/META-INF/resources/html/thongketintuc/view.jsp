@@ -16,7 +16,6 @@ if(Validator.isNotNull(td)){
 			+ ThongKeTinTucField.value_tabtktheloai + ","
 			+ ThongKeTinTucField.value_tabtkchuyenmuc + ","
 			+ ThongKeTinTucField.value_tabtknguontin + ","
-			+ ThongKeTinTucField.value_tabkieutin + ","
 			+ ThongKeTinTucField.value_tabtknguoidang;
 			
 	tabNames = ThongKeTinTucField.tabtkbaiviet + ","
@@ -24,7 +23,6 @@ if(Validator.isNotNull(td)){
 			+ ThongKeTinTucField.tabtktheloai + ","
 			+ ThongKeTinTucField.tabtkchuyenmuc + ","
 			+ ThongKeTinTucField.tabtknguontin + ","
-			+ ThongKeTinTucField.tabtkkieutin + ","
 			+ ThongKeTinTucField.tabtknguoidang;
 }
 String[] arrTabs = null;
@@ -58,8 +56,6 @@ if(tabValues.length()>0 && Validator.isNotNull(arrTabs)){
 	<liferay-util:include page="/html/thongketintuc/chuyenmuc/list.jsp" servletContext="<%=this.getServletContext()%>"/>
 	<%}else if(currentTab.equals(ThongKeTinTucField.value_tabtknguontin)){%>
 	<liferay-util:include page="/html/thongketintuc/tacgia/list.jsp" servletContext="<%=this.getServletContext()%>"/>
-	<%}else if(currentTab.equals(ThongKeTinTucField.value_tabkieutin)){%>
-	<liferay-util:include page="/html/thongketintuc/kieutin/list.jsp" servletContext="<%=this.getServletContext()%>"/>
 	<%}else if(currentTab.equals(ThongKeTinTucField.value_tabtknguoidang)){%>
 	<liferay-util:include page="/html/thongketintuc/nguoidang/list.jsp" servletContext="<%=this.getServletContext()%>"/>
 <%}}%>

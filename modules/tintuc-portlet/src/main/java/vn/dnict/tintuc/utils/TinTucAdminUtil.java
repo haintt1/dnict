@@ -19,7 +19,6 @@ import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.dao.orm.Criterion;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.OrderFactoryUtil;
-import com.liferay.portal.kernel.dao.orm.Projection;
 import com.liferay.portal.kernel.dao.orm.PropertyFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
@@ -334,7 +333,7 @@ public class TinTucAdminUtil{
 		}
 		//System.out.println("Tin tuc 2:" + title + category + status);
 		
-		dynamicQuery.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		dynamicQuery.addOrder(OrderFactoryUtil.desc("createdtime"));
 		
 		//dynamicQuery.addOrder(OrderFactoryUtil.asc("orders"));
 		List<News_Article> results = News_ArticleLocalServiceUtil.dynamicQuery(dynamicQuery);
@@ -359,19 +358,20 @@ public class TinTucAdminUtil{
 		if(!checklang.equals("")){
 			query.add(PropertyFactoryUtil.forName("language").eq(checklang));
 		}
-		/*
+		
 		Date date = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		String ngayhientai = df.format(date)+":00";
 		SimpleDateFormat dfGMT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		dfGMT.setTimeZone(TimeZone.getTimeZone("GMT-7"));
 		Date ngayhientaiGMT = dfGMT.parse(ngayhientai);
-		query.add(RestrictionsFactoryUtil.le("ngayxuatban", ngayhientaiGMT)); // publishDate <= hôm nay
-		query.add(RestrictionsFactoryUtil.ge("ngayketthuc", ngayhientaiGMT));
-		*/
+		
+//		query.add(RestrictionsFactoryUtil.le("ngayxuatban", ngayhientaiGMT)); // publishDate <= hôm nay
+//		query.add(RestrictionsFactoryUtil.ge("ngayketthuc", ngayhientaiGMT));
+		
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -401,7 +401,7 @@ public class TinTucAdminUtil{
 		}
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -427,7 +427,7 @@ public class TinTucAdminUtil{
 		}
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -452,14 +452,14 @@ public class TinTucAdminUtil{
 		if(Validator.isNotNull(date)) {
 			cal.setTime(date);
 			cal.add(Calendar.DATE, -60);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(cal.getTime()));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(cal.getTime()));
 		}
 		if(Validator.isNotNull(date)) {
 			cal.setTime(date);
 			cal.add(Calendar.DATE, +60);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(cal.getTime()));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(cal.getTime()));
 		}
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(sotinlienquan >0) {
 			query.setLimit(0, sotinlienquan);
 		}
@@ -591,7 +591,7 @@ public class TinTucAdminUtil{
 		}
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -642,7 +642,7 @@ public class TinTucAdminUtil{
 		}
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -750,7 +750,7 @@ public class TinTucAdminUtil{
 	public static List<News_Log> getNewLogByArticleId (long articleid) throws Exception {
 		DynamicQuery query = News_LogLocalServiceUtil.dynamicQuery()
 				.add(PropertyFactoryUtil.forName("articleid").eq(articleid))
-				.addOrder(OrderFactoryUtil.asc("id"));
+				.addOrder(OrderFactoryUtil.asc("ngayxuly"));
 		List<News_Log> list = News_LogLocalServiceUtil.dynamicQuery(query);
 		return list;
 	}
@@ -799,12 +799,12 @@ public class TinTucAdminUtil{
 		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
 			ngaytao_tungay += " 00:00:00";
 			//System.out.println(ngaytao_tungay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(ngaytao_tungay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
 		}
 		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
 			ngaytao_denngay += " 23:59:59";
 			//System.out.println(ngaytao_denngay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(ngaytao_denngay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
 		}
 		if(Validator.isNotNull(ngayhieuchinh_tungay) && !ngayhieuchinh_tungay.equals("")){
 			ngayhieuchinh_tungay += " 00:00:00";
@@ -817,7 +817,7 @@ public class TinTucAdminUtil{
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		int[] listloaitintuc = {0,1,2,3};
 		query.add(PropertyFactoryUtil.forName("loaitintuc").in(listloaitintuc));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -873,12 +873,12 @@ public class TinTucAdminUtil{
 		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
 			ngaytao_tungay += " 00:00:00";
 			//System.out.println(ngaytao_tungay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(ngaytao_tungay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
 		}
 		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
 			ngaytao_denngay += " 23:59:59";
 			//System.out.println(ngaytao_denngay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(ngaytao_denngay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
 		}
 		if(Validator.isNotNull(ngayhieuchinh_tungay) && !ngayhieuchinh_tungay.equals("")){
 			ngayhieuchinh_tungay += " 00:00:00";
@@ -891,7 +891,7 @@ public class TinTucAdminUtil{
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(1));
 		int[] listloaitintuc = {0,1,2,3};
 		query.add(PropertyFactoryUtil.forName("loaitintuc").in(listloaitintuc));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -930,15 +930,15 @@ public class TinTucAdminUtil{
 		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
 			ngaytao_tungay += " 00:00:00";
 			//System.out.println(ngaytao_tungay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(ngaytao_tungay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
 		}
 		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
 			ngaytao_denngay += " 23:59:59";
 			//System.out.println(ngaytao_denngay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(ngaytao_denngay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
 		}
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -957,11 +957,11 @@ public class TinTucAdminUtil{
 				
 		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
 			ngaytao_tungay += " 00:00:00";
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(ngaytao_tungay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
 		}
 		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
 			ngaytao_denngay += " 23:59:59";
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(ngaytao_denngay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
 		}
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
@@ -1003,10 +1003,10 @@ public class TinTucAdminUtil{
 		
 		if(Validator.isNotNull(ngaytao) && !ngaytao.equals("")){			
 			//System.out.println(ngaytao_tungay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").eq(ngaytao));
+			query.add(PropertyFactoryUtil.forName("createdtime").eq(ngaytao));
 		}		
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -1059,12 +1059,12 @@ public class TinTucAdminUtil{
 		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
 			ngaytao_tungay += " 00:00:00";
 			//System.out.println(ngaytao_tungay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(ngaytao_tungay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
 		}
 		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
 			ngaytao_denngay += " 23:59:59";
 			//System.out.println(ngaytao_denngay);
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(ngaytao_denngay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
 		}
 		if(Validator.isNotNull(ngayhieuchinh_tungay) && !ngayhieuchinh_tungay.equals("")){
 			ngayhieuchinh_tungay += " 00:00:00";
@@ -1078,7 +1078,7 @@ public class TinTucAdminUtil{
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		int[] listloaitintuc = {4,5,6,7};
 		query.add(PropertyFactoryUtil.forName("loaitintuc").in(listloaitintuc));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(end!=0){
 			query.setLimit(start, end);
 		}
@@ -1125,10 +1125,10 @@ public class TinTucAdminUtil{
 			query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(usdangbaicheck)));
 		}
 		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(ngaytao_tungay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
 		}
 		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(ngaytao_denngay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
 		}
 		if(Validator.isNotNull(ngayhieuchinh_tungay) && !ngayhieuchinh_tungay.equals("")){
 			query.add(PropertyFactoryUtil.forName("modifiedtime").ge(df.parse(ngayhieuchinh_tungay)));
@@ -1139,34 +1139,6 @@ public class TinTucAdminUtil{
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		long size = News_ArticleLocalServiceUtil.dynamicQueryCount(query);
 		return size;
-	}
-	
-public static List<News_Article> listTintucKieuTin(String ngaytao_tungay, String ngaytao_denngay, String status, int loaitintuc) throws Exception{
-		
-		DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery();		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");	
-				
-		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
-			ngaytao_tungay += " 00:00:00";
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(ngaytao_tungay)));
-		}
-		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
-			ngaytao_denngay += " 23:59:59";
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(ngaytao_denngay)));
-		}
-		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
-		if(!status.equals("") && Long.valueOf(status) >= 0){
-			query.add(PropertyFactoryUtil.forName("status").eq(Integer.valueOf(status)));
-		}
-		if(Integer.valueOf(loaitintuc) >= 0){
-			query.add(PropertyFactoryUtil.forName("loaitintuc").eq(Integer.valueOf(loaitintuc)));
-		}
-				
-		List<News_Article> listArticle = News_ArticleLocalServiceUtil.dynamicQuery(query);
-		if(Validator.isNull(listArticle) || listArticle.size() <= 0){
-			listArticle = new ArrayList<News_Article>();
-		}
-		return listArticle;
 	}
 	
 	public static List<News_Type> listTheLoai(String theloai, int status, int start, int end) {
@@ -1348,10 +1320,10 @@ public static List<News_Article> listTintucKieuTin(String ngaytao_tungay, String
 			query.add(PropertyFactoryUtil.forName("status").eq(3));
 		}
 		if(!dateBegin.equals("")){
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(dateBegin)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(dateBegin)));
 		}
 		if(!dateEnd.equals("")){
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(dateEnd)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(dateEnd)));
 		}
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		query.addOrder(OrderFactoryUtil.desc("id"));
@@ -1370,10 +1342,10 @@ public static List<News_Article> listTintucKieuTin(String ngaytao_tungay, String
 			query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(userdangbai)));
 		}
 		if(Validator.isNotNull(tungay) && !tungay.equals("")){
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").ge(df.parse(tungay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(tungay)));
 		}
 		if(Validator.isNotNull(denngay) && !denngay.equals("")){
-			query.add(PropertyFactoryUtil.forName("ngayxuatban").le(df.parse(denngay)));
+			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(denngay)));
 		}
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		long size = News_ArticleLocalServiceUtil.dynamicQueryCount(query);
@@ -1383,7 +1355,7 @@ public static List<News_Article> listTintucKieuTin(String ngaytao_tungay, String
 	//	lọc các tin tức isnoibat
 	public static List<News_Article> listTintucisNoibat(String lang, int limit) throws Exception{
 		DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery();
-		/*
+		
 		Date date = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		String ngayhientai = df.format(date)+":00";
@@ -1391,14 +1363,14 @@ public static List<News_Article> listTintucKieuTin(String ngaytao_tungay, String
 		dfGMT.setTimeZone(TimeZone.getTimeZone("GMT-7"));
 		Date ngayhientaiGMT = dfGMT.parse(ngayhientai);
 		
-		query.add(RestrictionsFactoryUtil.le("ngayxuatban", ngayhientaiGMT)); // publishDate <= hôm nay
-		query.add(RestrictionsFactoryUtil.ge("ngayketthuc", ngayhientaiGMT));
-		*/
+//		query.add(RestrictionsFactoryUtil.le("ngayxuatban", ngayhientaiGMT)); // publishDate <= hôm nay
+//		query.add(RestrictionsFactoryUtil.ge("ngayketthuc", ngayhientaiGMT));
+		
 		query.add(PropertyFactoryUtil.forName("isnoibat").eq(Long.valueOf(1)));
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
 		query.add(PropertyFactoryUtil.forName("language").eq(lang));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		if(limit > 0){
 			query.setLimit(0, limit);
 		}
@@ -1416,7 +1388,7 @@ public static List<News_Article> listTintucKieuTin(String ngaytao_tungay, String
 					.add(PropertyFactoryUtil.forName("newcategoryId").eq(Long.valueOf(chuyenmuc)))
 					.setProjection(PropertyFactoryUtil.forName("newarticleId"))));
 		}
-		/*
+		
 		Date date = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		String ngayhientai = df.format(date)+":00";
@@ -1424,12 +1396,12 @@ public static List<News_Article> listTintucKieuTin(String ngaytao_tungay, String
 		dfGMT.setTimeZone(TimeZone.getTimeZone("GMT-7"));
 		Date ngayhientaiGMT = dfGMT.parse(ngayhientai);
 		
-		query.add(RestrictionsFactoryUtil.le("ngayxuatban", ngayhientaiGMT)); // publishDate <= hôm nay
-		query.add(RestrictionsFactoryUtil.ge("ngayketthuc", ngayhientaiGMT));
-		*/
+//		query.add(RestrictionsFactoryUtil.le("ngayxuatban", ngayhientaiGMT)); // publishDate <= hôm nay
+//		query.add(RestrictionsFactoryUtil.ge("ngayketthuc", ngayhientaiGMT));
+		
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		query.add(PropertyFactoryUtil.forName("status").eq(3));
-		query.addOrder(OrderFactoryUtil.desc("ngayxuatban"));
+		query.addOrder(OrderFactoryUtil.desc("createdtime"));
 		query.addOrder(OrderFactoryUtil.desc("luotxem"));
 		if(limit > 0){
 			query.setLimit(0, limit);

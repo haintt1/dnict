@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 16
-Created-By: 16.0.2 (Oracle Corporation)
-Bnd-LastModified: 1747036604637
+Build-Jdk-Spec: 21
+Created-By: 21.0.6 (Eclipse Adoptium)
+Bnd-LastModified: 1759462806979
 Bundle-ManifestVersion: 2
 Bundle-Name: tintuc-portlet
 Bundle-SymbolicName: vn.dnict.tintuc
@@ -25,20 +25,21 @@ Import-Package: com.liferay.adaptive.media.exception,com.liferay.applica
  ,com.liferay.portal.kernel.poller,com.liferay.portal.kernel.pop,com.lif
  eray.portal.kernel.portlet,com.liferay.portal.kernel.portlet.bridges.mv
  c,com.liferay.portal.kernel.repository.model,com.liferay.portal.kernel.
- scheduler,com.liferay.portal.kernel.search,com.liferay.portal.kernel.se
- curity.auth,com.liferay.portal.kernel.security.permission,com.liferay.p
- ortal.kernel.security.permission.propagator,com.liferay.portal.kernel.s
- ervice,com.liferay.portal.kernel.servlet,com.liferay.portal.kernel.temp
- late,com.liferay.portal.kernel.theme,com.liferay.portal.kernel.trash,co
- m.liferay.portal.kernel.upload,com.liferay.portal.kernel.util,com.lifer
- ay.portal.kernel.webdav,com.liferay.portal.kernel.workflow,com.liferay.
- portal.kernel.xml,com.liferay.portal.kernel.xmlrpc,com.liferay.rss.mode
- l,com.liferay.social.kernel.model,com.liferay.taglib.aui,javax.portlet,
- javax.portlet.annotations,javax.servlet,javax.servlet.http,javax.swing.
- text,javax.xml.parsers,javax.xml.transform,javax.xml.transform.dom,java
- x.xml.transform.stream,org.jsoup,org.jsoup.nodes,org.jsoup.parser,org.j
- soup.safety,org.jsoup.select,org.w3c.dom,vn.dnict.tintuc.model;version=
- "[1.0,2)",vn.dnict.tintuc.service;version="[1.0,2)"
+ resource.bundle,com.liferay.portal.kernel.scheduler,com.liferay.portal.
+ kernel.search,com.liferay.portal.kernel.security.auth,com.liferay.porta
+ l.kernel.security.permission,com.liferay.portal.kernel.security.permiss
+ ion.propagator,com.liferay.portal.kernel.service,com.liferay.portal.ker
+ nel.servlet,com.liferay.portal.kernel.template,com.liferay.portal.kerne
+ l.theme,com.liferay.portal.kernel.trash,com.liferay.portal.kernel.uploa
+ d,com.liferay.portal.kernel.util,com.liferay.portal.kernel.webdav,com.l
+ iferay.portal.kernel.workflow,com.liferay.portal.kernel.xml,com.liferay
+ .portal.kernel.xmlrpc,com.liferay.rss.model,com.liferay.social.kernel.m
+ odel,com.liferay.taglib.aui,javax.portlet,javax.portlet.annotations,jav
+ ax.servlet,javax.servlet.http,javax.swing.text,javax.xml.parsers,javax.
+ xml.transform,javax.xml.transform.dom,javax.xml.transform.stream,org.js
+ oup,org.jsoup.nodes,org.jsoup.parser,org.jsoup.safety,org.jsoup.select,
+ org.w3c.dom,vn.dnict.tintuc.model;version="[1.0,2)",vn.dnict.tintuc.ser
+ vice;version="[1.0,2)"
 Private-Package: content,jxl,jxl.biff,jxl.biff.drawing,jxl.biff.formula,
  jxl.common,jxl.common.log,jxl.demo,jxl.format,jxl.read.biff,jxl.write,j
  xl.write.biff,vn.dnict.tintuc.portlet,vn.dnict.tintuc.utils
@@ -52,17 +53,16 @@ Provide-Capability: osgi.service;objectClass:List<String>="com.liferay.a
 Require-Capability: osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(
  uri=http://java.sun.com/portlet_2_0))",osgi.extender;filter:="(&(osgi.e
  xtender=jsp.taglib)(uri=http://liferay.com/tld/aui))",osgi.extender;fil
- ter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/captcha))
- ",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://lifera
- y.com/tld/editor))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)
- (uri=http://liferay.com/tld/portlet))",osgi.extender;filter:="(&(osgi.e
- xtender=jsp.taglib)(uri=http://liferay.com/tld/theme))",osgi.extender;f
- ilter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/ui))",o
- sgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.c
- om/tld/util))",osgi.extender;filter:="(&(osgi.extender=osgi.component)(
- version>=1.3.0)(!(version>=2.0.0)))",osgi.service;filter:="(objectClass
- =com.liferay.portal.kernel.model.Portlet)";effective:=active,osgi.ee;fi
- lter:="(&(osgi.ee=JavaSE)(version=1.8))"
+ ter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/editor))"
+ ,osgi.extender;filter:="(&(osgi.extender=jsp.taglib)(uri=http://liferay
+ .com/tld/portlet))",osgi.extender;filter:="(&(osgi.extender=jsp.taglib)
+ (uri=http://liferay.com/tld/theme))",osgi.extender;filter:="(&(osgi.ext
+ ender=jsp.taglib)(uri=http://liferay.com/tld/ui))",osgi.extender;filter
+ :="(&(osgi.extender=jsp.taglib)(uri=http://liferay.com/tld/util))",osgi
+ .extender;filter:="(&(osgi.extender=osgi.component)(version>=1.3.0)(!(v
+ ersion>=2.0.0)))",osgi.service;filter:="(objectClass=com.liferay.portal
+ .kernel.model.Portlet)";effective:=active,osgi.ee;filter:="(&(osgi.ee=J
+ avaSE)(version=1.8))"
 Service-Component: OSGI-INF/vn.dnict.tintuc.portlet.HienThiTintucConfigu
  rationPortlet.xml,OSGI-INF/vn.dnict.tintuc.portlet.HienThiTintucPortlet
  .xml,OSGI-INF/vn.dnict.tintuc.portlet.PhanQuyenTinTucPanel.xml,OSGI-INF

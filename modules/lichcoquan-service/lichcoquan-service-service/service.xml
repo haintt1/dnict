@@ -4,7 +4,7 @@
 <service-builder dependency-injector="ds" package-path="lichcoquan.service">
 	<author>BinhNT</author>
 	<namespace>BinhNT</namespace>
-	<entity local-service="true" name="CmsLichCoQuan" remote-service="true" table="cms_lichcoquan">
+	<entity local-service="true" name="Lichcoquan" remote-service="true" table="cms_lichcoquan">
 		<column name="lichCongtacId" type="long" primary="true" />
 		<column name="companyId" type="long" />
 		<column name="userId" type="long" />

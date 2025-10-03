@@ -76,6 +76,9 @@
 		<order by="desc">
 			<order-column name="id" order-by="desc"/>
 		</order>
+		<finder return-type="Collection" name="newarticleId">
+			<finder-column name="newarticleId"/>
+		</finder>
 	</entity>
 	<entity name="News_AttachFile" local-service="true" remote-service="false">
 		<column name="id" type="long" primary="true" />
@@ -89,6 +92,10 @@
 		<column name="ghichu" type="String" />
 		<column name="daxoa" type="int" />
 		<column name="trangthai" type="int"/>
+		
+		<finder return-type="Collection" name="ObjectId">
+			<finder-column name="ObjectId"/>
+		</finder>
 	</entity>
 	<entity name="News_role" local-service="true" remote-service="false">
 		<column name="companyId" type="long" />

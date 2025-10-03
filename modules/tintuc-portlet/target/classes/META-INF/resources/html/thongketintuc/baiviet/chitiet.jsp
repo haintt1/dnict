@@ -196,13 +196,12 @@ searchContainer.setResults(listArticle);
 	<table class="table table-bordered table-list" id="resultsTable">
 		<tr style="text-align: center;">
 			<th class="key" style="width:5%;text-align: center;">#</th>
-			<th class="key" style="text-align: center; width: 45%">Bài viết</th>
+			<th class="key" style="text-align: center; width: 50%">Bài viết</th>
 			<th class="key" style="text-align: center; width: 10%">Thể loại</th>
-			<th class="key" style="text-align: center; width: 5%">Kiểu tin</th>
 			<th class="key" style="text-align: center; width: 10%;">Tác giả</th>
-			<th class="key" style="text-align: center; width:5%;">Ngày đăng tin</th>			
-			<th class="key" style="text-align: center; width: 10%;">Nguồn tin</th>
+			<th class="key" style="text-align: center; width:5%;">Ngày đăng tin</th>
 			<th class="key" style="text-align: center; width: 10%;">Trạng thái</th>
+			<th class="key" style="text-align: center; width: 10%;">Nguồn tin</th>
 		</tr>
 		<%if(listArticle.size() > 0){%>
 		<tr>
@@ -226,17 +225,6 @@ searchContainer.setResults(listArticle);
 			}
 			%>
 			<td style="text-align: center;"><%=theloaitin%></td>
-			<%
-				String kieutin ="";
-				if(listArticle.get(j).getLoaitintuc() == 0){
-					kieutin = "Tin ảnh";
-				}else if(listArticle.get(j).getLoaitintuc() == 1){
-					kieutin = "Tin văn bản";
-				}else if(listArticle.get(j).getLoaitintuc() == 2){
-					kieutin = "Tin video";
-				}
-			%>
-			<td style="text-align: center;"><%=kieutin%></td>
 			<td style="text-align: center;"><%=listArticle.get(j).getCongtacvien()%></td>
 			<td style="text-align: center;">
 			<% 
@@ -245,16 +233,6 @@ searchContainer.setResults(listArticle);
 				ngaytao = df2.format(listArticle.get(j).getCreatedtime());
 			}%>
 			<%=ngaytao%></td>
-			<%
-				News_NguonTin objNguonTin = News_NguonTinLocalServiceUtil.fetchNews_NguonTin(listArticle.get(j).getNguontin());
-				String nguontin = "";
-				if(Validator.isNull(objNguonTin)){
-					nguontin = "";
-				}else {
-					nguontin = objNguonTin.getName();
-				}
-			%>			
-			<td style="text-align: center;"><%=nguontin%></td>
 			<td>
 				<%
 					String trangthai ="";
@@ -269,7 +247,17 @@ searchContainer.setResults(listArticle);
 					}
 				%>
 				<%=trangthai%>
-			</td>			
+			</td>
+			<%
+				News_NguonTin objNguonTin = News_NguonTinLocalServiceUtil.fetchNews_NguonTin(listArticle.get(j).getNguontin());
+				String nguontin = "";
+				if(Validator.isNull(objNguonTin)){
+					nguontin = "";
+				}else {
+					nguontin = objNguonTin.getName();
+				}
+			%>			
+			<td style="text-align: center;"><%=nguontin%></td>
 		</tr>
 		<%}%>
 		<div>

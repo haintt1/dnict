@@ -201,7 +201,7 @@ public class LichcoquanPersistenceTest {
 
 	protected OrderByComparator<Lichcoquan> getOrderByComparator() {
 		return OrderByComparatorFactoryUtil.create(
-			"lcq_lichcoquan", "lichCongtacId", true, "companyId", true,
+			"cms_lichcoquan", "lichCongtacId", true, "companyId", true,
 			"userId", true, "content", true, "createDate", true, "tungay", true,
 			"denngay", true, "trangthai", true, "banhanh", true, "tuan", true,
 			"nam", true);
