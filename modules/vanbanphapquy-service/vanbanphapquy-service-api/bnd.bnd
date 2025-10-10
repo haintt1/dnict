@@ -1,0 +1,10 @@
+Bundle-Name: vanbanphapquy-service-api
+Bundle-SymbolicName: vn.dnict.vanbanphapquy.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	vn.dnict.vanbanphapquy.exception,\
+	vn.dnict.vanbanphapquy.model,\
+	vn.dnict.vanbanphapquy.service,\
+	vn.dnict.vanbanphapquy.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../vanbanphapquy-service-service/service.xml
