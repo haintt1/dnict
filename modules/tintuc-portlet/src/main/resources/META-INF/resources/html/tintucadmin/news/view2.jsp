@@ -56,8 +56,51 @@ width: 15%;
 <%
 String tabDangtin = TinTucAdminField.value_tabdangtin;
 DateFormat dfs = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+String usdangbaicheck  = "";
+String userdangbai    = ParamUtil.getString(request, "userdangbai","-1");
+String ngaytao_tungay = "";
+String ngaytao_denngay = "";
+String ngayhieuchinh_tungay = "";
+String ngayhieuchinh_denngay = ""; 
+String search_check   = ParamUtil.getString(request, "search_check");
+
+if(Validator.isNotNull(ParamUtil.getString(request, "ngaytao_tungay"))){
+	ngaytao_tungay = HtmlUtil.escape(ParamUtil.getString(request, "ngaytao_tungay"));
+}
+if(Validator.isNotNull(ParamUtil.getString(request, "ngaytao_denngay"))){
+	ngaytao_denngay = HtmlUtil.escape(ParamUtil.getString(request, "ngaytao_denngay"));
+}
+if(Validator.isNotNull(ParamUtil.getString(request, "ngayhieuchinh_tungay"))){
+	ngayhieuchinh_tungay = HtmlUtil.escape(ParamUtil.getString(request, "ngayhieuchinh_tungay"));
+}
+if(Validator.isNotNull(ParamUtil.getString(request, "ngayhieuchinh_denngay"))){
+	ngayhieuchinh_denngay = HtmlUtil.escape(ParamUtil.getString(request, "ngayhieuchinh_denngay"));
+}
+String keyword = HtmlUtil.escape(ParamUtil.getString(request,"title",""));
+
+String tenbai    = HtmlUtil.escape(ParamUtil.getString(request, "tenbai"));
+String dinhdanh  = HtmlUtil.escape(ParamUtil.getString(request, "dinhdanh"));
+String chuyenmuc = ParamUtil.getString(request, "chuyenmuc"); 
+String theloaibaiviet = ParamUtil.getString(request, "theloaibaiviet", "-1");
+String tacgia = ParamUtil.getString(request, "tacgia", "0");
+String trangthaitinbai = ParamUtil.getString(request, "trangthaitinbai"); 
+String status = ParamUtil.getString(request, "trangthai");
 
 PortletURL iteratorUrl = renderResponse.createRenderURL();
+iteratorUrl.setParameter("jspPage", "/html/tintucadmin/news/view.jsp");
+iteratorUrl.setParameter("tabs", "Đăng tin");
+iteratorUrl.setParameter("trangthaitinbai", trangthaitinbai);
+iteratorUrl.setParameter("theloaibaiviet", theloaibaiviet);
+iteratorUrl.setParameter("tacgia", tacgia);
+iteratorUrl.setParameter("search_check", search_check);
+iteratorUrl.setParameter("tenbai",tenbai);
+iteratorUrl.setParameter("ngaytao_tungay",ngaytao_tungay);
+iteratorUrl.setParameter("ngaytao_denngay",ngaytao_denngay);
+iteratorUrl.setParameter("ngayhieuchinh_tungay",ngayhieuchinh_tungay);
+iteratorUrl.setParameter("ngayhieuchinh_denngay",ngayhieuchinh_denngay);
+iteratorUrl.setParameter("dinhdanh",dinhdanh);
+iteratorUrl.setParameter("chuyenmuc",chuyenmuc);
+iteratorUrl.setParameter("userdangbai", userdangbai);
 
 int cur = ParamUtil.getInteger(request,"cur");
 int delta = ParamUtil.getInteger(request, "delta",10);
@@ -78,13 +121,13 @@ int start = searchContainer.getStart();
 int end = searchContainer.getEnd();
 
 
-List<News_Article> listNews_Articles = TinTucAdminUtil.listTintucAdmin(start, end);
+List<News_Article> listNews_Articles = TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, start, end);
 
 for(int k = 0; k < listNews_Articles.size(); k++){
 	System.out.println(listNews_Articles.get(k).getId());
 }
 
-total = (int) TinTucAdminUtil.listTintucAdmin(0, 0).size();
+total = (int) TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, 0, 0).size();
 
 searchContainer.setTotal(total);
 searchContainer.setResults(listNews_Articles);
@@ -183,7 +226,159 @@ News_role role = PhanQuyenAdminUtil.getUserById(user.getUserId());
 	</tr>
 </table>
 </div>
-
+<div>
+	<aui:form action="<%=searchBaivietURL.toString() %>">
+	<table class="table table-bordered" style="margin-top: 10px;">
+		<tr>
+			<th class="ten">Tên bài viết</th>
+			<td><input name="<portlet:namespace/>tenbai" class="form-control" value="<%=tenbai%>" type="text"></input></td>
+ 			<th class="ten">Định danh</th>	
+			<td><input name="<portlet:namespace/>dinhdanh" class="form-control" value="<%=dinhdanh%>" type="text"></input></td>
+		</tr>
+		<tr>
+			<th class="ten">Danh mục</th>	
+			<td>
+				<select class="form-control" name='<portlet:namespace/>chuyenmuc'>
+					<option value="0">--Chọn chuyên mục--</option>
+					<%
+						List<News_Categories> listCategory = TinTucAdminUtil.searchNewCategory("", 0,checkLangNews,null, 0, 0);
+						if(chuyenmuc.equals("")){
+							chuyenmuc = "0";
+						}
+						
+						if(listCategory.size() > 0){
+							for(int i=0;i<listCategory.size();i++){
+								String selected ="";
+								if(listCategory.get(i).getId() == Long.valueOf(chuyenmuc)){
+									selected = "selected";
+								} 
+					%>
+						<option value="<%=listCategory.get(i).getId()%>" <%=selected %>><%=listCategory.get(i).getName()%></option>
+					<%}}%>
+				</select>
+			</td>
+			<th>Thể loại</th>	
+			<td>
+				<select class="form-control" name='<portlet:namespace/>theloaibaiviet'>
+	     		<option value="-1">--Chọn thể loại--</option>
+	     		<%
+	     		List<News_Type> objType = TinTucAdminUtil.listTheLoai("", 0, 0, 0);
+	     			//System.out.println(objType);
+	     			if(objType.size()>0){
+	     				for(int hh = 0; hh < objType.size(); hh++){
+	     					String selected ="";
+							if(objType.get(hh).getId() == Long.valueOf(theloaibaiviet)){
+								selected = "selected";
+							}
+	     		%>
+	     		<option value="<%=objType.get(hh).getId()%>" <%=selected%>><%=objType.get(hh).getName()%></option>
+	     		<%
+	     				}
+	     			}
+	     		%>
+	     	</select>
+			</td>
+		</tr>
+		 
+		<tr>
+			<th>User đăng tin</th>	
+			<td>
+				<select class="form-control" name="<portlet:namespace/>userdangbai">
+		     		<option value="-1">--Chọn User đăng tin--</option>
+		     		<%
+		     			List<News_role> listrole2 = PhanQuyenAdminUtil.listPhanquyen();
+		     			if(listrole2.size()>0){
+		     				for(int a = 0; a < listrole2.size(); a++){
+		     					User us = UserLocalServiceUtil.fetchUser(listrole2.get(a).getUserid());
+		     					String selected ="";
+		     					if(Validator.isNotNull(us)){
+									if(us.getUserId() == Long.valueOf(userdangbai)){
+										selected = "selected";
+									}
+		     		%>
+		     			<option value="<%=us.getUserId()%>" <%=selected%>><%=us.getFullName()%></option>
+		     		<%}}}%>
+				</select>
+			</td>
+			<th>Nguồn tin</th>	
+			<td>
+				<select class="form-control" name='<portlet:namespace/>tacgia'>
+	     		<option value="-1">--Chọn nguồn tin--</option>
+	     		<%
+	     		List<News_NguonTin> objTacGia = TinTucAdminUtil.listTacGia("", 0, 0, 0);
+	     			//System.out.println(objType);
+	     			if(objTacGia.size()>0){
+	     				for(int hh = 0; hh < objTacGia.size(); hh++){
+	     					String selected ="";
+							if(objTacGia.get(hh).getId() == Long.valueOf(tacgia)){
+								selected = "selected";
+							}
+	     		%>
+	     		<option value="<%=objTacGia.get(hh).getId()%>" <%=selected%>><%=objTacGia.get(hh).getName()%></option>
+	     		<%
+	     				}
+	     			}
+	     		%>
+	     	</select>
+			</td>
+		</tr>
+		<tr>
+			<th class="keycolor" style="vertical-align: middle;">Ngày tạo</th>
+			<td>
+				<div class="input-prepend">
+					<!-- <span class="add-on">Từ ngày</span> -->
+					<input type="text" placeholder="Từ ngày" class="datepicker form-control" name="<portlet:namespace/>ngaytao_tungay" id="ngay_banhanh_tungay" style="margin-bottom: 10px;"  value=""/>
+				</div>
+				<div class="input-prepend">
+					<!-- <span class="add-on">Đến ngày</span> -->
+					<input type="text" placeholder="Đến ngày" class="datepicker form-control" name="<portlet:namespace/>ngaytao_denngay" id="ngay_banhanh_denngay"  value=""/>
+				</div>
+			</td>
+			<th class="keycolor" style="vertical-align: middle;">Ngày hiệu chỉnh</th>
+			<td>
+				<div class="input-prepend">
+					<!-- <span class="add-on">Từ ngày</span> -->
+					<input type="text" placeholder="Từ ngày" class="datepicker form-control" name="<portlet:namespace/>ngayhieuchinh_tungay" id="ngay_hieuluc_tungay" style="margin-bottom: 10px;"  value=""/>
+				</div>
+				<div class="input-prepend" >
+					<!-- <span class="add-on">Đến ngày</span> -->
+					<input type="text" placeholder="Đến ngày" class="datepicker form-control" name="<portlet:namespace/>ngayhieuchinh_denngay" id="ngay_hieuluc_denngay"  value=""/>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th>Chỉ hiển thị tin tức của user đăng nhập</th>	
+			<td>
+				<%
+					String search_chk ="";
+					if(search_check.equals("on")){
+						search_chk = "checked";
+					}
+				%>
+				<input name="<portlet:namespace/>search_check" type="checkbox" <%=search_chk%>>
+			</td>
+			<th>Trạng thái</th>	
+			<td>
+				<select class="form-control" name="<portlet:namespace/>trangthaitinbai">
+					<option value="-1" <%if(trangthaitinbai.equals("") || status.equals("-1"))out.print("selected");%>>--Chọn trạng thái--</option>
+					<option value="0" <%if(trangthaitinbai.equals("0"))out.print("selected");%>>Lưu nháp</option>
+					<option value="1" <%if(trangthaitinbai.equals("1"))out.print("selected");%>>Chờ biên tập và phê duyệt</option>
+					<option value="2" <%if(trangthaitinbai.equals("2"))out.print("selected");%>>Chờ phê duyệt</option>
+					<option value="3" <%if(trangthaitinbai.equals("3"))out.print("selected");%>>Đã xuất bản</option>
+					<option value="4" <%if(trangthaitinbai.equals("4"))out.print("selected");%>>Ngừng xuất bản</option>
+					<option value="6" <%if(trangthaitinbai.equals("6"))out.print("selected");%>>Chờ xuất bản</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td style="text-align: center;" colspan="4">
+				<aui:button cssClass="btn-small btn" name="dongy" type="submit" value="Tìm kiếm" label=""></aui:button>
+			</td>
+		</tr> 
+	</table>
+	</aui:form>
+</div>
 
 <%
 if(listNews_Articles.size() > 0){
@@ -191,7 +386,14 @@ if(listNews_Articles.size() > 0){
 		//System.out.println(listNews_Articles.get(a).getId());
 %>
 <div class="new-container-pm ">
-
+<portlet:renderURL  var="editTintucURL" >
+		<portlet:param name="id" value="<%=String.valueOf(listNews_Articles.get(a).getId())%>"/>
+		<portlet:param name="tenbai" value="<%=tenbai%>"/>
+		<portlet:param name="dinhdanh" value="<%=dinhdanh%>"/>
+		<portlet:param name="chuyenmuc" value="<%=chuyenmuc%>"/>
+		<portlet:param name="trangthai" value="<%=status%>"/>
+	    <portlet:param name="jspPage" value="/html/tintucadmin/news/edit.jsp"/>
+</portlet:renderURL>
 <portlet:renderURL  var="editTintucpdfURL" >
 		<portlet:param name="id" value="<%=String.valueOf(listNews_Articles.get(a).getId())%>"/>
 	    <portlet:param name="jspPage" value="/html/tintucadmin/news/editpdf.jsp"/>
@@ -226,7 +428,7 @@ if(listNews_Articles.size() > 0){
 			String chonLoaiTinTuc = "";
 	  		String softdeleteTinTuc = "";
 			if(listNews_Articles.get(a).getLoaitintuc()==0){
-				
+				chonLoaiTinTuc = editTintucURL;
 				softdeleteTinTuc = softdeleteTintucURL.toString();
 			} else if(listNews_Articles.get(a).getLoaitintuc()==1) {
 				chonLoaiTinTuc = editTintucpdfURL;
