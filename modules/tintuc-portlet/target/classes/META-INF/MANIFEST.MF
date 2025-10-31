@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Build-Jdk-Spec: 21
 Created-By: 21.0.6 (Eclipse Adoptium)
-Bnd-LastModified: 1761894252923
+Bnd-LastModified: 1761895418809
 Bundle-ManifestVersion: 2
 Bundle-Name: tintuc-portlet
 Bundle-SymbolicName: vn.dnict.tintuc
