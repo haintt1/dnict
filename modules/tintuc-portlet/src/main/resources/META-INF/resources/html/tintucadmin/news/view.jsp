@@ -123,10 +123,6 @@ int end = searchContainer.getEnd();
 
 List<News_Article> listNews_Articles = TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, start, end);
 
-for(int k = 0; k < listNews_Articles.size(); k++){
-	System.out.println(listNews_Articles.get(k).getId());
-}
-
 total = (int) TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, 0, 0).size();
 
 searchContainer.setTotal(total);
@@ -667,7 +663,3 @@ function myFunction(id) {
 	    setInterval(updateCountdown, 1000); // Cập nhật mỗi giây
 	});
 </script>
-
-
-
-
