@@ -469,8 +469,29 @@ if(listNews_Articles.size() > 0){
 	<%}%>
 </div>
 <div class="new-name-info-content-pm">
-		<a class="title-link-new-pm" href="<%=listNews_Articles.get(a).getLoaitintuc()==0?editTintucURL:editTintucpdfURL %>"><span class="new-name-pm"><%=listNews_Articles.get(a).getTitle()%></span></a>
-		<p class="new-info-pm">
+		<a class="title-link-new-pm" href="<%=chonLoaiTinTuc %>"><span class="new-name-pm"><%=listNews_Articles.get(a).getTitle()%></span></a> 
+		<%
+			Date date = new Date();
+			SimpleDateFormat dformat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			String ngayhientai = dformat.format(date)+":00";
+			SimpleDateFormat dfGMT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			dfGMT.setTimeZone(TimeZone.getTimeZone("Asia/Ho_Chi_Minh"));
+			dfGMT.setTimeZone(TimeZone.getTimeZone("GMT-7"));
+			Date ngayhientaiGMT = dfGMT.parse(ngayhientai);
+			if(listNews_Articles.get(a).getStatus() == 6 ) {
+			//	long countdownTime = listNews_Articles.get(a).getNgayxuatban().getTime();
+				long countdownTimeXB = listNews_Articles.get(a).getNgayxuatban().getTime() - (7 * 60 * 60 * 1000);
+				
+		%>
+		 - <span class="timerXB" data-time="<%= countdownTimeXB %>">00:20</span>
+		<% } else if(listNews_Articles.get(a).getNgayxuatban() != null && 
+				listNews_Articles.get(a).getNgayketthuc() != null && 
+				listNews_Articles.get(a).getStatus() == 3) {
+			long countdownTimeKT = listNews_Articles.get(a).getNgayketthuc().getTime() - (7 * 60 * 60 * 1000);
+		%>
+		 - <span class="timerKT" data-time="<%= countdownTimeKT %>">00:20</span>
+		<% } %>
+		<%-- <p class="new-info-pm">
 		<%
 			if(listNews_Articles.get(a).getInfo().length()>151){
 				out.print(listNews_Articles.get(a).getInfo().substring(0, 149)+"...");
@@ -478,19 +499,19 @@ if(listNews_Articles.size() > 0){
 				out.print(listNews_Articles.get(a).getInfo());
 			}
 		%>
-		</p>
+		</p> --%>
 		<span class="new-version-pm"><b class="title-pm">Phiên bản: </b><%=listNews_Articles.get(a).getVersion()%></span>
 		<%
 			String ngaytao = "";
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 			if(Validator.isNotNull(listNews_Articles.get(a)) && Validator.isNotNull(listNews_Articles.get(a).getCreatedtime())){
-				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 				ngaytao = df.format(listNews_Articles.get(a).getCreatedtime());
 			}
 		%>
-		<span class="new-public-pm"><b class="title-pm">Ngày đăng tin: </b><%=ngaytao%></span>
 		<span class="new-public-pm"><b class="title-pm">Định danh: </b><%=listNews_Articles.get(a).getId()%></span>
 		<span class="author"><b class="title-pm">Lượt xem: </b><%=listNews_Articles.get(a).getLuotxem()%></span>
 		<span class="author"><b class="title-pm">Tác giả: </b><%=listNews_Articles.get(a).getCongtacvien()%></span>
+		<span class="new-public-pm"><b class="title-pm">Ngày xuất bản: </b><%=df.format(listNews_Articles.get(a).getNgayxuatban())%></span>
 		<span class="new-category-pm"><b class="title-pm">Chuyên mục: </b>
 			<%
 				List<News_Article2Category> listarticle2Category = TinTucAdminUtil.getListArticle2CategoryByArticleId(listNews_Articles.get(a).getId());
@@ -513,8 +534,15 @@ if(listNews_Articles.size() > 0){
 		<span class="author">
 			<% 
 				String loaitintuc = "Tin tức mặc định ";
-				if(listNews_Articles.get(a).getLoaitintuc() == 1 || listNews_Articles.get(a).getLoaitintuc() == 2 || listNews_Articles.get(a).getLoaitintuc() == 3){
+//				if(listNews_Articles.get(a).getLoaitintuc() == 1 || listNews_Articles.get(a).getLoaitintuc() == 2 || listNews_Articles.get(a).getLoaitintuc() == 3){
+//					loaitintuc = "Tin tức PDF";
+//				}
+				if(listNews_Articles.get(a).getLoaitintuc() == 0) {
+					loaitintuc = "Tin tức";
+				} else if(listNews_Articles.get(a).getLoaitintuc() == 1) {
 					loaitintuc = "Tin tức PDF";
+				} else {
+					loaitintuc = "Tin tức video";
 				}
 			%>
 			<b class="title-pm">Loại tin tức: </b><%=loaitintuc%>
@@ -555,11 +583,16 @@ if(listNews_Articles.size() > 0){
 				}
 			%>
 			<b class="title-pm">Nguồn tin: </b><%=tacgiant%>
-
 		</span>
 		<%if(listNews_Articles.get(a).getIsnoibat() == 1){%>
 			<span class="author"><b>Tin nổi bật: </b>Có</span>
 		<%}%>
+		<div class="tag-checktime">
+			<span class="author">
+				<b class="title-pm">Từ khóa: </b><%=listNews_Articles.get(a).getTukhoa()%>
+			</span>
+			<span class="author"><b class="title-pm">Thời gian xuất bản/ngừng xuất bản: </b><a class="xemThoiGian" href="javascript:void(0)" data-url="<%=xemThoiGianURL.toString()%>">Kiểm tra</a></span>
+		</div>
 	</div>
 </div>
 
