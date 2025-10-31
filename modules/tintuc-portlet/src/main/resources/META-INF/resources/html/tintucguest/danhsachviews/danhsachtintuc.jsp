@@ -101,14 +101,16 @@ if(listnew_article.size()>0){
 			</div>
 			<% } %>
 			<div class="right-container">
-				<span class="title-danhsach-tin"><a href="<%=urltitle%>" title="<%=tieude%>"><%=tieude%><i class="date_news"><%=df.format(listnew_article.get(i).getNgayxuatban())%></i>
+				<%-- <span class="title-danhsach-tin"><a href="<%=urltitle%>" title="<%=tieude%>"><%=tieude%><i class="date_news"><%=df.format(listnew_article.get(i).getNgayxuatban())%></i> --%>
+				<span class="title-danhsach-tin"><a href="<%=urltitle%>" title="<%=tieude%>"><%=tieude%><i class="date_news"><%=df.format(listnew_article.get(i).getCreatedtime())%></i>
 				<%if(iconnew.equals("1")){
 					if(day<=3){%>
 						<img src="<%=request.getContextPath()%>/images/icon_active/new.gif" style="margin-top: -8px; width:33px; height: 16px;"/>
 				<%}}%>
 				</a></span>
 				<span class="mota"><%=mota%></span>
-				<span class="createdate"><%=df.format(listnew_article.get(i).getNgayxuatban())%></span>
+				<%-- <span class="createdate"><%=df.format(listnew_article.get(i).getNgayxuatban())%></span> --%>
+				<span class="createdate"><%=df.format(listnew_article.get(i).getCreatedtime())%></span>
 				<%if(readmore_hide.equals("1")){%>
 				<a class="readmore" href="<%=urltitle%>">Xem tiếp</a>
 				<% } %>
