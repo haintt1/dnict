@@ -123,10 +123,6 @@ int end = searchContainer.getEnd();
 
 List<News_Article> listNews_Articles = TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, start, end);
 
-for(int k = 0; k < listNews_Articles.size(); k++){
-	System.out.println(listNews_Articles.get(k).getId());
-}
-
 total = (int) TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, 0, 0).size();
 
 searchContainer.setTotal(total);
@@ -491,7 +487,7 @@ if(listNews_Articles.size() > 0){
 		%>
 		 - <span class="timerKT" data-time="<%= countdownTimeKT %>">00:20</span>
 		<% } %>
-		<%-- <p class="new-info-pm">
+		<p class="new-info-pm">
 		<%
 			if(listNews_Articles.get(a).getInfo().length()>151){
 				out.print(listNews_Articles.get(a).getInfo().substring(0, 149)+"...");
@@ -499,7 +495,7 @@ if(listNews_Articles.size() > 0){
 				out.print(listNews_Articles.get(a).getInfo());
 			}
 		%>
-		</p> --%>
+		</p>
 		<span class="new-version-pm"><b class="title-pm">Phiên bản: </b><%=listNews_Articles.get(a).getVersion()%></span>
 		<%
 			String ngaytao = "";
@@ -700,7 +696,3 @@ function myFunction(id) {
 	    setInterval(updateCountdown, 1000); // Cập nhật mỗi giây
 	});
 </script>
-
-
-
-
