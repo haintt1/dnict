@@ -42,6 +42,149 @@ public interface dinhkemfilePersistence extends BasePersistence<dinhkemfile> {
 	 */
 
 	/**
+	 * Returns all the dinhkemfiles where ObjectId = &#63;.
+	 *
+	 * @param ObjectId the object ID
+	 * @return the matching dinhkemfiles
+	 */
+	public java.util.List<dinhkemfile> findByObjectId(long ObjectId);
+
+	/**
+	 * Returns a range of all the dinhkemfiles where ObjectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>dinhkemfileModelImpl</code>.
+	 * </p>
+	 *
+	 * @param ObjectId the object ID
+	 * @param start the lower bound of the range of dinhkemfiles
+	 * @param end the upper bound of the range of dinhkemfiles (not inclusive)
+	 * @return the range of matching dinhkemfiles
+	 */
+	public java.util.List<dinhkemfile> findByObjectId(
+		long ObjectId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the dinhkemfiles where ObjectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>dinhkemfileModelImpl</code>.
+	 * </p>
+	 *
+	 * @param ObjectId the object ID
+	 * @param start the lower bound of the range of dinhkemfiles
+	 * @param end the upper bound of the range of dinhkemfiles (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dinhkemfiles
+	 */
+	public java.util.List<dinhkemfile> findByObjectId(
+		long ObjectId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<dinhkemfile>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the dinhkemfiles where ObjectId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>dinhkemfileModelImpl</code>.
+	 * </p>
+	 *
+	 * @param ObjectId the object ID
+	 * @param start the lower bound of the range of dinhkemfiles
+	 * @param end the upper bound of the range of dinhkemfiles (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dinhkemfiles
+	 */
+	public java.util.List<dinhkemfile> findByObjectId(
+		long ObjectId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<dinhkemfile>
+			orderByComparator,
+		boolean useFinderCache);
+
+	/**
+	 * Returns the first dinhkemfile in the ordered set where ObjectId = &#63;.
+	 *
+	 * @param ObjectId the object ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dinhkemfile
+	 * @throws NoSuchdinhkemfileException if a matching dinhkemfile could not be found
+	 */
+	public dinhkemfile findByObjectId_First(
+			long ObjectId,
+			com.liferay.portal.kernel.util.OrderByComparator<dinhkemfile>
+				orderByComparator)
+		throws NoSuchdinhkemfileException;
+
+	/**
+	 * Returns the first dinhkemfile in the ordered set where ObjectId = &#63;.
+	 *
+	 * @param ObjectId the object ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dinhkemfile, or <code>null</code> if a matching dinhkemfile could not be found
+	 */
+	public dinhkemfile fetchByObjectId_First(
+		long ObjectId,
+		com.liferay.portal.kernel.util.OrderByComparator<dinhkemfile>
+			orderByComparator);
+
+	/**
+	 * Returns the last dinhkemfile in the ordered set where ObjectId = &#63;.
+	 *
+	 * @param ObjectId the object ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dinhkemfile
+	 * @throws NoSuchdinhkemfileException if a matching dinhkemfile could not be found
+	 */
+	public dinhkemfile findByObjectId_Last(
+			long ObjectId,
+			com.liferay.portal.kernel.util.OrderByComparator<dinhkemfile>
+				orderByComparator)
+		throws NoSuchdinhkemfileException;
+
+	/**
+	 * Returns the last dinhkemfile in the ordered set where ObjectId = &#63;.
+	 *
+	 * @param ObjectId the object ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dinhkemfile, or <code>null</code> if a matching dinhkemfile could not be found
+	 */
+	public dinhkemfile fetchByObjectId_Last(
+		long ObjectId,
+		com.liferay.portal.kernel.util.OrderByComparator<dinhkemfile>
+			orderByComparator);
+
+	/**
+	 * Returns the dinhkemfiles before and after the current dinhkemfile in the ordered set where ObjectId = &#63;.
+	 *
+	 * @param id the primary key of the current dinhkemfile
+	 * @param ObjectId the object ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dinhkemfile
+	 * @throws NoSuchdinhkemfileException if a dinhkemfile with the primary key could not be found
+	 */
+	public dinhkemfile[] findByObjectId_PrevAndNext(
+			long id, long ObjectId,
+			com.liferay.portal.kernel.util.OrderByComparator<dinhkemfile>
+				orderByComparator)
+		throws NoSuchdinhkemfileException;
+
+	/**
+	 * Removes all the dinhkemfiles where ObjectId = &#63; from the database.
+	 *
+	 * @param ObjectId the object ID
+	 */
+	public void removeByObjectId(long ObjectId);
+
+	/**
+	 * Returns the number of dinhkemfiles where ObjectId = &#63;.
+	 *
+	 * @param ObjectId the object ID
+	 * @return the number of matching dinhkemfiles
+	 */
+	public int countByObjectId(long ObjectId);
+
+	/**
 	 * Caches the dinhkemfile in the entity cache if it is enabled.
 	 *
 	 * @param dinhkemfile the dinhkemfile

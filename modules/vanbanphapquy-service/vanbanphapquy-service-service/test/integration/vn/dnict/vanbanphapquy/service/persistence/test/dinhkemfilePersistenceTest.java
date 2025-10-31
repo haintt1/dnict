@@ -172,6 +172,13 @@ public class dinhkemfilePersistenceTest {
 	}
 
 	@Test
+	public void testCountByObjectId() throws Exception {
+		_persistence.countByObjectId(RandomTestUtil.nextLong());
+
+		_persistence.countByObjectId(0L);
+	}
+
+	@Test
 	public void testFindByPrimaryKeyExisting() throws Exception {
 		dinhkemfile newdinhkemfile = adddinhkemfile();
 

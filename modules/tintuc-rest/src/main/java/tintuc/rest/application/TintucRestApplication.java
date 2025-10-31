@@ -27,6 +27,7 @@ import org.osgi.service.jaxrs.whiteboard.JaxrsWhiteboardConstants;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.ProjectionFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.PropertyFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.log.Log;
@@ -50,7 +51,7 @@ import vn.dnict.tintuc.service.News_CategoriesLocalServiceUtil;
  */
 @Component(
 	property = {
-		JaxrsWhiteboardConstants.JAX_RS_APPLICATION_BASE + "=/api/v1",
+		JaxrsWhiteboardConstants.JAX_RS_APPLICATION_BASE + "=/cms-api",
 		JaxrsWhiteboardConstants.JAX_RS_NAME + "=CmsTinTuc.Rest"
 	},
 	service = Application.class
@@ -66,11 +67,69 @@ public class TintucRestApplication extends Application {
 	public Set<Object> getSingletons() {
 		return Collections.<Object>singleton(this);
 	}
+	
+	// Lấy danh sách chuyên mục
+	@GET
+	@Path("/chuyenmuc/{chuyenMucId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getChuyenMucList(
+			@PathParam("chuyenMucId") long chuyenMucId,
+			@QueryParam("page") @DefaultValue("1") int page,
+            @QueryParam("pageSize") @DefaultValue("10") int pageSize) {
+	    try {
+	    	
+	    	int start = (page - 1) * pageSize;
+	        int end = page * pageSize;
+	        
+	        DynamicQuery subQuery = News_Article2CategoryLocalServiceUtil.dynamicQuery()
+	                .add(PropertyFactoryUtil.forName("newcategoryId").eq(chuyenMucId))
+	                .setProjection(ProjectionFactoryUtil.property("newarticleId"));
+	        
+	        DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery()
+	        		.add(PropertyFactoryUtil.forName("id").in(subQuery));
+	        
+	        query.add(PropertyFactoryUtil.forName("status").eq(3));
+	        query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
+	        
+	        // Query riêng cho count
+	        DynamicQuery queryCount = News_ArticleLocalServiceUtil.dynamicQuery()
+	        		.add(PropertyFactoryUtil.forName("id").in(subQuery));
+	        queryCount.add(PropertyFactoryUtil.forName("delete_status").eq(0));
+	        
+	        // Lấy total count (theo điều kiện delete_status = 0)
+	        long total = News_ArticleLocalServiceUtil.dynamicQueryCount(queryCount);
+	        
+	        List<News_Article> listTinTuc = News_ArticleLocalServiceUtil.dynamicQuery(query, start, end);
+	        
+	        // Map sang DTO TinTucData
+	        List<TinTucData> data = listTinTuc.stream()
+	            .map(this::toData)
+	            .collect(Collectors.toList());
+	        
+	        ObjectMapper mapper = new ObjectMapper();
+	        Map<String, Object> result = new LinkedHashMap<>();
+	        Map<String, Object> pagination = new LinkedHashMap<>();
+	        pagination.put("page", page);
+	        pagination.put("pageSize", pageSize);
+	        pagination.put("total", total);
+	        result.put("data", data);
+	        result.put("pagination", pagination);
+
+	        return Response.ok(mapper.writeValueAsString(result)).build();
+
+	    } catch (Exception e) {
+	        _log.error(e);
+	        return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+	            .entity(Collections.singletonMap("error", e.getMessage()))
+	            .build();
+	    }
+	}
 
 	@GET
 	@Path("/tintuc")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getTintucList(
+			@QueryParam("isNoiBat") Long isNoiBat,
 			@QueryParam("page") @DefaultValue("1") int page,
             @QueryParam("pageSize") @DefaultValue("10") int pageSize) {
 	    try {
@@ -82,11 +141,17 @@ public class TintucRestApplication extends Application {
 //	        int total = news_ArticleLocalService.getNews_ArticlesCount();
 	        
 	        DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery();
+	        if (isNoiBat != null) {
+	        	query.add(RestrictionsFactoryUtil.eq("isnoibat", isNoiBat));
+	        }
 	        query.add(PropertyFactoryUtil.forName("status").eq(3));
 	        query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 	        
 	        // Query riêng cho count
 	        DynamicQuery queryCount = News_ArticleLocalServiceUtil.dynamicQuery();
+	        if (isNoiBat != null) {
+	        	queryCount.add(RestrictionsFactoryUtil.eq("isnoibat", isNoiBat));
+	        }
 	        queryCount.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 	        
 	        // Lấy total count (theo điều kiện delete_status = 0)

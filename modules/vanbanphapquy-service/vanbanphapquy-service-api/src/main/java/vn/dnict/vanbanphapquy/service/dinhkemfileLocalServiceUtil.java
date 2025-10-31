@@ -249,6 +249,10 @@ public class dinhkemfileLocalServiceUtil {
 		return getService().getIndexableActionableDynamicQuery();
 	}
 
+	public static List<dinhkemfile> getObjectId(long objectId) {
+		return getService().getObjectId(objectId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

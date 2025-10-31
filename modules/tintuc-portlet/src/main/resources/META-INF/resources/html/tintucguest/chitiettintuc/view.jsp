@@ -30,12 +30,10 @@
 <%@page import="javax.portlet.WindowState"%>
 <%@page import="javax.portlet.PortletURL"%>
 <%@include file="../init.jsp"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/rating.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mobile.css" />
-<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/tintuc/rating.js"></script>
@@ -331,7 +329,7 @@
 								}
 								// rút gọn
 								if(new_article.getLoaitintuc() == 1) {
-									System.out.print("tin pdf");
+									/* System.out.print("tin pdf"); */
 									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9, themeDisplay);
 									if(listDinhkem.size() > 0){
 										urlPdf = listDinhkem.get(0).getUrl();
@@ -345,7 +343,7 @@
 						            	}
 									}
 								} else if(new_article.getLoaitintuc() == 2) {
-									System.out.print("tin video");
+									/* System.out.print("tin video"); */
 									List<News_AttachFile> listDinhkem = DocumentUpload.getLinkdinhkembyIdAndObject(new_article.getId(), 9, themeDisplay);
 									if(listDinhkem.size() > 0){
 										urlVideo = listDinhkem.get(0).getUrl();
@@ -360,7 +358,9 @@
 											noidungchitiet = "<video class=\"video-upload no-print\" src='"+urlVideo+"' controls></video>";
 										}
 									}
-								}						
+								} else {
+									noidungchitiet = doc.html();
+								}
 							%>
 							<%=noidungfirst %>
 							<%=noidungchitiet %>
@@ -754,7 +754,6 @@
 			}
 		</style>
 		<%
-		
 		int p = 1;
 		if(Validator.isNotNull(request2.getParameter("p")) && Validator.isNumber(request2.getParameter("p"))){
 		 	p = Integer.valueOf(request2.getParameter("p"));
@@ -878,7 +877,6 @@ if(<%=banquyen.equals("1")%>) {
 		const url = URL.createObjectURL(blob);
 		$('.pdf_watermark').attr('src', url);
 	}
-
 }
 </script>
 <script>

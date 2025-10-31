@@ -16,8 +16,11 @@ package vn.dnict.vanbanphapquy.service.impl;
 
 import com.liferay.portal.aop.AopService;
 
+import java.util.List;
+
 import org.osgi.service.component.annotations.Component;
 
+import vn.dnict.vanbanphapquy.model.dinhkemfile;
 import vn.dnict.vanbanphapquy.service.base.dinhkemfileLocalServiceBaseImpl;
 
 /**
@@ -29,4 +32,7 @@ import vn.dnict.vanbanphapquy.service.base.dinhkemfileLocalServiceBaseImpl;
 )
 public class dinhkemfileLocalServiceImpl
 	extends dinhkemfileLocalServiceBaseImpl {
+	public List<dinhkemfile> getObjectId(long objectId) {
+		return dinhkemfilePersistence.findByObjectId(objectId);
+	}
 }

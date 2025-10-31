@@ -231,6 +231,9 @@ public interface dinhkemfileLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public IndexableActionableDynamicQuery getIndexableActionableDynamicQuery();
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<dinhkemfile> getObjectId(long objectId);
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

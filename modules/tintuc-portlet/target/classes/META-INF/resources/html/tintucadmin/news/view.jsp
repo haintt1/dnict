@@ -123,6 +123,10 @@ int end = searchContainer.getEnd();
 
 List<News_Article> listNews_Articles = TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, start, end);
 
+for(int k = 0; k < listNews_Articles.size(); k++){
+	System.out.println(listNews_Articles.get(k).getId());
+}
+
 total = (int) TinTucAdminUtil.listTintucAdmin(checkLangNews, usdangbaicheck, tenbai, dinhdanh, chuyenmuc, trangthaitinbai, theloaibaiviet, tacgia, userdangbai, ngaytao_tungay, ngaytao_denngay, ngayhieuchinh_tungay, ngayhieuchinh_denngay, 0, 0).size();
 
 searchContainer.setTotal(total);
@@ -216,7 +220,7 @@ News_role role = PhanQuyenAdminUtil.getUserById(user.getUserId());
 			<a style="float: right;" class="btn btn-secondary" href="<%=thungRacURL %>" >Thùng rác</a>
 			<a style="float: right;margin-right: 10px;" class="btn btn-primary" id="btnThemthuvien" href="<%=addNewsURL %>" ><i class="icon-plus"></i> Đăng tin ảnh</a>	
 			<a style="float: right;margin-right: 10px;" class="btn btn-primary" id="btnNewPDF" href="<%=addNewsPDFURL %>" ><i class="icon-plus"></i> Đăng tin PDF</a>
-			<a style="float: right;margin-right: 10px;" class="btn btn-primary" id="btnNewVideo" href="<%=addNewsVideoURL %>" ><i class="icon-plus"></i> Đăng tin video</a>
+			<%-- <a style="float: right;margin-right: 10px;" class="btn btn-primary" id="btnNewVideo" href="<%=addNewsVideoURL %>" ><i class="icon-plus"></i> Đăng tin video</a> --%>
 			</td>
 		<%} %>
 	</tr>
@@ -487,7 +491,7 @@ if(listNews_Articles.size() > 0){
 		%>
 		 - <span class="timerKT" data-time="<%= countdownTimeKT %>">00:20</span>
 		<% } %>
-		<p class="new-info-pm">
+		<%-- <p class="new-info-pm">
 		<%
 			if(listNews_Articles.get(a).getInfo().length()>151){
 				out.print(listNews_Articles.get(a).getInfo().substring(0, 149)+"...");
@@ -495,7 +499,7 @@ if(listNews_Articles.size() > 0){
 				out.print(listNews_Articles.get(a).getInfo());
 			}
 		%>
-		</p>
+		</p> --%>
 		<span class="new-version-pm"><b class="title-pm">Phiên bản: </b><%=listNews_Articles.get(a).getVersion()%></span>
 		<%
 			String ngaytao = "";

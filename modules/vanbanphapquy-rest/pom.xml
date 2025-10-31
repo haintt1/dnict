@@ -6,10 +6,9 @@
     <groupId>portal</groupId>
     <version>1.0.0</version>
   </parent>
-	<groupId>cms.demo</groupId>
-	<artifactId>demo-service</artifactId>
+	<groupId>vanbanphapquy.rest</groupId>
+	<artifactId>vanbanphapquy-rest</artifactId>
 	<version>1.0.0</version>
-	<packaging>pom</packaging>
 	<profiles>
 		<profile>
 			<id>standalone</id>
@@ -64,6 +63,23 @@
 		<java.compiler.target.version>1.8</java.compiler.target.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>release.portal.api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.jaxrs</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>vn.dnict.vanbanphapquy</groupId>
+			<artifactId>vanbanphapquy-service-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -111,8 +127,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<modules>
-		<module>demo-service-api</module>
-		<module>demo-service-service</module>
-	</modules>
 </project>

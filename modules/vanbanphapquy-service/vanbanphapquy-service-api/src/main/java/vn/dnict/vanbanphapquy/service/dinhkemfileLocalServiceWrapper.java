@@ -269,6 +269,13 @@ public class dinhkemfileLocalServiceWrapper
 		return _dinhkemfileLocalService.getIndexableActionableDynamicQuery();
 	}
 
+	@Override
+	public java.util.List<vn.dnict.vanbanphapquy.model.dinhkemfile> getObjectId(
+		long objectId) {
+
+		return _dinhkemfileLocalService.getObjectId(objectId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

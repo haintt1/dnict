@@ -98,5 +98,9 @@
 		<column name="ghichu" type="String" />
 		<column name="daxoa" type="int" />
 		<column name="trangthai" type="int"/>
+		
+		<finder return-type="Collection" name="ObjectId">
+			<finder-column name="ObjectId"/>
+		</finder>
 	</entity>
 </service-builder>

@@ -7,7 +7,7 @@
     <version>1.0.0</version>
   </parent>
 	<groupId>tintuc.rest</groupId>
-	<artifactId>tintuc-rest</artifactId>
+	<artifactId>tintuc-rest-1.0.0</artifactId>
 	<version>1.0.0</version>
 	<profiles>
 		<profile>
@@ -76,7 +76,7 @@
 		</dependency>
 		<dependency>
 			<groupId>vn.dnict.tintuc</groupId>
-			<artifactId>tintuc-db-api</artifactId>
+			<artifactId>tintuc-db-api-1.0.0</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 	</dependencies>

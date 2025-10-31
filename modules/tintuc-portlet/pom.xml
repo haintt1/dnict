@@ -7,7 +7,7 @@
     <version>1.0.0</version>
   </parent>
 	<groupId>vn.dnict.tintuc</groupId>
-	<artifactId>tintuc-portlet</artifactId>
+	<artifactId>tintuc-portlet-1.0.0</artifactId>
 	<profiles>
 		<profile>
 			<id>standalone</id>
@@ -74,12 +74,12 @@
 		</dependency>
 		<dependency>
 			<groupId>vn.dnict.tintuc</groupId>
-			<artifactId>tintuc-db-api</artifactId>
+			<artifactId>tintuc-db-api-1.0.0</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>vn.dnict.tintuc</groupId>
-			<artifactId>tintuc-db-service</artifactId>
+			<artifactId>tintuc-db-service-1.0.0</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>

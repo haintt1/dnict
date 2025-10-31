@@ -755,65 +755,84 @@ public class TinTucAdminUtil{
 		return list;
 	}
 	
-	public static List<News_Article> listTintucAdmin(String checkLang, String usdangbaicheck, String tieude, String dinhdanh, String chuyenmuc, String trangthai, String theloaibaiviet, String tacgia, String userdangbai, 
-			String ngaytao_tungay, String ngaytao_denngay, String ngayhieuchinh_tungay, String ngayhieuchinh_denngay, int start, int end) throws Exception{
+//	public static List<News_Article> listTintucAdmin(String checkLang, String usdangbaicheck, String tieude, String dinhdanh, String chuyenmuc, String trangthai, String theloaibaiviet, String tacgia, String userdangbai, 
+//			String ngaytao_tungay, String ngaytao_denngay, String ngayhieuchinh_tungay, String ngayhieuchinh_denngay, int start, int end) throws Exception{
+//				
+//		DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery();		
+//		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//		if(!tieude.equals("")) {
+//			Criterion criterion = RestrictionsFactoryUtil.ilike("title", 
+//					StringPool.PERCENT + tieude + StringPool.PERCENT);
+//			query.add(criterion);
+//		}
+//		if(!dinhdanh.equals("") && Validator.isNumber(dinhdanh)){
+//			query.add(PropertyFactoryUtil.forName("id").eq(Long.valueOf(dinhdanh)));
+//		}
+//		if(!chuyenmuc.equals("") && Long.valueOf(chuyenmuc) > 0){
+//			//System.out.println("cm " + chuyenmuc);
+//			query.add(PropertyFactoryUtil.forName("id")
+//					.in(News_Article2CategoryLocalServiceUtil.dynamicQuery()
+//							.add(PropertyFactoryUtil.forName("newcategoryId")
+//									.eq(Long.valueOf(chuyenmuc)))
+//							.setProjection(PropertyFactoryUtil.forName("newarticleId"))));
+//		}
+//		if(!trangthai.equals("") && Long.valueOf(trangthai) >= 0){
+//			query.add(PropertyFactoryUtil.forName("status").eq(Integer.valueOf(trangthai)));
+//		}
+//		if(!checkLang.equals("")){
+//			query.add(PropertyFactoryUtil.forName("language").eq(checkLang));
+//		}
+//		if(!theloaibaiviet.equals("") && Integer.valueOf(theloaibaiviet) >= 0){
+//			query.add(PropertyFactoryUtil.forName("typeid").eq(Long.valueOf(theloaibaiviet)));
+//		}
+//		if(!tacgia.equals("") && Integer.valueOf(tacgia) > 0){
+//			query.add(PropertyFactoryUtil.forName("nguontin").eq(Long.valueOf(tacgia)));
+//		}
+//		if(Validator.isNull(usdangbaicheck) || usdangbaicheck.equals("") ||  usdangbaicheck.equals("0")){
+//			if(!userdangbai.equals("") && Long.valueOf(userdangbai) >= 0){
+//				query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(userdangbai)));
+//			}
+//		}
+//		if(Validator.isNotNull(usdangbaicheck) &&  Long.valueOf(usdangbaicheck) >= 0){
+//			query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(usdangbaicheck)));
+//		}
+//		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
+//			ngaytao_tungay += " 00:00:00";
+//			//System.out.println(ngaytao_tungay);
+//			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
+//		}
+//		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
+//			ngaytao_denngay += " 23:59:59";
+//			//System.out.println(ngaytao_denngay);
+//			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
+//		}
+//		if(Validator.isNotNull(ngayhieuchinh_tungay) && !ngayhieuchinh_tungay.equals("")){
+//			ngayhieuchinh_tungay += " 00:00:00";
+//			query.add(PropertyFactoryUtil.forName("modifiedtime").ge(df.parse(ngayhieuchinh_tungay)));
+//		}
+//		if(Validator.isNotNull(ngayhieuchinh_denngay) && !ngayhieuchinh_denngay.equals("")){
+//			ngayhieuchinh_denngay += " 23:59:59";
+//			query.add(PropertyFactoryUtil.forName("modifiedtime").le(df.parse(ngayhieuchinh_denngay)));
+//		}
+//		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
+//		int[] listloaitintuc = {0,1,2,3};
+//		query.add(PropertyFactoryUtil.forName("loaitintuc").in(listloaitintuc));
+//		query.addOrder(OrderFactoryUtil.desc("createdtime"));
+//		if(end!=0){
+//			query.setLimit(start, end);
+//		}
+//		
+//		List<News_Article> listArticle = News_ArticleLocalServiceUtil.dynamicQuery(query);
+//		if(Validator.isNull(listArticle) || listArticle.size() <= 0){
+//			listArticle = new ArrayList<News_Article>();
+//		}
+//		return listArticle;
+//	}
+	
+	public static List<News_Article> listTintucAdmin(int start, int end) throws Exception{
 				
 		DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery();		
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		if(!tieude.equals("")) {
-			Criterion criterion = RestrictionsFactoryUtil.ilike("title", 
-					StringPool.PERCENT + tieude + StringPool.PERCENT);
-			query.add(criterion);
-		}
-		if(!dinhdanh.equals("") && Validator.isNumber(dinhdanh)){
-			query.add(PropertyFactoryUtil.forName("id").eq(Long.valueOf(dinhdanh)));
-		}
-		if(!chuyenmuc.equals("") && Long.valueOf(chuyenmuc) > 0){
-			//System.out.println("cm " + chuyenmuc);
-			query.add(PropertyFactoryUtil.forName("id")
-					.in(News_Article2CategoryLocalServiceUtil.dynamicQuery()
-							.add(PropertyFactoryUtil.forName("newcategoryId")
-									.eq(Long.valueOf(chuyenmuc)))
-							.setProjection(PropertyFactoryUtil.forName("newarticleId"))));
-		}
-		if(!trangthai.equals("") && Long.valueOf(trangthai) >= 0){
-			query.add(PropertyFactoryUtil.forName("status").eq(Integer.valueOf(trangthai)));
-		}
-		if(!checkLang.equals("")){
-			query.add(PropertyFactoryUtil.forName("language").eq(checkLang));
-		}
-		if(!theloaibaiviet.equals("") && Integer.valueOf(theloaibaiviet) >= 0){
-			query.add(PropertyFactoryUtil.forName("typeid").eq(Long.valueOf(theloaibaiviet)));
-		}
-		if(!tacgia.equals("") && Integer.valueOf(tacgia) > 0){
-			query.add(PropertyFactoryUtil.forName("nguontin").eq(Long.valueOf(tacgia)));
-		}
-		if(Validator.isNull(usdangbaicheck) || usdangbaicheck.equals("") ||  usdangbaicheck.equals("0")){
-			if(!userdangbai.equals("") && Long.valueOf(userdangbai) >= 0){
-				query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(userdangbai)));
-			}
-		}
-		if(Validator.isNotNull(usdangbaicheck) &&  Long.valueOf(usdangbaicheck) >= 0){
-			query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(usdangbaicheck)));
-		}
-		if(Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.equals("")){
-			ngaytao_tungay += " 00:00:00";
-			//System.out.println(ngaytao_tungay);
-			query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
-		}
-		if(Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.equals("")){
-			ngaytao_denngay += " 23:59:59";
-			//System.out.println(ngaytao_denngay);
-			query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
-		}
-		if(Validator.isNotNull(ngayhieuchinh_tungay) && !ngayhieuchinh_tungay.equals("")){
-			ngayhieuchinh_tungay += " 00:00:00";
-			query.add(PropertyFactoryUtil.forName("modifiedtime").ge(df.parse(ngayhieuchinh_tungay)));
-		}
-		if(Validator.isNotNull(ngayhieuchinh_denngay) && !ngayhieuchinh_denngay.equals("")){
-			ngayhieuchinh_denngay += " 23:59:59";
-			query.add(PropertyFactoryUtil.forName("modifiedtime").le(df.parse(ngayhieuchinh_denngay)));
-		}
 		query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
 		int[] listloaitintuc = {0,1,2,3};
 		query.add(PropertyFactoryUtil.forName("loaitintuc").in(listloaitintuc));
@@ -828,6 +847,136 @@ public class TinTucAdminUtil{
 		}
 		return listArticle;
 	}
+	
+//	public static List<News_Article> listTintucAdmin(
+//	        String checkLang,
+//	        String usdangbaicheck,
+//	        String tieude,
+//	        String dinhdanh,
+//	        String chuyenmuc,
+//	        String trangthai,
+//	        String theloaibaiviet,
+//	        String tacgia,
+//	        String userdangbai,
+//	        String ngaytao_tungay,
+//	        String ngaytao_denngay,
+//	        String ngayhieuchinh_tungay,
+//	        String ngayhieuchinh_denngay,
+//	        int start,
+//	        int end
+//	) throws Exception {
+//
+//	    DynamicQuery query = News_ArticleLocalServiceUtil.dynamicQuery();
+//	    DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//
+//	    // --- Tiêu đề ---
+//	    if (Validator.isNotNull(tieude) && !tieude.trim().isEmpty()) {
+//	        Criterion criterion = RestrictionsFactoryUtil.ilike(
+//	                "title",
+//	                StringPool.PERCENT + tieude.trim() + StringPool.PERCENT
+//	        );
+//	        query.add(criterion);
+//	    }
+//
+//	    // --- Định danh ---
+//	    if (Validator.isNotNull(dinhdanh) && Validator.isNumber(dinhdanh)) {
+//	        query.add(PropertyFactoryUtil.forName("id").eq(Long.valueOf(dinhdanh)));
+//	    }
+//
+//	    // --- Chuyên mục ---
+//	    if (Validator.isNotNull(chuyenmuc) && !chuyenmuc.trim().isEmpty() && Long.parseLong(chuyenmuc) > 0) {
+//	        query.add(PropertyFactoryUtil.forName("id").in(
+//	                News_Article2CategoryLocalServiceUtil.dynamicQuery()
+//	                        .add(PropertyFactoryUtil.forName("newcategoryId").eq(Long.valueOf(chuyenmuc)))
+//	                        .setProjection(PropertyFactoryUtil.forName("newarticleId"))
+//	        ));
+//	    }
+//
+//	    // --- Trạng thái ---
+//	    if (Validator.isNotNull(trangthai) && !trangthai.trim().isEmpty() && Long.parseLong(trangthai) >= 0) {
+//	        query.add(PropertyFactoryUtil.forName("status").eq(Integer.valueOf(trangthai)));
+//	    }
+//
+//	    // --- Ngôn ngữ ---
+//	    if (Validator.isNotNull(checkLang) && !checkLang.trim().isEmpty()) {
+//	        query.add(PropertyFactoryUtil.forName("language").eq(checkLang.trim()));
+//	    }
+//
+//	    // --- Thể loại bài viết ---
+//	    if (Validator.isNotNull(theloaibaiviet) && !theloaibaiviet.trim().isEmpty() && Integer.valueOf(theloaibaiviet) >= 0) {
+//	        query.add(PropertyFactoryUtil.forName("typeid").eq(Long.valueOf(theloaibaiviet)));
+//	    }
+//
+//	    // --- Tác giả ---
+//	    if (Validator.isNotNull(tacgia) && !tacgia.trim().isEmpty() && Integer.valueOf(tacgia) > 0) {
+//	        query.add(PropertyFactoryUtil.forName("nguontin").eq(Long.valueOf(tacgia)));
+//	    }
+//
+//	    // --- Người đăng bài ---
+//	    if (Validator.isNull(usdangbaicheck) || usdangbaicheck.equals("") || usdangbaicheck.equals("0")) {
+//	        if (Validator.isNotNull(userdangbai) && !userdangbai.trim().isEmpty() && Long.valueOf(userdangbai) >= 0) {
+//	            query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(userdangbai)));
+//	        }
+//	    }
+//	    if (Validator.isNotNull(usdangbaicheck) && !usdangbaicheck.trim().isEmpty() && Long.valueOf(usdangbaicheck) >= 0) {
+//	        query.add(PropertyFactoryUtil.forName("createdby").eq(Long.valueOf(usdangbaicheck)));
+//	    }
+//
+//	    // --- Ngày tạo ---
+//	    if (Validator.isNotNull(ngaytao_tungay) && !ngaytao_tungay.trim().isEmpty()) {
+//	        ngaytao_tungay = ngaytao_tungay.trim() + " 00:00:00";
+//	        query.add(PropertyFactoryUtil.forName("createdtime").ge(df.parse(ngaytao_tungay)));
+//	    }
+//
+//	    if (Validator.isNotNull(ngaytao_denngay) && !ngaytao_denngay.trim().isEmpty()) {
+//	        ngaytao_denngay = ngaytao_denngay.trim() + " 23:59:59";
+//	        query.add(PropertyFactoryUtil.forName("createdtime").le(df.parse(ngaytao_denngay)));
+//	    }
+//
+//	    // --- Ngày hiệu chỉnh ---
+//	    if (Validator.isNotNull(ngayhieuchinh_tungay) && !ngayhieuchinh_tungay.trim().isEmpty()) {
+//	        ngayhieuchinh_tungay = ngayhieuchinh_tungay.trim() + " 00:00:00";
+//	        query.add(PropertyFactoryUtil.forName("modifiedtime").ge(df.parse(ngayhieuchinh_tungay)));
+//	    }
+//
+//	    if (Validator.isNotNull(ngayhieuchinh_denngay) && !ngayhieuchinh_denngay.trim().isEmpty()) {
+//	        ngayhieuchinh_denngay = ngayhieuchinh_denngay.trim() + " 23:59:59";
+//	        query.add(PropertyFactoryUtil.forName("modifiedtime").le(df.parse(ngayhieuchinh_denngay)));
+//	    }
+//
+//	    // --- Chỉ lấy bản ghi chưa xóa ---
+//	    query.add(PropertyFactoryUtil.forName("delete_status").eq(0));
+//
+//	    // --- Loại tin tức ---
+//	    int[] listloaitintuc = {0, 1, 2, 3};
+//	    query.add(PropertyFactoryUtil.forName("loaitintuc").in(listloaitintuc));
+//
+//	    // --- Sắp xếp ---
+//	    query.addOrder(OrderFactoryUtil.desc("createdtime"));
+//
+//	    // --- Giới hạn phân trang ---
+//	    if (end > 0) {
+//	        query.setLimit(start, end);
+//	    }
+//
+//	    // --- Lấy danh sách ---
+//	    List<News_Article> listArticle = null;
+//	    try {
+//	        listArticle = News_ArticleLocalServiceUtil.dynamicQuery(query);
+//	    } catch (Exception e) {
+//	        System.err.println("❌ Lỗi khi thực thi dynamicQuery: " + e.getMessage());
+//	        e.printStackTrace();
+//	        listArticle = new ArrayList<>();
+//	    }
+//
+//	    // --- Đảm bảo không trả về null ---
+//	    if (Validator.isNull(listArticle) || listArticle.isEmpty()) {
+//	        listArticle = new ArrayList<>();
+//	    }
+//
+//	    return listArticle;
+//	}
+
 	
 	public static List<News_Article> listTintucAdminDaXoa(String checkLang, String usdangbaicheck, String tieude, String dinhdanh, String chuyenmuc, String trangthai, String theloaibaiviet, String tacgia, String userdangbai, 
 			String ngaytao_tungay, String ngaytao_denngay, String ngayhieuchinh_tungay, String ngayhieuchinh_denngay, int start, int end) throws Exception{
